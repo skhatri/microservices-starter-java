@@ -1,0 +1,16 @@
+
+endpoints:
+  enabled: true
+  trace:
+    enabled: false
+  health:
+    enabled: true
+  info:
+    enabled: true
+  metrics:
+    enabled: true
+
+  cors.allowed-origins: http://localhost
+  cors.allowed-methods: GET,POST
+
+server.error.whitelabel.enabled: false
