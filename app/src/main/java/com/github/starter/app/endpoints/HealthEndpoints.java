@@ -1,10 +1,9 @@
 package com.github.starter.app.endpoints;
 
+import java.util.Map;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Mono;
-
-import java.util.Map;
 
 @RestController("/")
 public class HealthEndpoints {

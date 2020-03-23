@@ -1,0 +1,22 @@
+<!--
+    import this into IntelliJ under Preferences:
+        Editor - CodeStyle - Java - Scheme
+ -->
+<code_scheme name="Microservices" version="173">
+    <JavaCodeStyleSettings>
+        <option name="IMPORT_LAYOUT_TABLE">
+            <value>
+                <!-- non static imports -->
+                <package name="" withSubpackages="true" static="false"/>
+                <emptyLine/>
+                <package name="java" withSubpackages="false" static="false"/>
+                <package name="javax" withSubpackages="false" static="false"/>
+                <emptyLine/>
+                <!-- static imports -->
+                <package name="" withSubpackages="true" static="true"/>
+            </value>
+        </option>
+        <option name="CLASS_COUNT_TO_USE_IMPORT_ON_DEMAND" value="99"/>
+        <option name="NAMES_COUNT_TO_USE_IMPORT_ON_DEMAND" value="99"/>
+    </JavaCodeStyleSettings>
+</code_scheme>
