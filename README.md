@@ -35,5 +35,5 @@ snyk auth
 Publish results using
 
 ```
-snyk monitor
+snyk monitor --all-sub-projects
 ```
