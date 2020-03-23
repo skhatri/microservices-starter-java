@@ -1,9 +1,9 @@
 package com.github.starter.core.exception;
 
 public class ApiException extends RuntimeException {
-    private String code;
-    private String summary;
-    private int status;
+    private final String code;
+    private final String summary;
+    private final int status;
 
     public ApiException(String code, String summary, int status, Throwable cause) {
         super(code, cause);
