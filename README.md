@@ -12,4 +12,5 @@ Microservices Starter Project
 [+] code style
 [+] logging
 [+] filters
+[+] load-testing
 ```
