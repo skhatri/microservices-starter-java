@@ -1,5 +1,8 @@
 package com.github.starter.core.advice;
 
+import com.github.starter.core.container.Container;
+import com.github.starter.core.container.MessageItem;
+import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.web.ResourceProperties;
@@ -20,7 +23,7 @@ import reactor.core.publisher.Mono;
 
 @Component
 @Order(-2)
-public class GlobalErrorHandler extends AbstractErrorWebExceptionHandler {
+public final class GlobalErrorHandler extends AbstractErrorWebExceptionHandler {
 
     @Autowired
     public GlobalErrorHandler(CustomErrorAttributes errorAttributes,
@@ -39,8 +42,8 @@ public class GlobalErrorHandler extends AbstractErrorWebExceptionHandler {
     private Mono<ServerResponse> render(ServerRequest request) {
         Map<String, Object> error = getErrorAttributes(request, false);
         int statusCode = Integer.parseInt(String.valueOf(error.getOrDefault("status", "500")));
-        return ServerResponse.status(HttpStatus.valueOf(statusCode))
-                .contentType(MediaType.APPLICATION_JSON)
-                .bodyValue(error);
+        MessageItem messageItem = MessageItem.class.cast(error.get("error"));
+        Container container = new Container(List.of(messageItem));
+        return ServerResponse.status(HttpStatus.valueOf(statusCode)).contentType(MediaType.APPLICATION_JSON).bodyValue(container);
     }
 }
