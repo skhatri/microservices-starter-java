@@ -60,7 +60,7 @@ sonarqube {
     properties {
         property("sonar.projectName", "microservices-starter-java")
         property("sonar.host.url", "http://localhost:9000")
-        property("sonar.projectKey", "microservices-starter-java:app")
+        property("sonar.projectKey", "microservices-starter-java-app")
         property("sonar.projectVersion", "${project.version}")
         property("sonar.junit.reportPaths", "${projectDir}/build/test-results/test")
         property("sonar.coverage.jacoco.xmlReportPaths", "${projectDir}/build/reports/jacoco/test/jacocoTestReport.xml")
@@ -84,21 +84,17 @@ tasks.jacocoTestReport {
 tasks.jacocoTestCoverageVerification {
     violationRules {
         rule {
-            excludes = listOf("**/Application*")
+            enabled = true
             limit {
-                counter = "INSTRUCTION"
-                value = "COVEREDRATIO"
-                enabled = true
-                minimum = "0.1".toBigDecimal()
+                minimum = "0.2".toBigDecimal()
             }
         }
 
         rule {
-            enabled = true
+            enabled = false
             element = "BUNDLE"
             includes = listOf("com.github.starter.*")
             excludes = listOf("**/Application*")
-
             limit {
                 counter = "LINE"
                 value = "COVEREDRATIO"
