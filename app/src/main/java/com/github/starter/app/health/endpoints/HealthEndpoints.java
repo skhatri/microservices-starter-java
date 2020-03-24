@@ -1,16 +1,16 @@
-package com.github.starter.app.endpoints;
+package com.github.starter.app.health.endpoints;
 
 import java.util.Map;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Mono;
 
-@RestController("/")
+@RestController(value = "/")
 public class HealthEndpoints {
 
     @GetMapping("/")
     public Mono<Map<String, Object>> index() {
-        return createPayload( "up", "Journey starts here!");
+        return createPayload("up", "Journey starts here!");
     }
 
     @GetMapping("/liveness")
