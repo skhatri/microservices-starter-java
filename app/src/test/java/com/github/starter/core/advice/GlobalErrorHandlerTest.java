@@ -1,10 +1,14 @@
 package com.github.starter.core.advice;
 
 import com.github.starter.core.exception.BadRequest;
+import com.github.starter.core.exception.InternalServerError;
 import java.util.concurrent.CountDownLatch;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.mockito.Mockito;
 import org.springframework.boot.web.reactive.error.DefaultErrorAttributes;
 import org.springframework.context.ApplicationContext;
@@ -22,9 +26,9 @@ import reactor.test.StepVerifier;
 @DisplayName("Global Error Handler Tests")
 public class GlobalErrorHandlerTest {
 
-    @DisplayName("Test Routing Function")
-    @Test
-    public void testRoutingFunction() throws Exception {
+    @ParameterizedTest(name = "Test Routing Function [{index}] {argumentsWithNames}")
+    @MethodSource("data")
+    public void testRoutingFunction(Throwable err, int expectedStatusCode) throws Exception {
         ApplicationContext applicationContext = Mockito.mock(ApplicationContext.class);
         Mockito.when(applicationContext.getClassLoader()).thenReturn(GlobalErrorHandlerTest.class.getClassLoader());
         ServerCodecConfigurer codecConfigurer = new DefaultServerCodecConfigurer();
@@ -32,19 +36,19 @@ public class GlobalErrorHandlerTest {
         GlobalErrorHandler errorHandler = new GlobalErrorHandler(attributes, applicationContext, codecConfigurer);
         errorHandler.afterPropertiesSet();
 
-        ServerRequest request = createErrorServerRequest(new BadRequest());
+        ServerRequest request = createErrorServerRequest(err);
 
         Mono<ServerResponse> serverResponse = errorHandler.getRoutingFunction(attributes).route(request).flatMap(fn -> fn.handle(request));
         CountDownLatch latch = new CountDownLatch(1);
         serverResponse.subscribe(res -> {
-            Assertions.assertEquals(400, res.statusCode().value());
+            Assertions.assertEquals(expectedStatusCode, res.statusCode().value());
             latch.countDown();
         });
         latch.await();
 
         StepVerifier.create(serverResponse)
-            .thenConsumeWhile(sr -> sr.statusCode().isError())
-            .verifyComplete();
+                .thenConsumeWhile(sr -> sr.statusCode().isError())
+                .verifyComplete();
     }
 
     private ServerRequest createErrorServerRequest(Throwable throwable) {
@@ -59,5 +63,14 @@ public class GlobalErrorHandlerTest {
                 .exchange(serverWebExchange)
                 .attribute(DefaultErrorAttributes.class.getName() + ".ERROR", throwable)
                 .build();
+    }
+
+
+    private static Stream<Arguments> data() {
+        return Stream.of(
+                Arguments.of(new BadRequest(), 400),
+                Arguments.of(new InternalServerError(), 500),
+                Arguments.of(new RuntimeException(), 500)
+        );
     }
 }

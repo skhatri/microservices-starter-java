@@ -45,6 +45,15 @@ public class HealthEndpointsTest {
     }
 
     @Test
+    @DisplayName("test index endpoint")
+    public void testIndexEndpoint() {
+        String uri = "/";
+        WebTestClient webTestClient = WebTestClient.bindToController(HealthEndpoints.class).build();
+        verifyResult(uri, webTestClient, Map.class, m -> !m.isEmpty());
+    }
+
+
+    @Test
     @DisplayName("test non-existent endpoint")
     public void testNonExistent() {
         String uri = "/readiness-xyz";

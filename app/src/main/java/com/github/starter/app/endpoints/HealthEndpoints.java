@@ -8,14 +8,23 @@ import reactor.core.publisher.Mono;
 @RestController("/")
 public class HealthEndpoints {
 
+    @GetMapping("/")
+    public Mono<Map<String, Object>> index() {
+        return createPayload( "up", "Journey starts here!");
+    }
 
     @GetMapping("/liveness")
     public Mono<Map<String, Object>> liveness() {
-        return Mono.just(Map.of("status", "live"));
+        return createPayload("live", "is running!");
     }
 
     @GetMapping("/readiness")
     public Mono<Map<String, Object>> readiness() {
-        return Mono.just(Map.of("status", "ready"));
+        return createPayload("ready", "can serve!");
     }
+
+    private Mono<Map<String, Object>> createPayload(String status, String message) {
+        return Mono.just(Map.of("status", status, "message", message));
+    }
+
 }
