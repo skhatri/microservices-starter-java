@@ -14,3 +14,31 @@ endpoints:
   cors.allowed-methods: GET,POST
 
 server.error.whitelabel.enabled: false
+
+datasource.jdbc:
+  enabled: true
+  ref:
+    - name: default-jdbc-client
+      driver: h2
+      username: sa
+      password:
+      protocol: mem
+      database: "testdb"
+      enabled: true
+      load: "h2"
+
+    - name: h2-1
+      driver: h2
+      username: sa
+      password:
+      protocol: mem
+      database: "testdb2"
+      enabled: true
+
+    - name: postgresql-1
+      driver: postgresql
+      username: todoservice
+      password: password
+      host: localhost
+      port: 5432
+      enabled: false
