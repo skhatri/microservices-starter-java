@@ -2,6 +2,7 @@ package com.github.starter.core.container;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 import java.util.Map;
 
@@ -14,7 +15,8 @@ public final class Container<T> {
     private final List<MessageItem> warnings;
 
     @JsonCreator
-    public Container(T data, Map<String, Object> metadata, List<MessageItem> errors, List<MessageItem> warnings) {
+    public Container(@JsonProperty("data") T data, @JsonProperty("metadata") Map<String, Object> metadata,
+                     @JsonProperty("errors") List<MessageItem> errors, @JsonProperty("warnings") List<MessageItem> warnings) {
         this.data = data;
         this.metadata = metadata;
         this.errors = errors;

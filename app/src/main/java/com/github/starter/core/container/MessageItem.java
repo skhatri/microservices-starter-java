@@ -2,6 +2,7 @@ package com.github.starter.core.container;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,7 +13,7 @@ public final class MessageItem {
     private final Map<String, Object> details;
 
     @JsonCreator
-    public MessageItem(String code, String message, Map<String, Object> details) {
+    public MessageItem(@JsonProperty("code") String code, @JsonProperty("message") String message, @JsonProperty("details") Map<String, Object> details) {
         this.code = code;
         this.message = message;
         this.details = details;
