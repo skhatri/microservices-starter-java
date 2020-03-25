@@ -31,7 +31,10 @@ dependencies {
 
     implementation("io.projectreactor.addons:reactor-adapter:3.3.2.RELEASE")
     implementation("org.yaml:snakeyaml:1.26")
-
+    implementation("io.r2dbc:r2dbc-spi:0.8.1.RELEASE")
+    implementation("io.r2dbc:r2dbc-postgresql:0.8.1.RELEASE")
+    implementation("io.r2dbc:r2dbc-h2:0.8.1.RELEASE")
+    implementation("org.springframework.data:spring-data-r2dbc:1.0.0.RELEASE")
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
         exclude(module = "junit")
         exclude(module = "mockito-core")
