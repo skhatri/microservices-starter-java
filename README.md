@@ -36,3 +36,4 @@ Publish results using
 ```
 snyk monitor --all-sub-projects
 ```
+
