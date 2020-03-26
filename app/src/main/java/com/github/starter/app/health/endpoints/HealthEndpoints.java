@@ -13,6 +13,11 @@ public class HealthEndpoints {
         return createPayload("up", "Journey starts here!");
     }
 
+    @GetMapping("/favicon.ico")
+    public Mono<Void> favicon() {
+        return Mono.empty();
+    }
+
     @GetMapping("/liveness")
     public Mono<Map<String, Object>> liveness() {
         return createPayload("live", "is running!");
