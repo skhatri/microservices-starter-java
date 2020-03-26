@@ -20,6 +20,6 @@ task("runTest", JavaExec::class) {
         "-bf", "${sourceSets["test"].output.dirs}",
         "-rsf", "${sourceSets["test"].resources}",
         "-rf", "$projectDir/build/reports/gatling",
-        "-s", "com.github.starter.todo.TodoSimulation"
+        "-s", "com.github.starter.todo.${project.ext["simulation"]}"
     )
 }

@@ -84,3 +84,16 @@ class TodoSimulation extends Simulation {
     editScenario.inject(nothingFor(10 seconds), rampUsers(2) during (10 seconds))
   ).protocols(Todo.httpProtocol).maxDuration(2 minutes)
 }
+
+
+class ListSimulation extends Simulation {
+
+  val searchScenario = scenario("Todo Search").during(5 minutes) {
+    exec(Todo.search)
+  }
+
+  setUp(
+    searchScenario.inject(atOnceUsers(50)),
+  ).protocols(Todo.httpProtocol).maxDuration(10 minutes)
+}
+

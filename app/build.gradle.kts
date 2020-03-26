@@ -77,7 +77,7 @@ sonarqube {
     }
 }
 
-apply(from="$rootDir/gradle/includes/codestyle.gradle.kts")
+apply(from = "$rootDir/gradle/includes/codestyle.gradle.kts")
 tasks.build {
     dependsOn(arrayOf("checkstyleMain", "checkstyleTest"))
 }
@@ -121,9 +121,17 @@ tasks.test {
 }
 
 tasks.test {
-    finalizedBy ("jacocoTestReport")
+    finalizedBy("jacocoTestReport")
 }
 
 tasks.check {
     dependsOn(arrayOf("jacocoTestReport", "jacocoTestCoverageVerification"))
+}
+
+task("runApp", JavaExec::class) {
+    main = "com.github.starter.Application"
+    classpath = sourceSets["main"].runtimeClasspath
+    jvmArgs = listOf(
+            "-Xms512m", "-Xmx512m"
+    )
 }
