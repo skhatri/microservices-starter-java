@@ -19,12 +19,18 @@ configurations {
 dependencies {
     listOf(
             "spring-boot-starter-webflux",
-            "spring-boot-starter-reactor-netty",
+            "spring-boot-starter-${project.ext["server.type"]}",
             "spring-boot-starter"
     ).forEach { name ->
         implementation("org.springframework.boot:${name}") {
             exclude(module = "spring-boot-starter-logging")
         }
+    }
+
+    if (project.ext["server.type"] == "reactor-netty") {
+        implementation("io.netty:netty-tcnative-boringssl-static:2.0.29.Final")
+        implementation("io.netty:netty-tcnative-boringssl-static:2.0.29.Final:osx-x86_64")
+        implementation("io.netty:netty-tcnative-boringssl-static:2.0.29.Final:linux-x86_64")
     }
 
     implementation("org.springframework.boot:spring-boot-starter-log4j2")

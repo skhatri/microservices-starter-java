@@ -1,3 +1,18 @@
+use:
+  ssl: true
+  http2: true
+  jdbc: true
+
+server.ssl:
+  key-store: classpath:server.p12
+  key-store-password: test123
+  key-password: test123
+  keystoreType: PKCS12
+  enabled: ${use.ssl}
+
+server:
+  http2:
+    enabled: ${use.http2}
 
 endpoints:
   enabled: true
@@ -16,7 +31,7 @@ endpoints:
 server.error.whitelabel.enabled: false
 
 datasource.jdbc:
-  enabled: true
+  enabled: ${use.jdbc}
   ref:
     - name: default-jdbc-client
       driver: h2
