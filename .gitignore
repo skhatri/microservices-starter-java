@@ -30,3 +30,5 @@ build
 *.hprof
 /TODO.md
 .ideaDataSources
+.DS_Store
+
