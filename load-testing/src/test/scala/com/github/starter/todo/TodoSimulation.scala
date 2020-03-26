@@ -67,9 +67,16 @@ object Todo {
 
 class TodoSimulation extends Simulation {
 
-  val searchScenario = scenario("Todo Search").exec(Todo.search)
-  val addScenario = scenario("Todo Add").exec(Todo.add)
-  val editScenario = scenario("Todo Edit").exec(Todo.edit)
+  val searchScenario = scenario("Todo Search").during(2 minutes) {
+    exec(Todo.search)
+  }
+  val addScenario = scenario("Todo Add").during(2 minutes) {
+    exec(Todo.add)
+  }
+
+  val editScenario = scenario("Todo Edit").during(1 minutes) {
+    exec(Todo.edit)
+  }
 
   setUp(
     searchScenario.inject(rampUsers(20) during (10 seconds)),

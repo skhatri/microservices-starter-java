@@ -23,6 +23,12 @@ Method Length, File Length, Cyclomatic Complexity have been added.
 ### load-testing
 Gatling
 
+Load test can be run using one of the following two approaches
+```
+gradle load-testing:runTest
+IDE - com.github.starter.todo.Runner
+```
+
 ### vulnerability
 
 Install snyk and authenticate for CLI session
