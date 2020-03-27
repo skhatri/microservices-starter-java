@@ -3,6 +3,7 @@ plugins {
     id("io.spring.dependency-management") version "1.0.9.RELEASE"
     id("org.sonarqube") version "2.8"
     id("jacoco")
+    id("com.google.cloud.tools.jib") version "2.1.0"
 }
 
 java {
@@ -134,4 +135,19 @@ task("runApp", JavaExec::class) {
     jvmArgs = listOf(
             "-Xms512m", "-Xmx512m"
     )
+}
+
+jib {
+    to {
+        image = project.ext["image.name"]
+    }
+    container {
+        labels = mapOf(
+             "lang" to "java",
+             "vm" to "java11",
+             "group" to "com.github.starter",
+             "artifact" to "microservices-starter-java"
+        )
+    }
+
 }
