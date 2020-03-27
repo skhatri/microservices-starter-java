@@ -40,7 +40,7 @@ public class RequestTimingFilter implements WebFilter {
                 long endTime = System.currentTimeMillis();
                 if (LOGGER.isInfoEnabled()) {
                     LOGGER.info("tag={}, uri=\"{}\", time={}, unit=ms{}", "request-timing",
-                        path, (endTime - start), params.toString());
+                        path, (endTime - start), params);
                 }
             });
 
