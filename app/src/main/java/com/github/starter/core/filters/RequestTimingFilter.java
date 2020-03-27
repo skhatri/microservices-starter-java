@@ -38,8 +38,10 @@ public class RequestTimingFilter implements WebFilter {
         return chain.filter(exchange)
             .doOnSuccess(v -> {
                 long endTime = System.currentTimeMillis();
-                LOGGER.info("tag={}, uri=\"{}\", time={}, unit=ms{}", "request-timing",
-                    path, (endTime - start), params.toString());
+                if (LOGGER.isInfoEnabled()) {
+                    LOGGER.info("tag={}, uri=\"{}\", time={}, unit=ms{}", "request-timing",
+                        path, (endTime - start), params.toString());
+                }
             });
 
     }
