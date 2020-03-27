@@ -1,5 +1,6 @@
 flags:
-  log.parameters: true
+  log.parameters: false
+  log.requests: true
   use:
     ssl: true
     http2: true
