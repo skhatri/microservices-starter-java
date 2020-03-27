@@ -1,6 +1,7 @@
 package com.github.starter.app.health.endpoints;
 
 import com.github.starter.core.consumer.MonoConsumer;
+import com.github.starter.core.filters.RequestTimingFilters;
 import java.util.Map;
 import java.util.function.Predicate;
 import org.junit.jupiter.api.Assertions;
@@ -25,7 +26,8 @@ public class HealthEndpointsTest {
         String uri = "/liveness";
 
         WebTestClient webTestClient = WebTestClient.bindToController(HealthEndpoints.class)
-                .build();
+            .webFilter(RequestTimingFilters.newInstance(true))
+            .build();
         verifyResult(uri, webTestClient, Map.class, m -> !m.isEmpty());
     }
 
@@ -33,14 +35,16 @@ public class HealthEndpointsTest {
         Mono<T> result = Mono.from(webTestClient.get().uri(uri).exchange().expectStatus().isOk().returnResult(clz).getResponseBody());
         new MonoConsumer<>(result, false).drain(res -> Assertions.assertTrue(predicate.test(res)));
         StepVerifier.create(result)
-                .verifyComplete();
+            .verifyComplete();
     }
 
     @Test
     @DisplayName("test readiness endpoint")
     public void testReadinessEndpoint() {
         String uri = "/readiness";
-        WebTestClient webTestClient = WebTestClient.bindToController(HealthEndpoints.class).build();
+        WebTestClient webTestClient = WebTestClient.bindToController(HealthEndpoints.class)
+            .webFilter(RequestTimingFilters.newInstance(false))
+            .build();
         verifyResult(uri, webTestClient, Map.class, m -> !m.isEmpty());
     }
 
@@ -56,9 +60,10 @@ public class HealthEndpointsTest {
     @Test
     @DisplayName("test non-existent endpoint")
     public void testNonExistent() {
-        String uri = "/readiness-xyz";
+        String uri = "/readiness-xyz?action=reload";
         WebTestClient webTestClient = WebTestClient.bindToController(HealthEndpoints.class)
-                .build();
+            .webFilter(RequestTimingFilters.newInstance(true))
+            .build();
         webTestClient.get().uri(uri).exchange().expectStatus().isNotFound();
     }
 }
