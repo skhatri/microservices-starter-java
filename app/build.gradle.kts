@@ -139,7 +139,7 @@ task("runApp", JavaExec::class) {
 
 jib {
     to {
-        image = project.ext["image.name"]
+        image = project.ext["image.name"] as String
     }
     container {
         labels = mapOf(

@@ -1,5 +1,0 @@
-- Mono test
-- Coverage
-- Checkstyle
-- Sonar
-- Gatling test
