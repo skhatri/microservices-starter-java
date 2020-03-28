@@ -11,17 +11,17 @@ import java.util.function.BiConsumer;
 import java.util.stream.Collectors;
 
 public final class JdbcClientPreparator {
-    private final Map<String, JdbcProperties.ConfigItem> configItemMap;
+    private final Map<String, ConfigItem> configItemMap;
 
-    JdbcClientPreparator(Map<String, JdbcProperties.ConfigItem> configItemMap) {
+    JdbcClientPreparator(Map<String, ConfigItem> configItemMap) {
         this.configItemMap = configItemMap;
     }
 
-    public Map<String, JdbcClient> configure(BiConsumer<JdbcProperties.ConfigItem, JdbcClient> setupHook) {
+    public Map<String, JdbcClient> configure(BiConsumer<ConfigItem, JdbcClient> setupHook) {
         Map<String, JdbcClient> clients = configItemMap.entrySet().stream()
             .filter(kv -> kv.getValue().isEnabled())
             .map(kv -> {
-                JdbcProperties.ConfigItem configItem = kv.getValue();
+                ConfigItem configItem = kv.getValue();
                 ConnectionFactoryOptions.Builder options = ConnectionFactoryOptions.builder();
                 options.option(ConnectionFactoryOptions.DRIVER, configItem.getDriver());
                 Optional.ofNullable(configItem.getDatabase()).ifPresent(db -> options.option(ConnectionFactoryOptions.DATABASE, db));

@@ -16,18 +16,18 @@ public class JdbcClientConfig {
 
     @Autowired
     @Bean
-    public Map<String, JdbcProperties.ConfigItem> databaseProperties(JdbcProperties jdbcProperties) {
+    public Map<String, ConfigItem> databaseProperties(JdbcProperties jdbcProperties) {
         return jdbcProperties.getRef().stream()
-            .collect(Collectors.toMap(JdbcProperties.ConfigItem::getName, cfg -> cfg));
+            .collect(Collectors.toMap(ConfigItem::getName, cfg -> cfg));
     }
 
     @Autowired
     @Bean
-    public JdbcClientFactory dataSources(Map<String, JdbcProperties.ConfigItem> jdbcConfigItems) {
+    public JdbcClientFactory dataSources(Map<String, ConfigItem> jdbcConfigItems) {
         return new JdbcClientFactory(new JdbcClientPreparator(jdbcConfigItems).configure(this::runInitScripts));
     }
 
-    private void runInitScripts(JdbcProperties.ConfigItem configItem, JdbcClient jdbcClient) {
+    private void runInitScripts(ConfigItem configItem, JdbcClient jdbcClient) {
         Optional.ofNullable(configItem.getLoad()).ifPresent(load -> {
             if ("h2".equals(configItem.getDriver())) {
                 JdbcScriptProcessor scriptProcessor = new JdbcScriptProcessor();
