@@ -1,6 +1,6 @@
 package com.github.starter.app.config;
 
-class ConfigItem {
+public class ConfigItem {
     private String name;
     private String driver;
     private int port;

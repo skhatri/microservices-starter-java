@@ -26,6 +26,7 @@ public final class JdbcClientPreparator {
                 options.option(ConnectionFactoryOptions.DRIVER, configItem.getDriver());
                 Optional.ofNullable(configItem.getDatabase()).ifPresent(db -> options.option(ConnectionFactoryOptions.DATABASE, db));
                 Optional.ofNullable(configItem.getHost()).ifPresent(host -> options.option(ConnectionFactoryOptions.HOST, host));
+                Optional.ofNullable(configItem.getPort()).ifPresent(port -> options.option(ConnectionFactoryOptions.PORT, port));
                 options.option(ConnectionFactoryOptions.PASSWORD, configItem.getPassword());
                 options.option(ConnectionFactoryOptions.USER, configItem.getUsername());
                 Optional.ofNullable(configItem.getProtocol()).ifPresent(protocol -> options.option(ConnectionFactoryOptions.PROTOCOL, protocol));
