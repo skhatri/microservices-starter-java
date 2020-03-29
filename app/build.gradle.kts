@@ -59,6 +59,9 @@ dependencies {
     testImplementation("org.junit.platform:junit-platform-runner:1.6.1")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher:1.6.1")
     testRuntimeOnly("org.junit.platform:junit-platform-engine:1.6.1")
+    testImplementation("org.testcontainers:testcontainers:1.13.0")
+    testImplementation("org.testcontainers:junit-jupiter:1.13.0")
+    testImplementation("org.testcontainers:postgresql:1.13.0")
 
 }
 
