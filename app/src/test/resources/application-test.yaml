@@ -13,8 +13,10 @@ datasource.jdbc:
 
     - name: postgresql-1
       driver: postgresql
-      username: todoservice
+      username: todo
       password: password
       host: localhost
       port: 5432
+      database: postgres
       enabled: false
+
