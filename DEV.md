@@ -13,6 +13,7 @@ Run the app with one of the web servers
 gradle runApp -Pserver.type=tomcat
 gradle runApp -Pserver.type=undertow
 gradle runApp -Pserver.type=reactor-netty
+gradle runApp -Pserver.type=jetty
 
 or
 ./scripts/run-app.sh <server.type>
@@ -26,3 +27,19 @@ or
 
 ./scripts/perf.sh
 ``` 
+
+### Time Based Load Testing
+```
+brew install nghttp2
+#http1.1
+h2load --h1 -c50 -m20 --duration=120 --warm-up-time=5 http://localhost:8080/todo/search
+h2load -c50 -m20 --duration=120 --warm-up-time=5 https://localhost:8080/todo/search
+```
+
+### Request Load Testing
+```
+#http1.1
+h2load --h1 -n400000 -c100 -m1 http://localhost:8080/todo/search
+#http2
+h2load -n400000 -c50 -m20 https://localhost:8080/todo/search
+```

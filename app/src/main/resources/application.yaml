@@ -1,6 +1,6 @@
 flags:
   log.parameters: false
-  log.requests: true
+  log.requests: false
   use:
     ssl: true
     http2: true
@@ -16,6 +16,7 @@ server.ssl:
 server:
   http2:
     enabled: ${flags.use.http2}
+
 
 endpoints:
   enabled: true
