@@ -1,21 +1,36 @@
 package com.github.starter.todo
 
 import io.gatling.core.Predef._
+import io.gatling.core.structure.PopulationBuilder
 import io.gatling.http.Predef._
+
 import scala.concurrent.duration._
 
 object Todo {
-  val base = "https://localhost:8080"
+  val server = Option(System.getenv("HOST")).getOrElse("localhost")
+  val port = Option(System.getenv("PORT")).map(_.toInt).getOrElse(8080)
+  val ssl = Option(System.getenv("SSL")).map(_.toBoolean).getOrElse(true)
+  val http2Enabled = Option(System.getenv("HTTP2")).map(_.toBoolean).getOrElse(true)
+
+  val protocol = if (ssl) "https" else "http"
+  val base = s"$protocol://$server:$port"
   val randomIndex = Iterator.continually(Map("index" -> (Math.random() * 2).toInt))
 
-  val httpProtocol = http
+  private val httpProtocolBase = http
     .baseUrl(base)
-    .acceptHeader("application/json;q=0.9,*/*;q=0.8")
+    .warmUp(s"$base/")
     .doNotTrackHeader("1")
+    .acceptHeader("application/json;q=0.9,*/*;q=0.8")
     .contentTypeHeader("application/json")
     .acceptLanguageHeader("en-US,en;q=0.5")
-    .acceptEncodingHeader("gzip, deflate")
     .userAgentHeader("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36")
+
+  val httpProtocol = if (http2Enabled) {
+    httpProtocolBase.enableHttp2.http2PriorKnowledge(Map(s"$server:$port" -> true)).copy(useOpenSsl = true)
+  } else {
+    httpProtocolBase
+  }
+
 
   val feeder = csv("tasks.csv").random
 
@@ -88,12 +103,21 @@ class TodoSimulation extends Simulation {
 
 class ListSimulation extends Simulation {
 
-  val searchScenario = scenario("Todo Search").during(5 minutes) {
+  val searchScenarioClosed: PopulationBuilder = scenario("Todo Search").during(5 minutes) {
     exec(Todo.search)
-  }
+  }.inject(
+    constantConcurrentUsers(10) during (30 seconds),
+    rampConcurrentUsers(10) to (20) during (10 seconds)
+  )
 
-  setUp(
-    searchScenario.inject(atOnceUsers(50)),
-  ).protocols(Todo.httpProtocol).maxDuration(10 minutes)
+  val searchScenarioOpen: PopulationBuilder = scenario("Todo Search").during(5 minutes) {
+    exec(Todo.search)
+  }.inject(
+    heavisideUsers(2000) during (30 seconds)
+  )
+
+
+
+  setUp(searchScenarioOpen).protocols(Todo.httpProtocol).maxDuration(10 minutes)
 }
 
