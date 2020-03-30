@@ -30,8 +30,13 @@ dependencies {
 
     if (project.ext["server.type"] == "reactor-netty") {
         implementation("io.netty:netty-tcnative-boringssl-static:2.0.29.Final")
-        implementation("io.netty:netty-tcnative-boringssl-static:2.0.29.Final:osx-x86_64")
-        implementation("io.netty:netty-tcnative-boringssl-static:2.0.29.Final:linux-x86_64")
+    }
+
+    if (project.ext["server.type"] == "jetty") {
+        listOf("jetty-alpn-server", "jetty-alpn-conscrypt-server").forEach { name ->
+            implementation("org.eclipse.jetty:$name:9.4.27.v20200227")
+        }
+        implementation("org.eclipse.jetty.http2:http2-server:9.4.27.v20200227")
     }
 
     implementation("org.springframework.boot:spring-boot-starter-log4j2")
