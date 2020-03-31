@@ -1,0 +1,15 @@
+language: java
+install: true
+os: linux
+dist: trusty
+jdk: oraclejdk11
+script:
+  - ./gradlew clean build
+
+before_cache:
+  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+
+cache:
+  directories:
+    - $HOME/.gradle/caches/
+    - $HOME/.gradle/wrapper/
