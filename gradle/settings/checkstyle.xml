@@ -345,6 +345,18 @@
             <property name="max" value="15"/>
         </module>
         <module name="UnusedImports"/>
+        <module name="Regexp">
+            <property name="format" value="System\.out\.println"/>
+            <property name="illegalPattern" value="true"/>
+            <property name="ignoreComments" value="true"/>
+            <property name="message" value="Use Logger instead of System.out"/>
+        </module>
+        <module name="Regexp">
+            <property name="format" value="org\.junit\.Assert"/>
+            <property name="illegalPattern" value="true"/>
+            <property name="ignoreComments" value="true"/>
+            <property name="message" value="Use Junit5 Assertions class instead of JUnit4 Assert"/>
+        </module>
 
     </module>
 </module>
