@@ -1,7 +1,9 @@
 # microservices-starter
 Microservices Starter Project
 
-[![Known Vulnerabilities](https://snyk.io/test/github/skhatri/microservices-starter-java/badge.svg?targetFile=build.gradle)](https://snyk.io/test/github/skhatri/microservices-starter-java?targetFile=build.gradle)
+[![Build](https://travis-ci.com/skhatri/microservices-starter-java.svg?branch=master)](https://travis-ci.com/github/skhatri/microservices-starter-java)
+[![Code Coverage](https://img.shields.io/codecov/c/github/skhatri/microservices-starter-java/master.svg)](https://codecov.io/github/skhatri/microservices-starter-java?branch=master)
+[![Known Vulnerabilities](https://snyk.io/test/github/skhatri/microservices-starter-java/badge.svg?targetFile=build.gradle.kts)](https://snyk.io/test/github/skhatri/microservices-starter-java?targetFile=build.gradle.kts)
 
 
 ### logging
