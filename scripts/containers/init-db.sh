@@ -3,8 +3,10 @@ set -e
 
 psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" <<-EOSQL
 
-CREATE USER todo WITH ENCRYPTED PASSWORD 'password';
-CREATE SCHEMA IF NOT EXISTS todo AUTHORIZATION todo;
+CREATE USER todo_admin WITH ENCRYPTED PASSWORD 'password';
+CREATE DATABASE todo;
+\c todo;
+CREATE SCHEMA IF NOT EXISTS todo AUTHORIZATION todo_admin;
 
 create table if not exists todo.tasks(
     id varchar(64),
@@ -15,6 +17,9 @@ create table if not exists todo.tasks(
     updated TIMESTAMP,
     primary key(id)
 );
+
+GRANT ALL ON SCHEMA todo TO todo_admin;
+GRANT ALL ON ALL TABLES IN SCHEMA todo TO todo_admin;
 
 insert into todo.tasks(id, description, action_by, created, status)
 values('1', 'Buy Groceries', 'user1', '2020-03-20 00:00:00', 'NEW');
