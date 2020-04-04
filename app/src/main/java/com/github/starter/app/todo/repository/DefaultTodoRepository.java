@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.r2dbc.core.DatabaseClient;
 import org.springframework.data.r2dbc.query.Criteria;
 import org.springframework.stereotype.Repository;
@@ -18,8 +19,8 @@ public class DefaultTodoRepository implements TodoRepository {
     private final DatabaseClient databaseClient;
 
     @Autowired
-    public DefaultTodoRepository(JdbcClientFactory clientFactory) {
-        this.databaseClient = clientFactory.forName("default-jdbc-client").client();
+    public DefaultTodoRepository(JdbcClientFactory clientFactory, @Value("${flags.default-jdbc-client}") String jdbcClientName) {
+        this.databaseClient = clientFactory.forName(jdbcClientName).client();
     }
 
     @Override

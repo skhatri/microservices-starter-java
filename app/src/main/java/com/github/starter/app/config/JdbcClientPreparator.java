@@ -2,6 +2,7 @@ package com.github.starter.app.config;
 
 import com.github.starter.core.exception.ConfigurationException;
 import com.github.starter.core.model.Tuple2;
+import com.github.starter.core.secrets.SecretsClient;
 import io.r2dbc.spi.ConnectionFactories;
 import io.r2dbc.spi.ConnectionFactory;
 import io.r2dbc.spi.ConnectionFactoryOptions;
@@ -12,9 +13,11 @@ import java.util.stream.Collectors;
 
 public final class JdbcClientPreparator {
     private final Map<String, ConfigItem> configItemMap;
+    private final SecretsClient secretsClient;
 
-    JdbcClientPreparator(Map<String, ConfigItem> configItemMap) {
+    JdbcClientPreparator(Map<String, ConfigItem> configItemMap, SecretsClient secretsClient) {
         this.configItemMap = configItemMap;
+        this.secretsClient = secretsClient;
     }
 
     public Map<String, JdbcClient> configure(BiConsumer<ConfigItem, JdbcClient> setupHook) {
@@ -27,8 +30,8 @@ public final class JdbcClientPreparator {
                 Optional.ofNullable(configItem.getDatabase()).ifPresent(db -> options.option(ConnectionFactoryOptions.DATABASE, db));
                 Optional.ofNullable(configItem.getHost()).ifPresent(host -> options.option(ConnectionFactoryOptions.HOST, host));
                 Optional.ofNullable(configItem.getPort()).ifPresent(port -> options.option(ConnectionFactoryOptions.PORT, port));
-                options.option(ConnectionFactoryOptions.PASSWORD, configItem.getPassword());
-                options.option(ConnectionFactoryOptions.USER, configItem.getUsername());
+                options.option(ConnectionFactoryOptions.PASSWORD, new String(secretsClient.resolve(configItem.getPassword())));
+                options.option(ConnectionFactoryOptions.USER, new String(secretsClient.resolve(configItem.getUsername())));
                 Optional.ofNullable(configItem.getProtocol()).ifPresent(protocol -> options.option(ConnectionFactoryOptions.PROTOCOL, protocol));
                 ConnectionFactory connFactory = ConnectionFactories.get(options.build());
                 JdbcClient jdbcClient = new JdbcClient(connFactory);
