@@ -1,6 +1,9 @@
 package com.github.starter.app.config;
 
+import com.github.skhatri.mounted.MountedSecretsResolver;
+import com.github.skhatri.mounted.NoOpSecretsResolver;
 import com.github.starter.core.exception.ConfigurationException;
+import com.github.starter.core.secrets.SecretsClient;
 import java.util.Map;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -14,7 +17,8 @@ public class JdbcClientPreparatorTest {
     @DisplayName("test no jdbc present")
     public void testNoJdbcConnectionConfigPresent() {
         Assertions.assertThrows(ConfigurationException.class, () -> {
-            clientPreparator = new JdbcClientPreparator(Map.of());
+            MountedSecretsResolver noop = new NoOpSecretsResolver();
+            clientPreparator = new JdbcClientPreparator(Map.of(), new SecretsClient(noop));
             clientPreparator.configure(null);
         });
     }

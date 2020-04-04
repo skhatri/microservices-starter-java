@@ -47,6 +47,7 @@ dependencies {
     implementation("io.r2dbc:r2dbc-postgresql:0.8.1.RELEASE")
     implementation("io.r2dbc:r2dbc-h2:0.8.1.RELEASE")
     implementation("org.springframework.data:spring-data-r2dbc:1.0.0.RELEASE")
+    implementation("io.github.skhatri:mounted-secrets-client:0.2.5")
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
         exclude(module = "junit")
         exclude(module = "mockito-core")

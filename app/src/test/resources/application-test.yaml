@@ -1,22 +1,21 @@
+flags.default-jdbc-client: "default-jdbc-client-h2"
 
 datasource.jdbc:
   enabled: true
   ref:
-    - name: default-jdbc-client
+    - name: default-jdbc-client-h2
       driver: h2
       username: sa
-      password:
+      password: "secret::vault::h2_password:-"
       protocol: mem
       database: "testdb"
       enabled: true
       load: "h2"
 
-    - name: postgresql-1
+    - name: default-jdbc-client-pg
       driver: postgresql
-      username: todo
-      password: password
+      username: todoservice
+      password: "secret::vault::todoservice:-password"
       host: localhost
       port: 5432
-      database: postgres
       enabled: false
-

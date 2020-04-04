@@ -1,5 +1,6 @@
 package com.github.starter.app.config;
 
+import com.github.starter.core.secrets.SecretsClient;
 import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -23,8 +24,8 @@ public class JdbcClientConfig {
 
     @Autowired
     @Bean
-    public JdbcClientFactory dataSources(Map<String, ConfigItem> jdbcConfigItems) {
-        return new JdbcClientFactory(new JdbcClientPreparator(jdbcConfigItems).configure(this::runInitScripts));
+    public JdbcClientFactory dataSources(Map<String, ConfigItem> jdbcConfigItems, SecretsClient secretsClient) {
+        return new JdbcClientFactory(new JdbcClientPreparator(jdbcConfigItems, secretsClient).configure(this::runInitScripts));
     }
 
     private void runInitScripts(ConfigItem configItem, JdbcClient jdbcClient) {
