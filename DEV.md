@@ -1,10 +1,35 @@
 
-### Insecure SSL for localhost
+### Importing App
+```
+./gradlew cleanIdea idea
+```
 
-Enable this flag when enabling SSL and HTTP/2
+### Build App
+```
+gradle clean build
+```
+
+### Running App
+1. Run Application.kt from IDE
+2. Run using command line \
+    ```gradle runApp```
+3. Run as fat jar
+
+```
+gradle clean build
+java -jar app/build/libs/app.jar
+```
+
+### Accessing App
+```
+open http://localhost:8080/todo/search
+```
+
+#### Enable this flag when enabling SSL and HTTP/2
 ```
 chrome://flags/#allow-insecure-localhost
 ```
+
 
 ### Performance test
 

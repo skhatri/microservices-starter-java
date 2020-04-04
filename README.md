@@ -5,6 +5,8 @@ Microservices Starter Project
 [![Code Coverage](https://img.shields.io/codecov/c/github/skhatri/microservices-starter-java/master.svg)](https://codecov.io/github/skhatri/microservices-starter-java?branch=master)
 [![Known Vulnerabilities](https://snyk.io/test/github/skhatri/microservices-starter-java/badge.svg?targetFile=build.gradle.kts)](https://snyk.io/test/github/skhatri/microservices-starter-java?targetFile=build.gradle.kts)
 
+### Development
+[Developer Guide](DEV.md)
 
 ### logging
 log4j2
