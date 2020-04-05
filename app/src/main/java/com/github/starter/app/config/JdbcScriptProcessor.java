@@ -10,6 +10,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -75,19 +76,23 @@ public class JdbcScriptProcessor {
                 resourceList = Arrays.asList(resources);
             }
             return resourceList.stream().filter(p -> scriptPattern.matcher(p.getFilename()).matches())
-                .sorted((Resource o1, Resource o2) -> {
-                    Matcher matchResult1 = scriptPattern.matcher(o1.getFilename());
-                    Matcher matchResult2 = scriptPattern.matcher(o2.getFilename());
-                    if (matchResult1.find() && matchResult2.find()) {
-                        Integer fileNum1 = Integer.parseInt(matchResult1.group(1));
-                        Integer fileNum2 = Integer.parseInt(matchResult2.group(1));
-                        return fileNum1.compareTo(fileNum2);
-                    }
-                    return 0;
-                }).collect(Collectors.toList());
+                .sorted(getResourceComparator(scriptPattern)).collect(Collectors.toList());
         } catch (Exception exp) {
             throw new ConfigurationException("could not load initialise scripts", exp);
         }
+    }
+
+    private Comparator<Resource> getResourceComparator(Pattern scriptPattern) {
+        return (Resource o1, Resource o2) -> {
+            Matcher matchResult1 = scriptPattern.matcher(o1.getFilename());
+            Matcher matchResult2 = scriptPattern.matcher(o2.getFilename());
+            if (matchResult1.find() && matchResult2.find()) {
+                Integer fileNum1 = Integer.parseInt(matchResult1.group(1));
+                Integer fileNum2 = Integer.parseInt(matchResult2.group(1));
+                return fileNum1.compareTo(fileNum2);
+            }
+            return 0;
+        };
     }
 
     private List<Path> walkPath(File file) throws IOException {
