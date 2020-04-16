@@ -53,6 +53,20 @@ or
 ./scripts/perf.sh
 ``` 
 
+### Running all engines in containers
+To create fat jar for each server type, use the following command.
+```
+./scripts/docker/builder.sh
+```
+It will also create a docker container with all fat jars. You can pass environment variable ```ENGINE``` to pick
+a server type to run in your container. The value of ENGINE can be undertow,jetty,reactor-netty or tomcat. 
+Default value is reactor-netty.
+
+```
+docker run -p 8080:8080 -e ENGINE=undertow -d starter-java:latest
+```
+
+
 ### Time Based Load Testing
 ```
 brew install nghttp2
