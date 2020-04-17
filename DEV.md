@@ -56,7 +56,7 @@ or
 ### Running all engines in containers
 To create fat jar for each server type, use the following command.
 ```
-./scripts/docker/builder.sh
+./scripts/pack/builder.sh
 ```
 It will also create a docker container with all fat jars. You can pass environment variable ```ENGINE``` to pick
 a server type to run in your container. The value of ENGINE can be undertow,jetty,reactor-netty or tomcat. 
@@ -74,6 +74,8 @@ brew install nghttp2
 h2load --h1 -c50 -m20 --duration=120 --warm-up-time=5 http://localhost:8080/todo/search
 h2load -c50 -m20 --duration=120 --warm-up-time=5 https://localhost:8080/todo/search
 ```
+
+Unmonitored Time-based testing can be done using ```scripts/pack/time-based-test.sh```
 
 ### Request Load Testing
 ```
