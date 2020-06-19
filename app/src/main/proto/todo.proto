@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+import "google/protobuf/wrappers.proto";
+
+option java_package = "com.github.starter.proto";
+option java_multiple_files = false;
+option java_outer_classname = "Todos";
+option go_package = ".;todo";
+
+message Todo {
+  string id = 1;
+  string description = 2;
+  string created = 3;
+  string action_by = 4;
+  string status = 5;
+  string updated = 6;
+};
+
+message TodoList {
+  repeated Todo data = 1;
+};
+
+message Params {
+  bool completed = 1;
+};
+
+message Status {
+  string value = 1;
+}
+
+service TodoService {
+  rpc getTodos(Params) returns(TodoList);
+  rpc save(Todo) returns(Todo);
+  rpc update(Todo) returns(Todo);
+  rpc findById(google.protobuf.StringValue) returns(Todo);
+  rpc delete(google.protobuf.StringValue) returns(google.protobuf.BoolValue);
+
+  rpc status(Params) returns(Status);
+}
+
