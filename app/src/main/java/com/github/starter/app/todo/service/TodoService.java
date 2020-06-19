@@ -1,8 +1,9 @@
 package com.github.starter.app.todo.service;
 
 import com.github.starter.app.todo.model.TodoTask;
-import java.util.List;
 import reactor.core.publisher.Mono;
+
+import java.util.List;
 
 public interface TodoService {
     Mono<List<TodoTask>> listItems();

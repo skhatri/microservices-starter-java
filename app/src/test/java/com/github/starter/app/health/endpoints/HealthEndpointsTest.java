@@ -2,8 +2,7 @@ package com.github.starter.app.health.endpoints;
 
 import com.github.starter.core.consumer.MonoConsumer;
 import com.github.starter.core.filters.RequestTimingFilters;
-import java.util.Map;
-import java.util.function.Predicate;
+import com.github.starter.grpc.client.NoOpDownstreamStatus;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -12,6 +11,9 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
+
+import java.util.Map;
+import java.util.function.Predicate;
 
 
 @DisplayName("Health Endpoints Test")
@@ -25,7 +27,8 @@ public class HealthEndpointsTest {
     public void testLivenessEndpoint() {
         String uri = "/liveness";
 
-        WebTestClient webTestClient = WebTestClient.bindToController(HealthEndpoints.class)
+        HealthEndpoints endpoints = new HealthEndpoints(new NoOpDownstreamStatus());
+        WebTestClient webTestClient = WebTestClient.bindToController(endpoints)
             .webFilter(RequestTimingFilters.newInstance(true))
             .build();
         verifyResult(uri, webTestClient, Map.class, m -> !m.isEmpty());
@@ -42,7 +45,8 @@ public class HealthEndpointsTest {
     @DisplayName("test readiness endpoint")
     public void testReadinessEndpoint() {
         String uri = "/readiness";
-        WebTestClient webTestClient = WebTestClient.bindToController(HealthEndpoints.class)
+        HealthEndpoints endpoints = new HealthEndpoints(new NoOpDownstreamStatus());
+        WebTestClient webTestClient = WebTestClient.bindToController(endpoints)
             .webFilter(RequestTimingFilters.newInstance(false))
             .build();
         verifyResult(uri, webTestClient, Map.class, m -> !m.isEmpty());
@@ -52,7 +56,8 @@ public class HealthEndpointsTest {
     @DisplayName("test index endpoint")
     public void testIndexEndpoint() {
         String uri = "/";
-        WebTestClient webTestClient = WebTestClient.bindToController(HealthEndpoints.class).build();
+        HealthEndpoints endpoints = new HealthEndpoints(new NoOpDownstreamStatus());
+        WebTestClient webTestClient = WebTestClient.bindToController(endpoints).build();
         verifyResult(uri, webTestClient, Map.class, m -> !m.isEmpty());
     }
 
@@ -61,7 +66,8 @@ public class HealthEndpointsTest {
     @DisplayName("test non-existent endpoint")
     public void testNonExistent() {
         String uri = "/readiness-xyz?action=reload";
-        WebTestClient webTestClient = WebTestClient.bindToController(HealthEndpoints.class)
+        HealthEndpoints endpoints = new HealthEndpoints(new NoOpDownstreamStatus());
+        WebTestClient webTestClient = WebTestClient.bindToController(endpoints)
             .webFilter(RequestTimingFilters.newInstance(true))
             .build();
         webTestClient.get().uri(uri).exchange().expectStatus().isNotFound();

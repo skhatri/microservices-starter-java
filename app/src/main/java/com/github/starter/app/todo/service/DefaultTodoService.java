@@ -3,12 +3,15 @@ package com.github.starter.app.todo.service;
 import com.github.starter.app.todo.model.TodoTask;
 import com.github.starter.app.todo.repository.TodoRepository;
 import com.github.starter.core.exception.BadRequest;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
-@Service
+import java.util.List;
+
+@Service("defaultTodoService")
+@ConditionalOnProperty(name = "flags.use.grpc", havingValue = "false")
 public class DefaultTodoService implements TodoService {
 
     private final TodoRepository todoRepository;

@@ -14,6 +14,7 @@ tasks.withType<Checkstyle>().configureEach {
     maxWarnings = 0
 
     configFile = file("$rootDir/gradle/settings/checkstyle.xml")
+    setExcludes(setOf("**/proto/*", "**/grpc/**/*"))
     reports {
         xml.isEnabled = false
         html.isEnabled = true

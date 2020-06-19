@@ -2,9 +2,10 @@ package com.github.starter.app.todo.repository;
 
 import com.github.starter.app.todo.endpoints.Todos;
 import com.github.starter.app.todo.model.TodoTask;
+import org.junit.jupiter.api.Assertions;
+
 import java.time.LocalDateTime;
 import java.util.List;
-import org.junit.jupiter.api.Assertions;
 
 public class TodoRepositoryUseCases {
 

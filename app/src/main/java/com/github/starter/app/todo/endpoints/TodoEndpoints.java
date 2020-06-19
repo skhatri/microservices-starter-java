@@ -3,8 +3,6 @@ package com.github.starter.app.todo.endpoints;
 import com.github.starter.app.todo.model.TodoTask;
 import com.github.starter.app.todo.service.TodoService;
 import com.github.starter.core.container.Container;
-import java.util.List;
-import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -16,6 +14,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Mono;
+
+import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/todo")
@@ -46,7 +47,7 @@ public class TodoEndpoints {
 
     @PostMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public Mono<Container<TodoTask>> update(@PathVariable("id") String id, @RequestBody TodoTask todoTask) {
-        return  todoService.update(id, todoTask).map(Container::new);
+        return todoService.update(id, todoTask).map(Container::new);
     }
 
     @DeleteMapping("/{id}")
