@@ -1,6 +1,7 @@
 package com.github.starter.app.config;
 
 import com.github.starter.core.exception.ConfigurationException;
+
 import java.util.Map;
 import java.util.Optional;
 

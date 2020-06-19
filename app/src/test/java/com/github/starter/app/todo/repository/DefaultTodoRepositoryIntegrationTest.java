@@ -10,9 +10,6 @@ import com.github.starter.app.config.JdbcClientConfig;
 import com.github.starter.app.config.JdbcClientFactory;
 import com.github.starter.app.config.JdbcProperties;
 import com.github.starter.core.secrets.SecretsClient;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -20,6 +17,10 @@ import org.junit.jupiter.api.Test;
 import org.testcontainers.containers.GenericContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 
 @DisplayName("Todo Repository Integration Tests")
 @Testcontainers

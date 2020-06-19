@@ -4,10 +4,11 @@ import com.github.skhatri.mounted.MountedSecretsResolver;
 import com.github.skhatri.mounted.NoOpSecretsResolver;
 import com.github.starter.core.exception.ConfigurationException;
 import com.github.starter.core.secrets.SecretsClient;
-import java.util.Map;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import java.util.Map;
 
 @DisplayName("Jdbc Client Preparator")
 public class JdbcClientPreparatorTest {

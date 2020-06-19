@@ -7,8 +7,8 @@ flags:
     jdbc: true
     h2: true
     postgres: false
+    grpc: true
   default-jdbc-client: "${JDBC_CLIENT_NAME:default-jdbc-client-h2}"
-
 
 server.ssl:
   key-store: classpath:server.p12
@@ -20,6 +20,9 @@ server.ssl:
 server:
   http2:
     enabled: ${flags.use.http2}
+
+grpc:
+  port: 8100
 
 endpoints:
   enabled: true

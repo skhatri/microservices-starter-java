@@ -1,4 +1,5 @@
 flags.default-jdbc-client: "default-jdbc-client-h2"
+flags.use.grpc: false
 
 datasource.jdbc:
   enabled: true

@@ -1,12 +1,23 @@
 package com.github.starter.app.health.endpoints;
 
-import java.util.Map;
+import com.github.starter.app.health.service.DownstreamStatus;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Mono;
 
+import java.util.Map;
+
 @RestController(value = "/")
 public class HealthEndpoints {
+    private final DownstreamStatus downstreamStatus;
+
+    @Autowired
+    HealthEndpoints(DownstreamStatus downstreamStatus) {
+        this.downstreamStatus = downstreamStatus;
+    }
 
     @GetMapping("/")
     public Mono<Map<String, Object>> index() {
@@ -19,8 +30,12 @@ public class HealthEndpoints {
     }
 
     @GetMapping("/liveness")
-    public Mono<Map<String, Object>> liveness() {
-        return createPayload("live", "is running!");
+    public Mono<ResponseEntity<Map<String, Object>>> liveness() {
+        Mono<ResponseEntity<Map<String, Object>>> response = downstreamStatus.status().map(v ->
+                new ResponseEntity<>(Map.of("status", "live", "message", "is running!", "downstream", v ? "UP" : "DOWN"),
+                        v ? HttpStatus.OK : HttpStatus.INTERNAL_SERVER_ERROR)
+        );
+        return response;
     }
 
     @GetMapping("/readiness")

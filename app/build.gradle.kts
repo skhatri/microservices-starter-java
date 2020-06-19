@@ -1,9 +1,14 @@
+import com.google.protobuf.gradle.*
+import org.gradle.kotlin.dsl.provider.gradleKotlinDslOf
+
 plugins {
     id("org.springframework.boot") version "2.2.5.RELEASE"
     id("io.spring.dependency-management") version "1.0.9.RELEASE"
     id("org.sonarqube") version "2.8"
     id("jacoco")
     id("com.google.cloud.tools.jib") version "2.1.0"
+    id("com.google.protobuf") version "0.8.12"
+
 }
 
 java {
@@ -15,6 +20,34 @@ configurations {
     implementation {
         resolutionStrategy.failOnVersionConflict()
     }
+}
+
+sourceSets{
+    getByName("main").java.srcDirs("src/main/java")
+    getByName("main").java.srcDirs("src/generated/main/java")
+    getByName("main").java.srcDirs("src/generated/main/grpc")
+    getByName("main").proto.srcDirs("src/main/proto")
+    getByName("main").proto.include("**/*.proto")
+}
+
+protobuf {
+  generatedFilesBaseDir="$projectDir/src/generated"
+  protoc {
+    artifact="com.google.protobuf:protoc:3.0.0"
+  }
+  plugins {
+    id("grpc") {
+      artifact ="io.grpc:protoc-gen-grpc-java:1.29.0"
+    }
+  }
+  
+  generateProtoTasks {
+    ofSourceSet("main").forEach { t ->
+      t.plugins {
+        id("grpc")
+      }
+    }
+  }
 }
 
 dependencies {
@@ -48,6 +81,15 @@ dependencies {
     implementation("io.r2dbc:r2dbc-h2:0.8.1.RELEASE")
     implementation("org.springframework.data:spring-data-r2dbc:1.0.0.RELEASE")
     implementation("io.github.skhatri:mounted-secrets-client:0.2.5")
+
+    implementation("com.google.protobuf:protobuf-java:3.0.0")
+    implementation("io.grpc:grpc-protobuf:1.29.0")
+    implementation("io.grpc:grpc-stub:1.29.0")
+    //runtime
+    implementation("io.grpc:grpc-netty-shaded:1.29.0")
+    //compile
+    implementation("org.apache.tomcat:annotations-api:6.0.53")
+
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
         exclude(module = "junit")
         exclude(module = "mockito-core")

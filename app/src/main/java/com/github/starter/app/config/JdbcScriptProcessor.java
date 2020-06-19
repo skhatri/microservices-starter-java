@@ -3,6 +3,13 @@ package com.github.starter.app.config;
 import com.github.starter.core.exception.ConfigurationException;
 import io.r2dbc.spi.Connection;
 import io.r2dbc.spi.Statement;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
+import reactor.core.publisher.Mono;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -17,12 +24,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.core.io.FileSystemResource;
-import org.springframework.core.io.Resource;
-import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
-import reactor.core.publisher.Mono;
 
 public class JdbcScriptProcessor {
     private static final Logger LOGGER = LoggerFactory.getLogger(JdbcScriptProcessor.class);
@@ -36,12 +37,12 @@ public class JdbcScriptProcessor {
             return new ExecutionScript(resourceFile.getFilename(), statements);
         }).collect(Collectors.toList());
         scripts.forEach(executionScript ->
-            executionScript.getCommands().stream()
-                .forEach(command -> {
-                    Statement stmt = conn.createStatement(command);
-                    int updated = Mono.from(Mono.from(stmt.execute()).block().getRowsUpdated()).block();
-                    LOGGER.info("running {}, updated {} ", command, updated);
-                })
+                executionScript.getCommands().stream()
+                        .forEach(command -> {
+                            Statement stmt = conn.createStatement(command);
+                            int updated = Mono.from(Mono.from(stmt.execute()).block().getRowsUpdated()).block();
+                            LOGGER.info("running {}, updated {} ", command, updated);
+                        })
         );
     }
 
@@ -76,7 +77,7 @@ public class JdbcScriptProcessor {
                 resourceList = Arrays.asList(resources);
             }
             return resourceList.stream().filter(p -> scriptPattern.matcher(p.getFilename()).matches())
-                .sorted(getResourceComparator(scriptPattern)).collect(Collectors.toList());
+                    .sorted(getResourceComparator(scriptPattern)).collect(Collectors.toList());
         } catch (Exception exp) {
             throw new ConfigurationException("could not load initialise scripts", exp);
         }

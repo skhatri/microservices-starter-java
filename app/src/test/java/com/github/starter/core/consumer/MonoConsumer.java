@@ -1,8 +1,9 @@
 package com.github.starter.core.consumer;
 
+import reactor.core.publisher.Mono;
+
 import java.util.concurrent.CountDownLatch;
 import java.util.function.Consumer;
-import reactor.core.publisher.Mono;
 
 public class MonoConsumer<T> {
     private Mono<T> mono;

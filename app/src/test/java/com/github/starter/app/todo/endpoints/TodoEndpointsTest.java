@@ -6,9 +6,6 @@ import com.github.starter.core.advice.CustomErrorAttributes;
 import com.github.starter.core.advice.GlobalErrorHandler;
 import com.github.starter.core.consumer.MonoConsumer;
 import com.github.starter.core.exception.InternalServerError;
-import java.util.Map;
-import java.util.function.Consumer;
-import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -23,6 +20,10 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
+
+import java.util.Map;
+import java.util.function.Consumer;
+import java.util.stream.Stream;
 
 @DisplayName("Todo Endpoints")
 @ExtendWith(SpringExtension.class)
@@ -41,7 +42,6 @@ public class TodoEndpointsTest {
     private <R> void verifyInternalServiceErrorResponse(String uri, Consumer<TodoService> serviceHook, Class<R> clz, HttpMethod method) {
         TodoService todoService = Mockito.mock(TodoService.class);
         serviceHook.accept(todoService);
-
         TodoEndpoints todo = new TodoEndpoints(todoService);
         CustomErrorAttributes errorAttributes = new CustomErrorAttributes();
         GlobalErrorHandler globalErrorHandler = new GlobalErrorHandler(errorAttributes, applicationContext, new DefaultServerCodecConfigurer());

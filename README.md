@@ -54,3 +54,10 @@ build image using
 ```
 gradle jib 
 ```
+
+### grpc
+Grpc server for Todo runs on port 8100. Rest Endpoint /todo/ can be made to forward to gRPC using ```use.grpc```
+The forwarding of REST request to gRPC is done for illustration purpose.
+
+
+

@@ -3,6 +3,7 @@ package com.github.starter.core.secrets;
 import com.github.skhatri.mounted.MountedSecretsResolver;
 import com.github.skhatri.mounted.model.SecretValue;
 import com.github.starter.core.exception.ConfigurationException;
+
 import java.util.Arrays;
 import java.util.Optional;
 
