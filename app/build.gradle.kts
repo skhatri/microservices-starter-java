@@ -23,11 +23,15 @@ configurations {
 }
 
 sourceSets{
-    getByName("main").java.srcDirs("src/main/java")
-    getByName("main").java.srcDirs("src/generated/main/java")
-    getByName("main").java.srcDirs("src/generated/main/grpc")
-    getByName("main").proto.srcDirs("src/main/proto")
-    getByName("main").proto.include("**/*.proto")
+    main {
+      java {
+        setSrcDirs(setOf("src/main/java", "src/generated/main/java", "src/generated/main/grpc"))
+      }
+      proto {
+        setSrcDirs(setOf("src/main/proto"))
+        setIncludes(setOf("**/*.proto"))
+      }
+    }
 }
 
 protobuf {
