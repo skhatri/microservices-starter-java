@@ -1,7 +1,7 @@
 package com.github.starter.app.todo.endpoints;
 
 import com.github.starter.app.todo.model.TodoTask;
-import com.github.starter.app.todo.service.TodoService;
+import com.github.starter.app.todo.service.TodoServiceFactory;
 import com.github.starter.core.container.Container;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -23,35 +23,35 @@ import java.util.Map;
 @CrossOrigin(value = "*")
 public class TodoEndpoints {
 
-    private final TodoService todoService;
+    private final TodoServiceFactory serviceFactory;
 
     @Autowired
-    TodoEndpoints(TodoService todoService) {
-        this.todoService = todoService;
+    TodoEndpoints(TodoServiceFactory serviceFactory) {
+        this.serviceFactory = serviceFactory;
     }
 
-    @GetMapping("/search")
-    public Mono<Container<List<TodoTask>>> list() {
-        return todoService.listItems().map(Container::new);
+    @GetMapping("/{mode}/search")
+    public Mono<Container<List<TodoTask>>> list(@PathVariable("mode") String mode) {
+        return this.serviceFactory.findHandler(mode).listItems().map(Container::new);
     }
 
-    @GetMapping("/{id}")
-    public Mono<Container<TodoTask>> get(@PathVariable("id") String id) {
-        return todoService.findById(id).map(Container::new);
+    @GetMapping("/{mode}/{id}")
+    public Mono<Container<TodoTask>> get(@PathVariable("mode") String mode, @PathVariable("id") String id) {
+        return serviceFactory.findHandler(mode).findById(id).map(Container::new);
     }
 
-    @PostMapping(value = "/", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public Mono<Container<TodoTask>> add(@RequestBody TodoTask todoTask) {
-        return todoService.save(todoTask).map(Container::new);
+    @PostMapping(value = "/{mode}/", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public Mono<Container<TodoTask>> add(@PathVariable("mode") String mode, @RequestBody TodoTask todoTask) {
+        return serviceFactory.findHandler(mode).save(todoTask).map(Container::new);
     }
 
-    @PostMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public Mono<Container<TodoTask>> update(@PathVariable("id") String id, @RequestBody TodoTask todoTask) {
-        return todoService.update(id, todoTask).map(Container::new);
+    @PostMapping(value = "/{mode}/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public Mono<Container<TodoTask>> update(@PathVariable("mode") String mode, @PathVariable("id") String id, @RequestBody TodoTask todoTask) {
+        return serviceFactory.findHandler(mode).update(id, todoTask).map(Container::new);
     }
 
-    @DeleteMapping("/{id}")
-    public Mono<Container<Map<String, Boolean>>> delete(@PathVariable("id") String id) {
-        return todoService.delete(id).map(b -> Map.of("result", b)).map(Container::new);
+    @DeleteMapping("/{mode}/{id}")
+    public Mono<Container<Map<String, Boolean>>> delete(@PathVariable("mode") String mode, @PathVariable("id") String id) {
+        return serviceFactory.findHandler(mode).delete(id).map(b -> Map.of("result", b)).map(Container::new);
     }
 }

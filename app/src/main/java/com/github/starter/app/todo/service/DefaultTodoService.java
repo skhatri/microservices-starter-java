@@ -3,15 +3,17 @@ package com.github.starter.app.todo.service;
 import com.github.starter.app.todo.model.TodoTask;
 import com.github.starter.app.todo.repository.TodoRepository;
 import com.github.starter.core.exception.BadRequest;
+import com.github.starter.grpc.model.TodoTasks;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service("defaultTodoService")
-@ConditionalOnProperty(name = "flags.use.grpc", havingValue = "false")
+@Primary
 public class DefaultTodoService implements TodoService {
 
     private final TodoRepository todoRepository;
@@ -23,17 +25,17 @@ public class DefaultTodoService implements TodoService {
 
     @Override
     public Mono<List<TodoTask>> listItems() {
-        return todoRepository.listItems();
+        return todoRepository.listItems().map(tasks -> tasks.stream().map(TodoTasks::todoToTodoTask).collect(Collectors.toList()));
     }
 
     @Override
     public Mono<TodoTask> findById(String id) {
-        return todoRepository.findById(id);
+        return todoRepository.findById(id).map(TodoTasks::todoToTodoTask);
     }
 
     @Override
     public Mono<TodoTask> save(TodoTask task) {
-        return todoRepository.add(task);
+        return todoRepository.add(TodoTasks.toTodo(task)).map(TodoTasks::todoToTodoTask);
     }
 
     @Override
@@ -41,11 +43,16 @@ public class DefaultTodoService implements TodoService {
         if (!id.equals(task.getId())) {
             return Mono.error(BadRequest.forCodeAndMessage("invalid-id", "Provided Task ID does not match one in Payload"));
         }
-        return todoRepository.update(task);
+        return todoRepository.update(TodoTasks.toTodo(task)).map(TodoTasks::todoToTodoTask);
     }
 
     @Override
     public Mono<Boolean> delete(String id) {
         return todoRepository.delete(id);
+    }
+
+    @Override
+    public String getName() {
+        return "default";
     }
 }

@@ -1,18 +1,18 @@
 package com.github.starter.app.todo.repository;
 
-import com.github.starter.app.todo.model.TodoTask;
+import com.github.starter.proto.Todos;
 import reactor.core.publisher.Mono;
 
 import java.util.List;
 
 public interface TodoRepository {
-    Mono<List<TodoTask>> listItems();
+    Mono<List<Todos.Todo>> listItems();
 
-    Mono<TodoTask> findById(String id);
+    Mono<Todos.Todo> findById(String id);
 
-    Mono<TodoTask> add(TodoTask todoTask);
+    Mono<Todos.Todo> add(Todos.Todo todoTask);
 
-    Mono<TodoTask> update(TodoTask todoTask);
+    Mono<Todos.Todo> update(Todos.Todo todoTask);
 
     Mono<Boolean> delete(String id);
 }

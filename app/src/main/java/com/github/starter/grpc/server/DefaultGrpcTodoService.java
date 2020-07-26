@@ -1,7 +1,6 @@
 package com.github.starter.grpc.server;
 
 import com.github.starter.app.todo.repository.TodoRepository;
-import com.github.starter.grpc.model.TodoTasks;
 import com.github.starter.proto.TodoServiceGrpc;
 import com.github.starter.proto.Todos;
 import com.google.protobuf.BoolValue;
@@ -12,7 +11,6 @@ import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
 import java.util.function.Function;
-import java.util.stream.Collectors;
 
 @Service
 public class DefaultGrpcTodoService extends TodoServiceGrpc.TodoServiceImplBase {
@@ -29,9 +27,7 @@ public class DefaultGrpcTodoService extends TodoServiceGrpc.TodoServiceImplBase 
         StreamObserverAdapter.transform(
                 this.todoRepository.listItems(),
                 responseObserver,
-                task -> Todos.TodoList.newBuilder()
-                        .addAllData(task.stream().map(TodoTasks::toTodo).collect(Collectors.toList()))
-                        .build()
+                tasks -> Todos.TodoList.newBuilder().addAllData(tasks).build()
         );
     }
 
@@ -39,18 +35,18 @@ public class DefaultGrpcTodoService extends TodoServiceGrpc.TodoServiceImplBase 
     @Override
     public void save(Todos.Todo request, StreamObserver<Todos.Todo> responseObserver) {
         StreamObserverAdapter.transform(
-                this.todoRepository.add(TodoTasks.todoToTodoTask(request)),
+                this.todoRepository.add(request),
                 responseObserver,
-                TodoTasks::toTodo
+                Function.identity()
         );
     }
 
     @Override
     public void update(Todos.Todo request, StreamObserver<Todos.Todo> responseObserver) {
         StreamObserverAdapter.transform(
-                this.todoRepository.update(TodoTasks.todoToTodoTask(request)),
+                this.todoRepository.update(request),
                 responseObserver,
-                TodoTasks::toTodo
+                Function.identity()
         );
     }
 
@@ -68,7 +64,7 @@ public class DefaultGrpcTodoService extends TodoServiceGrpc.TodoServiceImplBase 
         StreamObserverAdapter.transform(
                 this.todoRepository.findById(request.getValue()),
                 responseObserver,
-                TodoTasks::toTodo
+                Function.identity()
         );
     }
 

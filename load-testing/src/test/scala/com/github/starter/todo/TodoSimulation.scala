@@ -11,10 +11,13 @@ object Todo {
   val port = Option(System.getenv("PORT")).map(_.toInt).getOrElse(8080)
   val ssl = Option(System.getenv("SSL")).map(_.toBoolean).getOrElse(true)
   val http2Enabled = Option(System.getenv("HTTP2")).map(_.toBoolean).getOrElse(true)
+  val serviceType = Option(System.getenv("SERVICE_TYPE")).getOrElse("default")
 
   val protocol = if (ssl) "https" else "http"
   val base = s"$protocol://$server:$port"
   val randomIndex = Iterator.continually(Map("index" -> (Math.random() * 2).toInt))
+
+  val todoPath = s"/todo/${serviceType}"
 
   private val httpProtocolBase = http
     .baseUrl(base)
@@ -37,17 +40,17 @@ object Todo {
   val search = exec(http("Search - Home").get("/"))
     .pause(1)
     .exec(http("Search - List")
-      .get("/todo/search"))
+      .get(s"${todoPath}/search"))
     .pause(2)
     .exec(http("Search - Find")
-      .get("/todo/1"))
+      .get(s"${todoPath}/1"))
     .pause(1)
 
   val add = exec(http("Add - Home").get("/"))
     .pause(1)
     .feed(feeder)
     .exec(http("Add Post")
-      .post("/todo/").body(StringBody(
+      .post(s"${todoPath}/").body(StringBody(
       """{
         |      "description": "${task}",
         |      "action_by": "user1",
@@ -57,16 +60,16 @@ object Todo {
         |}""".stripMargin)).check(status.is(200)))
     .pause(2)
     .exec(http("Add - Select")
-      .get("/todo/1").check(status.is(200)))
+      .get(s"${todoPath}/1").check(status.is(200)))
     .pause(1)
 
   val edit = feed(randomIndex).exec(http("Edit - Search")
-    .get("/todo/search")
+    .get(s"${todoPath}/search")
     .check(jsonPath("$.data[0].id").saveAs("taskId"))
   ).pause(1)
     .feed(feeder)
     .exec(http("Edit - Post")
-      .post("/todo/${taskId}").body(StringBody(
+      .post(todoPath + "/$taskId").body(StringBody(
       """{
         |      "id": "${taskId}",
         |      "description": "${task}",
@@ -115,7 +118,6 @@ class ListSimulation extends Simulation {
   }.inject(
     heavisideUsers(2000) during (30 seconds)
   )
-
 
 
   setUp(searchScenarioOpen).protocols(Todo.httpProtocol).maxDuration(10 minutes)

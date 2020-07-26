@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 
 
 public class TodoTask implements Serializable {
@@ -14,15 +14,15 @@ public class TodoTask implements Serializable {
     @JsonProperty("action_by")
     private final String actionBy;
 
-    private final LocalDateTime created;
+    private final ZonedDateTime created;
 
     private final String status;
 
-    private final LocalDateTime updated;
+    private final ZonedDateTime updated;
 
     @JsonCreator
     public TodoTask(@JsonProperty("id") String id, @JsonProperty("description") String description, @JsonProperty("action_by") String actionBy,
-                    @JsonProperty("created") LocalDateTime created, @JsonProperty("status") String status, @JsonProperty("updated") LocalDateTime updated) {
+                    @JsonProperty("created") ZonedDateTime created, @JsonProperty("status") String status, @JsonProperty("updated") ZonedDateTime updated) {
         this.id = id;
         this.description = description;
         this.actionBy = actionBy;
@@ -43,7 +43,7 @@ public class TodoTask implements Serializable {
         return actionBy;
     }
 
-    public LocalDateTime getCreated() {
+    public ZonedDateTime getCreated() {
         return created;
     }
 
@@ -51,7 +51,7 @@ public class TodoTask implements Serializable {
         return status;
     }
 
-    public LocalDateTime getUpdated() {
+    public ZonedDateTime getUpdated() {
         return updated;
     }
 

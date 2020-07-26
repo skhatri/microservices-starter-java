@@ -2,6 +2,7 @@ package com.github.starter.app.todo.endpoints;
 
 import com.github.starter.app.todo.model.TodoTask;
 import com.github.starter.app.todo.service.TodoService;
+import com.github.starter.app.todo.service.TodoServiceFactory;
 import com.github.starter.core.advice.CustomErrorAttributes;
 import com.github.starter.core.advice.GlobalErrorHandler;
 import com.github.starter.core.consumer.MonoConsumer;
@@ -21,6 +22,7 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
 
+import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
 import java.util.stream.Stream;
@@ -42,7 +44,8 @@ public class TodoEndpointsTest {
     private <R> void verifyInternalServiceErrorResponse(String uri, Consumer<TodoService> serviceHook, Class<R> clz, HttpMethod method) {
         TodoService todoService = Mockito.mock(TodoService.class);
         serviceHook.accept(todoService);
-        TodoEndpoints todo = new TodoEndpoints(todoService);
+        TodoServiceFactory serviceFactory = new TodoServiceFactory(List.of(todoService));
+        TodoEndpoints todo = new TodoEndpoints(serviceFactory);
         CustomErrorAttributes errorAttributes = new CustomErrorAttributes();
         GlobalErrorHandler globalErrorHandler = new GlobalErrorHandler(errorAttributes, applicationContext, new DefaultServerCodecConfigurer());
         WebTestClient webTestClient = WebTestClient.bindToController(todo, globalErrorHandler).build();

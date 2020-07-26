@@ -1,5 +1,5 @@
-# microservices-starter
-Microservices Starter Project
+# microservices-starte
+Microservices Starter Project with Reactive, Reactive DB Driver, Gradle Kotlin DSL, Checkstyle, Coverage, SonarQube and gRPC endpoints
 
 [![Build](https://travis-ci.com/skhatri/microservices-starter-java.svg?branch=master)](https://travis-ci.com/github/skhatri/microservices-starter-java)
 [![Code Coverage](https://img.shields.io/codecov/c/github/skhatri/microservices-starter-java/master.svg)](https://codecov.io/github/skhatri/microservices-starter-java?branch=master)

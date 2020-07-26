@@ -1,3 +1,5 @@
+delete from todo.tasks;
+
 insert into todo.tasks(id, description, action_by, created, status)
 values('1', 'Buy Groceries', 'user1', '2020-03-20 00:00:00', 'NEW');
 

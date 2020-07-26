@@ -3,6 +3,7 @@ package com.github.starter.grpc.server;
 import com.github.starter.proto.TodoServiceGrpc;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
+import io.grpc.protobuf.services.ProtoReflectionService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,10 +11,10 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 
+import java.security.SecureRandom;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
-@ConditionalOnProperty(name="flags.use.grpc", havingValue = "true")
 @Component
 public class DefaultGrpcServer {
 
@@ -27,10 +28,18 @@ public class DefaultGrpcServer {
     @Autowired
     public DefaultGrpcServer(TodoServiceGrpc.TodoServiceImplBase grpcService, @Value("${grpc.port:8100}") int port) {
         this.grpcService = grpcService;
-        this.grpcPort = port;
+        this.grpcPort = verifyPort(port);
         this.server = ServerBuilder.forPort(this.grpcPort)
                 .addService(this.grpcService)
+                .addService(ProtoReflectionService.newInstance())
                 .build();
+    }
+
+    private int verifyPort(int port) {
+        if (port == -1) {
+            return new SecureRandom().nextInt(55535) + 10000;
+        }
+        return port;
     }
 
     @PostConstruct

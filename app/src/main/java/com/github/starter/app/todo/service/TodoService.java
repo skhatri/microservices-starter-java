@@ -15,4 +15,6 @@ public interface TodoService {
     Mono<TodoTask> update(String id, TodoTask task);
 
     Mono<Boolean> delete(String id);
+
+    String getName();
 }

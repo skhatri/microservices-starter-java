@@ -23,7 +23,6 @@ import java.util.concurrent.CompletionStage;
 import java.util.stream.Collectors;
 
 @Service("grpcTodoService")
-@ConditionalOnProperty(name = "flags.use.grpc", havingValue = "true")
 public class DefaultGrpcTodoClient implements TodoService {
 
     private final int grpcPort;
@@ -94,5 +93,10 @@ public class DefaultGrpcTodoClient implements TodoService {
                 .build()
         );
         return Mono.fromCompletionStage(ListenableFutureToCompletableFutureAdapter.toCompletionStage(delResponse).thenApply(BoolValue::getValue));
+    }
+
+    @Override
+    public String getName() {
+        return "grpc";
     }
 }

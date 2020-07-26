@@ -10,6 +10,7 @@ plugins {
     id("com.google.protobuf") version "0.8.12"
 
 }
+val grpcVersion = "1.30.2"
 
 java {
     sourceCompatibility = JavaVersion.VERSION_11
@@ -86,11 +87,14 @@ dependencies {
     implementation("org.springframework.data:spring-data-r2dbc:1.0.0.RELEASE")
     implementation("io.github.skhatri:mounted-secrets-client:0.2.5")
 
-    implementation("com.google.protobuf:protobuf-java:3.0.0")
-    implementation("io.grpc:grpc-protobuf:1.29.0")
-    implementation("io.grpc:grpc-stub:1.29.0")
+    implementation("com.google.protobuf:protobuf-java:3.12.2")
+    implementation("com.google.protobuf:protobuf-java-util:3.12.2")
+    implementation("io.grpc:grpc-protobuf:${grpcVersion}")
+    implementation("io.grpc:grpc-stub:${grpcVersion}")
+    implementation("io.grpc:grpc-services:${grpcVersion}")
+
     //runtime
-    implementation("io.grpc:grpc-netty-shaded:1.29.0")
+    implementation("io.grpc:grpc-netty-shaded:${grpcVersion}")
     //compile
     implementation("org.apache.tomcat:annotations-api:6.0.53")
 
