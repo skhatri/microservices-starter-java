@@ -1,5 +1,6 @@
 package com.github.starter.grpc.client;
 
+import com.github.starter.app.todo.model.SearchRequest;
 import com.github.starter.app.todo.model.TodoTask;
 import com.github.starter.app.todo.service.TodoService;
 import com.github.starter.core.adapters.ListenableFutureToCompletableFutureAdapter;
@@ -29,18 +30,29 @@ public class DefaultGrpcTodoClient implements TodoService {
     private final ManagedChannel channel;
 
     @Autowired
-    public DefaultGrpcTodoClient(@Value("${grpc.port:8100}") int port) {
+    public DefaultGrpcTodoClient(@Value("${grpc.port:8100}") int port, @Value("${flags.use.ssl:true}") boolean useSsl) {
         this.grpcPort = port;
-        this.channel = ManagedChannelBuilder.forAddress("0.0.0.0", grpcPort)
-                .usePlaintext()
-                .build();
+        ManagedChannelBuilder builder = ManagedChannelBuilder.forAddress("0.0.0.0", grpcPort);
+        System.out.println("client ssl = " + useSsl);
+        if (useSsl) {
+            builder = builder.useTransportSecurity();
+        } else {
+            builder = builder.usePlaintext();
+        }
+        this.channel = builder.build();
     }
 
     @Override
-    public Mono<List<TodoTask>> listItems() {
-        ListenableFuture<Todos.TodoList> items = TodoServiceGrpc.newFutureStub(channel).getTodos(Todos.Params.newBuilder().build());
+    public Mono<List<TodoTask>> listItems(SearchRequest searchRequest) {
+        ListenableFuture<Todos.TodoList> items = TodoServiceGrpc.newFutureStub(channel).getTodos(
+            Todos.SearchRequest.newBuilder()
+                .setStatus(searchRequest.getStatus())
+                .setActionBy(searchRequest.getActionBy())
+                .setCreated(searchRequest.getCreated())
+                .build()
+        );
         CompletionStage<List<TodoTask>> completionStage = ListenableFutureToCompletableFutureAdapter.toCompletionStage(items, MoreExecutors.directExecutor())
-                .thenApply(todoList -> todoList.getDataList().stream().map(TodoTasks::todoToTodoTask).collect(Collectors.toList()));
+            .thenApply(todoList -> todoList.getDataList().stream().map(TodoTasks::todoToTodoTask).collect(Collectors.toList()));
         return Mono.fromCompletionStage(completionStage);
     }
 
@@ -49,8 +61,8 @@ public class DefaultGrpcTodoClient implements TodoService {
     public Mono<TodoTask> findById(String id) {
         ListenableFuture<Todos.Todo> item = TodoServiceGrpc.newFutureStub(channel).findById(StringValue.newBuilder().setValue(id).build());
         return Mono.fromCompletionStage(
-                ListenableFutureToCompletableFutureAdapter.toCompletionStage(item)
-                        .thenApply(TodoTasks::todoToTodoTask)
+            ListenableFutureToCompletableFutureAdapter.toCompletionStage(item)
+                .thenApply(TodoTasks::todoToTodoTask)
         );
     }
 
@@ -61,12 +73,12 @@ public class DefaultGrpcTodoClient implements TodoService {
 
     private Mono<TodoTask> saveUpdate(TodoTask task, boolean update) {
         Todos.Todo todo = Todos.Todo.newBuilder()
-                .setId(task.getId())
-                .setActionBy(task.getActionBy())
-                .setCreated(task.getCreated().toString())
-                .setDescription(task.getDescription())
-                .setStatus(task.getStatus())
-                .build();
+            .setId(task.getId())
+            .setActionBy(task.getActionBy())
+            .setCreated(task.getCreated().toString())
+            .setDescription(task.getDescription())
+            .setStatus(task.getStatus())
+            .build();
         TodoServiceGrpc.TodoServiceFutureStub todoServiceFutureStub = TodoServiceGrpc.newFutureStub(channel);
         ListenableFuture<Todos.Todo> items;
         if (update) {
@@ -89,8 +101,8 @@ public class DefaultGrpcTodoClient implements TodoService {
     @Override
     public Mono<Boolean> delete(String id) {
         ListenableFuture<BoolValue> delResponse = TodoServiceGrpc.newFutureStub(channel).delete(StringValue.newBuilder()
-                .setValue(id)
-                .build()
+            .setValue(id)
+            .build()
         );
         return Mono.fromCompletionStage(ListenableFutureToCompletableFutureAdapter.toCompletionStage(delResponse).thenApply(BoolValue::getValue));
     }

@@ -1,5 +1,6 @@
 package com.github.starter.app.todo.endpoints;
 
+import com.github.starter.app.todo.model.SearchRequest;
 import com.github.starter.app.todo.model.TodoTask;
 import com.github.starter.app.todo.service.TodoServiceFactory;
 import com.github.starter.core.container.Container;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Mono;
 
@@ -31,8 +33,12 @@ public class TodoEndpoints {
     }
 
     @GetMapping("/{mode}/search")
-    public Mono<Container<List<TodoTask>>> list(@PathVariable("mode") String mode) {
-        return this.serviceFactory.findHandler(mode).listItems().map(Container::new);
+    public Mono<Container<List<TodoTask>>> list(@PathVariable("mode") String mode,
+                                                @RequestParam(value = "created", required = false, defaultValue = "") String created,
+                                                @RequestParam(value = "action_by", required = false, defaultValue = "")String actionBy,
+                                                @RequestParam(value = "status", required = false, defaultValue = "")String status) {
+        SearchRequest searchRequest = new SearchRequest(actionBy, status, created);
+        return this.serviceFactory.findHandler(mode).listItems(searchRequest).map(Container::new);
     }
 
     @GetMapping("/{mode}/{id}")

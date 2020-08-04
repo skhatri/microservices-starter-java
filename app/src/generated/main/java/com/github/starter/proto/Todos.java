@@ -15,7 +15,7 @@ public final class Todos {
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   public interface TodoOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:Todo)
+      // @@protoc_insertion_point(interface_extends:todo.Todo)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -79,11 +79,11 @@ public final class Todos {
         getUpdatedBytes();
   }
   /**
-   * Protobuf type {@code Todo}
+   * Protobuf type {@code todo.Todo}
    */
   public  static final class Todo extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:Todo)
+      // @@protoc_insertion_point(message_implements:todo.Todo)
       TodoOrBuilder {
     // Use Todo.newBuilder() to construct.
     private Todo(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
@@ -172,12 +172,12 @@ public final class Todos {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.github.starter.proto.Todos.internal_static_Todo_descriptor;
+      return com.github.starter.proto.Todos.internal_static_todo_Todo_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.github.starter.proto.Todos.internal_static_Todo_fieldAccessorTable
+      return com.github.starter.proto.Todos.internal_static_todo_Todo_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               com.github.starter.proto.Todos.Todo.class, com.github.starter.proto.Todos.Todo.Builder.class);
     }
@@ -574,20 +574,20 @@ public final class Todos {
       return builder;
     }
     /**
-     * Protobuf type {@code Todo}
+     * Protobuf type {@code todo.Todo}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:Todo)
+        // @@protoc_insertion_point(builder_implements:todo.Todo)
         com.github.starter.proto.Todos.TodoOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.github.starter.proto.Todos.internal_static_Todo_descriptor;
+        return com.github.starter.proto.Todos.internal_static_todo_Todo_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.github.starter.proto.Todos.internal_static_Todo_fieldAccessorTable
+        return com.github.starter.proto.Todos.internal_static_todo_Todo_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
                 com.github.starter.proto.Todos.Todo.class, com.github.starter.proto.Todos.Todo.Builder.class);
       }
@@ -626,7 +626,7 @@ public final class Todos {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.github.starter.proto.Todos.internal_static_Todo_descriptor;
+        return com.github.starter.proto.Todos.internal_static_todo_Todo_descriptor;
       }
 
       public com.github.starter.proto.Todos.Todo getDefaultInstanceForType() {
@@ -1164,10 +1164,10 @@ public final class Todos {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:Todo)
+      // @@protoc_insertion_point(builder_scope:todo.Todo)
     }
 
-    // @@protoc_insertion_point(class_scope:Todo)
+    // @@protoc_insertion_point(class_scope:todo.Todo)
     private static final com.github.starter.proto.Todos.Todo DEFAULT_INSTANCE;
     static {
       DEFAULT_INSTANCE = new com.github.starter.proto.Todos.Todo();
@@ -1203,39 +1203,39 @@ public final class Todos {
   }
 
   public interface TodoListOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:TodoList)
+      // @@protoc_insertion_point(interface_extends:todo.TodoList)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>repeated .Todo data = 1;</code>
+     * <code>repeated .todo.Todo data = 1;</code>
      */
     java.util.List<com.github.starter.proto.Todos.Todo> 
         getDataList();
     /**
-     * <code>repeated .Todo data = 1;</code>
+     * <code>repeated .todo.Todo data = 1;</code>
      */
     com.github.starter.proto.Todos.Todo getData(int index);
     /**
-     * <code>repeated .Todo data = 1;</code>
+     * <code>repeated .todo.Todo data = 1;</code>
      */
     int getDataCount();
     /**
-     * <code>repeated .Todo data = 1;</code>
+     * <code>repeated .todo.Todo data = 1;</code>
      */
     java.util.List<? extends com.github.starter.proto.Todos.TodoOrBuilder> 
         getDataOrBuilderList();
     /**
-     * <code>repeated .Todo data = 1;</code>
+     * <code>repeated .todo.Todo data = 1;</code>
      */
     com.github.starter.proto.Todos.TodoOrBuilder getDataOrBuilder(
         int index);
   }
   /**
-   * Protobuf type {@code TodoList}
+   * Protobuf type {@code todo.TodoList}
    */
   public  static final class TodoList extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:TodoList)
+      // @@protoc_insertion_point(message_implements:todo.TodoList)
       TodoListOrBuilder {
     // Use TodoList.newBuilder() to construct.
     private TodoList(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
@@ -1295,12 +1295,12 @@ public final class Todos {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.github.starter.proto.Todos.internal_static_TodoList_descriptor;
+      return com.github.starter.proto.Todos.internal_static_todo_TodoList_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.github.starter.proto.Todos.internal_static_TodoList_fieldAccessorTable
+      return com.github.starter.proto.Todos.internal_static_todo_TodoList_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               com.github.starter.proto.Todos.TodoList.class, com.github.starter.proto.Todos.TodoList.Builder.class);
     }
@@ -1308,32 +1308,32 @@ public final class Todos {
     public static final int DATA_FIELD_NUMBER = 1;
     private java.util.List<com.github.starter.proto.Todos.Todo> data_;
     /**
-     * <code>repeated .Todo data = 1;</code>
+     * <code>repeated .todo.Todo data = 1;</code>
      */
     public java.util.List<com.github.starter.proto.Todos.Todo> getDataList() {
       return data_;
     }
     /**
-     * <code>repeated .Todo data = 1;</code>
+     * <code>repeated .todo.Todo data = 1;</code>
      */
     public java.util.List<? extends com.github.starter.proto.Todos.TodoOrBuilder> 
         getDataOrBuilderList() {
       return data_;
     }
     /**
-     * <code>repeated .Todo data = 1;</code>
+     * <code>repeated .todo.Todo data = 1;</code>
      */
     public int getDataCount() {
       return data_.size();
     }
     /**
-     * <code>repeated .Todo data = 1;</code>
+     * <code>repeated .todo.Todo data = 1;</code>
      */
     public com.github.starter.proto.Todos.Todo getData(int index) {
       return data_.get(index);
     }
     /**
-     * <code>repeated .Todo data = 1;</code>
+     * <code>repeated .todo.Todo data = 1;</code>
      */
     public com.github.starter.proto.Todos.TodoOrBuilder getDataOrBuilder(
         int index) {
@@ -1481,20 +1481,20 @@ public final class Todos {
       return builder;
     }
     /**
-     * Protobuf type {@code TodoList}
+     * Protobuf type {@code todo.TodoList}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:TodoList)
+        // @@protoc_insertion_point(builder_implements:todo.TodoList)
         com.github.starter.proto.Todos.TodoListOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.github.starter.proto.Todos.internal_static_TodoList_descriptor;
+        return com.github.starter.proto.Todos.internal_static_todo_TodoList_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.github.starter.proto.Todos.internal_static_TodoList_fieldAccessorTable
+        return com.github.starter.proto.Todos.internal_static_todo_TodoList_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
                 com.github.starter.proto.Todos.TodoList.class, com.github.starter.proto.Todos.TodoList.Builder.class);
       }
@@ -1528,7 +1528,7 @@ public final class Todos {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.github.starter.proto.Todos.internal_static_TodoList_descriptor;
+        return com.github.starter.proto.Todos.internal_static_todo_TodoList_descriptor;
       }
 
       public com.github.starter.proto.Todos.TodoList getDefaultInstanceForType() {
@@ -1662,7 +1662,7 @@ public final class Todos {
           com.github.starter.proto.Todos.Todo, com.github.starter.proto.Todos.Todo.Builder, com.github.starter.proto.Todos.TodoOrBuilder> dataBuilder_;
 
       /**
-       * <code>repeated .Todo data = 1;</code>
+       * <code>repeated .todo.Todo data = 1;</code>
        */
       public java.util.List<com.github.starter.proto.Todos.Todo> getDataList() {
         if (dataBuilder_ == null) {
@@ -1672,7 +1672,7 @@ public final class Todos {
         }
       }
       /**
-       * <code>repeated .Todo data = 1;</code>
+       * <code>repeated .todo.Todo data = 1;</code>
        */
       public int getDataCount() {
         if (dataBuilder_ == null) {
@@ -1682,7 +1682,7 @@ public final class Todos {
         }
       }
       /**
-       * <code>repeated .Todo data = 1;</code>
+       * <code>repeated .todo.Todo data = 1;</code>
        */
       public com.github.starter.proto.Todos.Todo getData(int index) {
         if (dataBuilder_ == null) {
@@ -1692,7 +1692,7 @@ public final class Todos {
         }
       }
       /**
-       * <code>repeated .Todo data = 1;</code>
+       * <code>repeated .todo.Todo data = 1;</code>
        */
       public Builder setData(
           int index, com.github.starter.proto.Todos.Todo value) {
@@ -1709,7 +1709,7 @@ public final class Todos {
         return this;
       }
       /**
-       * <code>repeated .Todo data = 1;</code>
+       * <code>repeated .todo.Todo data = 1;</code>
        */
       public Builder setData(
           int index, com.github.starter.proto.Todos.Todo.Builder builderForValue) {
@@ -1723,7 +1723,7 @@ public final class Todos {
         return this;
       }
       /**
-       * <code>repeated .Todo data = 1;</code>
+       * <code>repeated .todo.Todo data = 1;</code>
        */
       public Builder addData(com.github.starter.proto.Todos.Todo value) {
         if (dataBuilder_ == null) {
@@ -1739,7 +1739,7 @@ public final class Todos {
         return this;
       }
       /**
-       * <code>repeated .Todo data = 1;</code>
+       * <code>repeated .todo.Todo data = 1;</code>
        */
       public Builder addData(
           int index, com.github.starter.proto.Todos.Todo value) {
@@ -1756,7 +1756,7 @@ public final class Todos {
         return this;
       }
       /**
-       * <code>repeated .Todo data = 1;</code>
+       * <code>repeated .todo.Todo data = 1;</code>
        */
       public Builder addData(
           com.github.starter.proto.Todos.Todo.Builder builderForValue) {
@@ -1770,7 +1770,7 @@ public final class Todos {
         return this;
       }
       /**
-       * <code>repeated .Todo data = 1;</code>
+       * <code>repeated .todo.Todo data = 1;</code>
        */
       public Builder addData(
           int index, com.github.starter.proto.Todos.Todo.Builder builderForValue) {
@@ -1784,7 +1784,7 @@ public final class Todos {
         return this;
       }
       /**
-       * <code>repeated .Todo data = 1;</code>
+       * <code>repeated .todo.Todo data = 1;</code>
        */
       public Builder addAllData(
           java.lang.Iterable<? extends com.github.starter.proto.Todos.Todo> values) {
@@ -1799,7 +1799,7 @@ public final class Todos {
         return this;
       }
       /**
-       * <code>repeated .Todo data = 1;</code>
+       * <code>repeated .todo.Todo data = 1;</code>
        */
       public Builder clearData() {
         if (dataBuilder_ == null) {
@@ -1812,7 +1812,7 @@ public final class Todos {
         return this;
       }
       /**
-       * <code>repeated .Todo data = 1;</code>
+       * <code>repeated .todo.Todo data = 1;</code>
        */
       public Builder removeData(int index) {
         if (dataBuilder_ == null) {
@@ -1825,14 +1825,14 @@ public final class Todos {
         return this;
       }
       /**
-       * <code>repeated .Todo data = 1;</code>
+       * <code>repeated .todo.Todo data = 1;</code>
        */
       public com.github.starter.proto.Todos.Todo.Builder getDataBuilder(
           int index) {
         return getDataFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .Todo data = 1;</code>
+       * <code>repeated .todo.Todo data = 1;</code>
        */
       public com.github.starter.proto.Todos.TodoOrBuilder getDataOrBuilder(
           int index) {
@@ -1842,7 +1842,7 @@ public final class Todos {
         }
       }
       /**
-       * <code>repeated .Todo data = 1;</code>
+       * <code>repeated .todo.Todo data = 1;</code>
        */
       public java.util.List<? extends com.github.starter.proto.Todos.TodoOrBuilder> 
            getDataOrBuilderList() {
@@ -1853,14 +1853,14 @@ public final class Todos {
         }
       }
       /**
-       * <code>repeated .Todo data = 1;</code>
+       * <code>repeated .todo.Todo data = 1;</code>
        */
       public com.github.starter.proto.Todos.Todo.Builder addDataBuilder() {
         return getDataFieldBuilder().addBuilder(
             com.github.starter.proto.Todos.Todo.getDefaultInstance());
       }
       /**
-       * <code>repeated .Todo data = 1;</code>
+       * <code>repeated .todo.Todo data = 1;</code>
        */
       public com.github.starter.proto.Todos.Todo.Builder addDataBuilder(
           int index) {
@@ -1868,7 +1868,7 @@ public final class Todos {
             index, com.github.starter.proto.Todos.Todo.getDefaultInstance());
       }
       /**
-       * <code>repeated .Todo data = 1;</code>
+       * <code>repeated .todo.Todo data = 1;</code>
        */
       public java.util.List<com.github.starter.proto.Todos.Todo.Builder> 
            getDataBuilderList() {
@@ -1899,10 +1899,10 @@ public final class Todos {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:TodoList)
+      // @@protoc_insertion_point(builder_scope:todo.TodoList)
     }
 
-    // @@protoc_insertion_point(class_scope:TodoList)
+    // @@protoc_insertion_point(class_scope:todo.TodoList)
     private static final com.github.starter.proto.Todos.TodoList DEFAULT_INSTANCE;
     static {
       DEFAULT_INSTANCE = new com.github.starter.proto.Todos.TodoList();
@@ -1938,7 +1938,7 @@ public final class Todos {
   }
 
   public interface ParamsOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:Params)
+      // @@protoc_insertion_point(interface_extends:todo.Params)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -1947,11 +1947,11 @@ public final class Todos {
     boolean getCompleted();
   }
   /**
-   * Protobuf type {@code Params}
+   * Protobuf type {@code todo.Params}
    */
   public  static final class Params extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:Params)
+      // @@protoc_insertion_point(message_implements:todo.Params)
       ParamsOrBuilder {
     // Use Params.newBuilder() to construct.
     private Params(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
@@ -2004,12 +2004,12 @@ public final class Todos {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.github.starter.proto.Todos.internal_static_Params_descriptor;
+      return com.github.starter.proto.Todos.internal_static_todo_Params_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.github.starter.proto.Todos.internal_static_Params_fieldAccessorTable
+      return com.github.starter.proto.Todos.internal_static_todo_Params_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               com.github.starter.proto.Todos.Params.class, com.github.starter.proto.Todos.Params.Builder.class);
     }
@@ -2163,20 +2163,20 @@ public final class Todos {
       return builder;
     }
     /**
-     * Protobuf type {@code Params}
+     * Protobuf type {@code todo.Params}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:Params)
+        // @@protoc_insertion_point(builder_implements:todo.Params)
         com.github.starter.proto.Todos.ParamsOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.github.starter.proto.Todos.internal_static_Params_descriptor;
+        return com.github.starter.proto.Todos.internal_static_todo_Params_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.github.starter.proto.Todos.internal_static_Params_fieldAccessorTable
+        return com.github.starter.proto.Todos.internal_static_todo_Params_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
                 com.github.starter.proto.Todos.Params.class, com.github.starter.proto.Todos.Params.Builder.class);
       }
@@ -2205,7 +2205,7 @@ public final class Todos {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.github.starter.proto.Todos.internal_static_Params_descriptor;
+        return com.github.starter.proto.Todos.internal_static_todo_Params_descriptor;
       }
 
       public com.github.starter.proto.Todos.Params getDefaultInstanceForType() {
@@ -2329,10 +2329,10 @@ public final class Todos {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:Params)
+      // @@protoc_insertion_point(builder_scope:todo.Params)
     }
 
-    // @@protoc_insertion_point(class_scope:Params)
+    // @@protoc_insertion_point(class_scope:todo.Params)
     private static final com.github.starter.proto.Todos.Params DEFAULT_INSTANCE;
     static {
       DEFAULT_INSTANCE = new com.github.starter.proto.Todos.Params();
@@ -2367,8 +2367,785 @@ public final class Todos {
 
   }
 
+  public interface SearchRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:todo.SearchRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional string action_by = 1;</code>
+     */
+    java.lang.String getActionBy();
+    /**
+     * <code>optional string action_by = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getActionByBytes();
+
+    /**
+     * <code>optional string status = 2;</code>
+     */
+    java.lang.String getStatus();
+    /**
+     * <code>optional string status = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getStatusBytes();
+
+    /**
+     * <code>optional string created = 3;</code>
+     */
+    java.lang.String getCreated();
+    /**
+     * <code>optional string created = 3;</code>
+     */
+    com.google.protobuf.ByteString
+        getCreatedBytes();
+  }
+  /**
+   * Protobuf type {@code todo.SearchRequest}
+   */
+  public  static final class SearchRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:todo.SearchRequest)
+      SearchRequestOrBuilder {
+    // Use SearchRequest.newBuilder() to construct.
+    private SearchRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private SearchRequest() {
+      actionBy_ = "";
+      status_ = "";
+      created_ = "";
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+    }
+    private SearchRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      int mutable_bitField0_ = 0;
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!input.skipField(tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              actionBy_ = s;
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              status_ = s;
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              created_ = s;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.github.starter.proto.Todos.internal_static_todo_SearchRequest_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.github.starter.proto.Todos.internal_static_todo_SearchRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.github.starter.proto.Todos.SearchRequest.class, com.github.starter.proto.Todos.SearchRequest.Builder.class);
+    }
+
+    public static final int ACTION_BY_FIELD_NUMBER = 1;
+    private volatile java.lang.Object actionBy_;
+    /**
+     * <code>optional string action_by = 1;</code>
+     */
+    public java.lang.String getActionBy() {
+      java.lang.Object ref = actionBy_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        actionBy_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string action_by = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getActionByBytes() {
+      java.lang.Object ref = actionBy_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        actionBy_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int STATUS_FIELD_NUMBER = 2;
+    private volatile java.lang.Object status_;
+    /**
+     * <code>optional string status = 2;</code>
+     */
+    public java.lang.String getStatus() {
+      java.lang.Object ref = status_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        status_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string status = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getStatusBytes() {
+      java.lang.Object ref = status_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        status_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int CREATED_FIELD_NUMBER = 3;
+    private volatile java.lang.Object created_;
+    /**
+     * <code>optional string created = 3;</code>
+     */
+    public java.lang.String getCreated() {
+      java.lang.Object ref = created_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        created_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string created = 3;</code>
+     */
+    public com.google.protobuf.ByteString
+        getCreatedBytes() {
+      java.lang.Object ref = created_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        created_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getActionByBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, actionBy_);
+      }
+      if (!getStatusBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, status_);
+      }
+      if (!getCreatedBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, created_);
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getActionByBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, actionBy_);
+      }
+      if (!getStatusBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, status_);
+      }
+      if (!getCreatedBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, created_);
+      }
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.github.starter.proto.Todos.SearchRequest)) {
+        return super.equals(obj);
+      }
+      com.github.starter.proto.Todos.SearchRequest other = (com.github.starter.proto.Todos.SearchRequest) obj;
+
+      boolean result = true;
+      result = result && getActionBy()
+          .equals(other.getActionBy());
+      result = result && getStatus()
+          .equals(other.getStatus());
+      result = result && getCreated()
+          .equals(other.getCreated());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (37 * hash) + ACTION_BY_FIELD_NUMBER;
+      hash = (53 * hash) + getActionBy().hashCode();
+      hash = (37 * hash) + STATUS_FIELD_NUMBER;
+      hash = (53 * hash) + getStatus().hashCode();
+      hash = (37 * hash) + CREATED_FIELD_NUMBER;
+      hash = (53 * hash) + getCreated().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.github.starter.proto.Todos.SearchRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.github.starter.proto.Todos.SearchRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.github.starter.proto.Todos.SearchRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.github.starter.proto.Todos.SearchRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.github.starter.proto.Todos.SearchRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.github.starter.proto.Todos.SearchRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.github.starter.proto.Todos.SearchRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static com.github.starter.proto.Todos.SearchRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.github.starter.proto.Todos.SearchRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.github.starter.proto.Todos.SearchRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.github.starter.proto.Todos.SearchRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code todo.SearchRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:todo.SearchRequest)
+        com.github.starter.proto.Todos.SearchRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.github.starter.proto.Todos.internal_static_todo_SearchRequest_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.github.starter.proto.Todos.internal_static_todo_SearchRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.github.starter.proto.Todos.SearchRequest.class, com.github.starter.proto.Todos.SearchRequest.Builder.class);
+      }
+
+      // Construct using com.github.starter.proto.Todos.SearchRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        actionBy_ = "";
+
+        status_ = "";
+
+        created_ = "";
+
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.github.starter.proto.Todos.internal_static_todo_SearchRequest_descriptor;
+      }
+
+      public com.github.starter.proto.Todos.SearchRequest getDefaultInstanceForType() {
+        return com.github.starter.proto.Todos.SearchRequest.getDefaultInstance();
+      }
+
+      public com.github.starter.proto.Todos.SearchRequest build() {
+        com.github.starter.proto.Todos.SearchRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.github.starter.proto.Todos.SearchRequest buildPartial() {
+        com.github.starter.proto.Todos.SearchRequest result = new com.github.starter.proto.Todos.SearchRequest(this);
+        result.actionBy_ = actionBy_;
+        result.status_ = status_;
+        result.created_ = created_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.github.starter.proto.Todos.SearchRequest) {
+          return mergeFrom((com.github.starter.proto.Todos.SearchRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.github.starter.proto.Todos.SearchRequest other) {
+        if (other == com.github.starter.proto.Todos.SearchRequest.getDefaultInstance()) return this;
+        if (!other.getActionBy().isEmpty()) {
+          actionBy_ = other.actionBy_;
+          onChanged();
+        }
+        if (!other.getStatus().isEmpty()) {
+          status_ = other.status_;
+          onChanged();
+        }
+        if (!other.getCreated().isEmpty()) {
+          created_ = other.created_;
+          onChanged();
+        }
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.github.starter.proto.Todos.SearchRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.github.starter.proto.Todos.SearchRequest) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object actionBy_ = "";
+      /**
+       * <code>optional string action_by = 1;</code>
+       */
+      public java.lang.String getActionBy() {
+        java.lang.Object ref = actionBy_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          actionBy_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string action_by = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getActionByBytes() {
+        java.lang.Object ref = actionBy_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          actionBy_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string action_by = 1;</code>
+       */
+      public Builder setActionBy(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        actionBy_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string action_by = 1;</code>
+       */
+      public Builder clearActionBy() {
+        
+        actionBy_ = getDefaultInstance().getActionBy();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string action_by = 1;</code>
+       */
+      public Builder setActionByBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        actionBy_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object status_ = "";
+      /**
+       * <code>optional string status = 2;</code>
+       */
+      public java.lang.String getStatus() {
+        java.lang.Object ref = status_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          status_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string status = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getStatusBytes() {
+        java.lang.Object ref = status_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          status_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string status = 2;</code>
+       */
+      public Builder setStatus(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        status_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string status = 2;</code>
+       */
+      public Builder clearStatus() {
+        
+        status_ = getDefaultInstance().getStatus();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string status = 2;</code>
+       */
+      public Builder setStatusBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        status_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object created_ = "";
+      /**
+       * <code>optional string created = 3;</code>
+       */
+      public java.lang.String getCreated() {
+        java.lang.Object ref = created_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          created_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string created = 3;</code>
+       */
+      public com.google.protobuf.ByteString
+          getCreatedBytes() {
+        java.lang.Object ref = created_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          created_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string created = 3;</code>
+       */
+      public Builder setCreated(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        created_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string created = 3;</code>
+       */
+      public Builder clearCreated() {
+        
+        created_ = getDefaultInstance().getCreated();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string created = 3;</code>
+       */
+      public Builder setCreatedBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        created_ = value;
+        onChanged();
+        return this;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:todo.SearchRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:todo.SearchRequest)
+    private static final com.github.starter.proto.Todos.SearchRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.github.starter.proto.Todos.SearchRequest();
+    }
+
+    public static com.github.starter.proto.Todos.SearchRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<SearchRequest>
+        PARSER = new com.google.protobuf.AbstractParser<SearchRequest>() {
+      public SearchRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new SearchRequest(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<SearchRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SearchRequest> getParserForType() {
+      return PARSER;
+    }
+
+    public com.github.starter.proto.Todos.SearchRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public interface StatusOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:Status)
+      // @@protoc_insertion_point(interface_extends:todo.Status)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -2382,11 +3159,11 @@ public final class Todos {
         getValueBytes();
   }
   /**
-   * Protobuf type {@code Status}
+   * Protobuf type {@code todo.Status}
    */
   public  static final class Status extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:Status)
+      // @@protoc_insertion_point(message_implements:todo.Status)
       StatusOrBuilder {
     // Use Status.newBuilder() to construct.
     private Status(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
@@ -2440,12 +3217,12 @@ public final class Todos {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.github.starter.proto.Todos.internal_static_Status_descriptor;
+      return com.github.starter.proto.Todos.internal_static_todo_Status_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.github.starter.proto.Todos.internal_static_Status_fieldAccessorTable
+      return com.github.starter.proto.Todos.internal_static_todo_Status_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               com.github.starter.proto.Todos.Status.class, com.github.starter.proto.Todos.Status.Builder.class);
     }
@@ -2622,20 +3399,20 @@ public final class Todos {
       return builder;
     }
     /**
-     * Protobuf type {@code Status}
+     * Protobuf type {@code todo.Status}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:Status)
+        // @@protoc_insertion_point(builder_implements:todo.Status)
         com.github.starter.proto.Todos.StatusOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.github.starter.proto.Todos.internal_static_Status_descriptor;
+        return com.github.starter.proto.Todos.internal_static_todo_Status_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.github.starter.proto.Todos.internal_static_Status_fieldAccessorTable
+        return com.github.starter.proto.Todos.internal_static_todo_Status_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
                 com.github.starter.proto.Todos.Status.class, com.github.starter.proto.Todos.Status.Builder.class);
       }
@@ -2664,7 +3441,7 @@ public final class Todos {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.github.starter.proto.Todos.internal_static_Status_descriptor;
+        return com.github.starter.proto.Todos.internal_static_todo_Status_descriptor;
       }
 
       public com.github.starter.proto.Todos.Status getDefaultInstanceForType() {
@@ -2832,10 +3609,10 @@ public final class Todos {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:Status)
+      // @@protoc_insertion_point(builder_scope:todo.Status)
     }
 
-    // @@protoc_insertion_point(class_scope:Status)
+    // @@protoc_insertion_point(class_scope:todo.Status)
     private static final com.github.starter.proto.Todos.Status DEFAULT_INSTANCE;
     static {
       DEFAULT_INSTANCE = new com.github.starter.proto.Todos.Status();
@@ -2871,25 +3648,30 @@ public final class Todos {
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_Todo_descriptor;
+    internal_static_todo_Todo_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_Todo_fieldAccessorTable;
+      internal_static_todo_Todo_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_TodoList_descriptor;
+    internal_static_todo_TodoList_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_TodoList_fieldAccessorTable;
+      internal_static_todo_TodoList_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_Params_descriptor;
+    internal_static_todo_Params_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_Params_fieldAccessorTable;
+      internal_static_todo_Params_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_Status_descriptor;
+    internal_static_todo_SearchRequest_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_Status_fieldAccessorTable;
+      internal_static_todo_SearchRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_todo_Status_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_todo_Status_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -2899,20 +3681,27 @@ public final class Todos {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\ntodo.proto\032\036google/protobuf/wrappers.p" +
-      "roto\"l\n\004Todo\022\n\n\002id\030\001 \001(\t\022\023\n\013description\030" +
-      "\002 \001(\t\022\017\n\007created\030\003 \001(\t\022\021\n\taction_by\030\004 \001(" +
-      "\t\022\016\n\006status\030\005 \001(\t\022\017\n\007updated\030\006 \001(\t\"\037\n\010To" +
-      "doList\022\023\n\004data\030\001 \003(\0132\005.Todo\"\033\n\006Params\022\021\n" +
-      "\tcompleted\030\001 \001(\010\"\027\n\006Status\022\r\n\005value\030\001 \001(" +
-      "\t2\354\001\n\013TodoService\022\036\n\010getTodos\022\007.Params\032\t" +
-      ".TodoList\022\024\n\004save\022\005.Todo\032\005.Todo\022\026\n\006updat" +
-      "e\022\005.Todo\032\005.Todo\022/\n\010findById\022\034.google.pro" +
-      "tobuf.StringValue\032\005.Todo\022B\n\006delete\022\034.goo",
+      "\n\ntodo.proto\022\004todo\032\036google/protobuf/wrap" +
+      "pers.proto\032\034google/api/annotations.proto" +
+      "\"l\n\004Todo\022\n\n\002id\030\001 \001(\t\022\023\n\013description\030\002 \001(" +
+      "\t\022\017\n\007created\030\003 \001(\t\022\021\n\taction_by\030\004 \001(\t\022\016\n" +
+      "\006status\030\005 \001(\t\022\017\n\007updated\030\006 \001(\t\"$\n\010TodoLi" +
+      "st\022\030\n\004data\030\001 \003(\0132\n.todo.Todo\"\033\n\006Params\022\021" +
+      "\n\tcompleted\030\001 \001(\010\"C\n\rSearchRequest\022\021\n\tac" +
+      "tion_by\030\001 \001(\t\022\016\n\006status\030\002 \001(\t\022\017\n\007created" +
+      "\030\003 \001(\t\"\027\n\006Status\022\r\n\005value\030\001 \001(\t2\244\003\n\013Todo" +
+      "Service\022E\n\010getTodos\022\023.todo.SearchRequest",
+      "\032\016.todo.TodoList\"\024\202\323\344\223\002\016\022\014/todo.search\0222" +
+      "\n\004save\022\n.todo.Todo\032\n.todo.Todo\"\022\202\323\344\223\002\014\"\n" +
+      "/todo.save\0226\n\006update\022\n.todo.Todo\032\n.todo." +
+      "Todo\"\024\202\323\344\223\002\016\"\014/todo.update\022L\n\010findById\022\034" +
+      ".google.protobuf.StringValue\032\n.todo.Todo" +
+      "\"\026\202\323\344\223\002\020\022\016/todo.findById\022X\n\006delete\022\034.goo" +
       "gle.protobuf.StringValue\032\032.google.protob" +
-      "uf.BoolValue\022\032\n\006status\022\007.Params\032\007.Status" +
-      "B+\n\030com.github.starter.protoB\005TodosP\000Z\006." +
-      ";todob\006proto3"
+      "uf.BoolValue\"\024\202\323\344\223\002\016*\014/todo.delete\022:\n\006st" +
+      "atus\022\014.todo.Params\032\014.todo.Status\"\024\202\323\344\223\002\016" +
+      "\022\014/todo.statusB+\n\030com.github.starter.pro",
+      "toB\005TodosP\000Z\006.;todob\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -2926,32 +3715,45 @@ public final class Todos {
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           com.google.protobuf.WrappersProto.getDescriptor(),
+          com.google.api.AnnotationsProto.getDescriptor(),
         }, assigner);
-    internal_static_Todo_descriptor =
+    internal_static_todo_Todo_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_Todo_fieldAccessorTable = new
+    internal_static_todo_Todo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_Todo_descriptor,
+        internal_static_todo_Todo_descriptor,
         new java.lang.String[] { "Id", "Description", "Created", "ActionBy", "Status", "Updated", });
-    internal_static_TodoList_descriptor =
+    internal_static_todo_TodoList_descriptor =
       getDescriptor().getMessageTypes().get(1);
-    internal_static_TodoList_fieldAccessorTable = new
+    internal_static_todo_TodoList_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_TodoList_descriptor,
+        internal_static_todo_TodoList_descriptor,
         new java.lang.String[] { "Data", });
-    internal_static_Params_descriptor =
+    internal_static_todo_Params_descriptor =
       getDescriptor().getMessageTypes().get(2);
-    internal_static_Params_fieldAccessorTable = new
+    internal_static_todo_Params_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_Params_descriptor,
+        internal_static_todo_Params_descriptor,
         new java.lang.String[] { "Completed", });
-    internal_static_Status_descriptor =
+    internal_static_todo_SearchRequest_descriptor =
       getDescriptor().getMessageTypes().get(3);
-    internal_static_Status_fieldAccessorTable = new
+    internal_static_todo_SearchRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_Status_descriptor,
+        internal_static_todo_SearchRequest_descriptor,
+        new java.lang.String[] { "ActionBy", "Status", "Created", });
+    internal_static_todo_Status_descriptor =
+      getDescriptor().getMessageTypes().get(4);
+    internal_static_todo_Status_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_todo_Status_descriptor,
         new java.lang.String[] { "Value", });
+    com.google.protobuf.ExtensionRegistry registry =
+        com.google.protobuf.ExtensionRegistry.newInstance();
+    registry.add(com.google.api.AnnotationsProto.http);
+    com.google.protobuf.Descriptors.FileDescriptor
+        .internalUpdateFileDescriptor(descriptor, registry);
     com.google.protobuf.WrappersProto.getDescriptor();
+    com.google.api.AnnotationsProto.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

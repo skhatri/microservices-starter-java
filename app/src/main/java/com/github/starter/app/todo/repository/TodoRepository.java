@@ -6,7 +6,7 @@ import reactor.core.publisher.Mono;
 import java.util.List;
 
 public interface TodoRepository {
-    Mono<List<Todos.Todo>> listItems();
+    Mono<List<Todos.Todo>> listItems(Todos.SearchRequest searchRequest);
 
     Mono<Todos.Todo> findById(String id);
 

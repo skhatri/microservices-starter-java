@@ -1,0 +1,40 @@
+version: "3.7"
+services:
+
+  front-envoy:
+    image: "envoyproxy/envoy-dev:defea7ecbf6f3ebffe8b9d41afa7f62322756f05"
+    command: /usr/local/bin/envoy -c /etc/todo-envoy.yaml --service-cluster todo_grpc -l debug
+    volumes:
+      - ./front-proxy-grpc-data.yaml:/etc/todo-envoy.yaml
+      - ./proto.pb:/tmp/envoy/todo.pb
+      - ./app/src/main/resources/bundle.crt:/tmp/ca/bundle.crt
+      - ./app/src/main/resources/private.key:/tmp/ca/private.key
+    networks:
+      - envoymesh
+    expose:
+      - "9090"
+      - "8001"
+    ports:
+      - "9090:9090"
+      - "8001:8001"
+
+  todo:
+    #image: "todo:latest"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    networks:
+      envoymesh:
+        aliases:
+          - todo
+    environment:
+      - SERVICE_NAME=1
+    expose:
+      - "8100"
+      - "8080"
+    ports:
+      - "8100:8100"
+      - "8080:8080"
+
+networks:
+  envoymesh: {}

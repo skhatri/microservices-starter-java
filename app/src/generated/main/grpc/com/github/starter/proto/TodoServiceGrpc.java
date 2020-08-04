@@ -24,30 +24,30 @@ public final class TodoServiceGrpc {
 
   private TodoServiceGrpc() {}
 
-  public static final String SERVICE_NAME = "TodoService";
+  public static final String SERVICE_NAME = "todo.TodoService";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<com.github.starter.proto.Todos.Params,
+  private static volatile io.grpc.MethodDescriptor<com.github.starter.proto.Todos.SearchRequest,
       com.github.starter.proto.Todos.TodoList> getGetTodosMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "getTodos",
-      requestType = com.github.starter.proto.Todos.Params.class,
+      requestType = com.github.starter.proto.Todos.SearchRequest.class,
       responseType = com.github.starter.proto.Todos.TodoList.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.github.starter.proto.Todos.Params,
+  public static io.grpc.MethodDescriptor<com.github.starter.proto.Todos.SearchRequest,
       com.github.starter.proto.Todos.TodoList> getGetTodosMethod() {
-    io.grpc.MethodDescriptor<com.github.starter.proto.Todos.Params, com.github.starter.proto.Todos.TodoList> getGetTodosMethod;
+    io.grpc.MethodDescriptor<com.github.starter.proto.Todos.SearchRequest, com.github.starter.proto.Todos.TodoList> getGetTodosMethod;
     if ((getGetTodosMethod = TodoServiceGrpc.getGetTodosMethod) == null) {
       synchronized (TodoServiceGrpc.class) {
         if ((getGetTodosMethod = TodoServiceGrpc.getGetTodosMethod) == null) {
           TodoServiceGrpc.getGetTodosMethod = getGetTodosMethod =
-              io.grpc.MethodDescriptor.<com.github.starter.proto.Todos.Params, com.github.starter.proto.Todos.TodoList>newBuilder()
+              io.grpc.MethodDescriptor.<com.github.starter.proto.Todos.SearchRequest, com.github.starter.proto.Todos.TodoList>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "getTodos"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.github.starter.proto.Todos.Params.getDefaultInstance()))
+                  com.github.starter.proto.Todos.SearchRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   com.github.starter.proto.Todos.TodoList.getDefaultInstance()))
               .setSchemaDescriptor(new TodoServiceMethodDescriptorSupplier("getTodos"))
@@ -263,7 +263,7 @@ public final class TodoServiceGrpc {
 
     /**
      */
-    public void getTodos(com.github.starter.proto.Todos.Params request,
+    public void getTodos(com.github.starter.proto.Todos.SearchRequest request,
         io.grpc.stub.StreamObserver<com.github.starter.proto.Todos.TodoList> responseObserver) {
       asyncUnimplementedUnaryCall(getGetTodosMethod(), responseObserver);
     }
@@ -309,7 +309,7 @@ public final class TodoServiceGrpc {
             getGetTodosMethod(),
             asyncUnaryCall(
               new MethodHandlers<
-                com.github.starter.proto.Todos.Params,
+                com.github.starter.proto.Todos.SearchRequest,
                 com.github.starter.proto.Todos.TodoList>(
                   this, METHODID_GET_TODOS)))
           .addMethod(
@@ -367,7 +367,7 @@ public final class TodoServiceGrpc {
 
     /**
      */
-    public void getTodos(com.github.starter.proto.Todos.Params request,
+    public void getTodos(com.github.starter.proto.Todos.SearchRequest request,
         io.grpc.stub.StreamObserver<com.github.starter.proto.Todos.TodoList> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getGetTodosMethod(), getCallOptions()), request, responseObserver);
@@ -430,7 +430,7 @@ public final class TodoServiceGrpc {
 
     /**
      */
-    public com.github.starter.proto.Todos.TodoList getTodos(com.github.starter.proto.Todos.Params request) {
+    public com.github.starter.proto.Todos.TodoList getTodos(com.github.starter.proto.Todos.SearchRequest request) {
       return blockingUnaryCall(
           getChannel(), getGetTodosMethod(), getCallOptions(), request);
     }
@@ -488,7 +488,7 @@ public final class TodoServiceGrpc {
     /**
      */
     public com.google.common.util.concurrent.ListenableFuture<com.github.starter.proto.Todos.TodoList> getTodos(
-        com.github.starter.proto.Todos.Params request) {
+        com.github.starter.proto.Todos.SearchRequest request) {
       return futureUnaryCall(
           getChannel().newCall(getGetTodosMethod(), getCallOptions()), request);
     }
@@ -559,7 +559,7 @@ public final class TodoServiceGrpc {
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
         case METHODID_GET_TODOS:
-          serviceImpl.getTodos((com.github.starter.proto.Todos.Params) request,
+          serviceImpl.getTodos((com.github.starter.proto.Todos.SearchRequest) request,
               (io.grpc.stub.StreamObserver<com.github.starter.proto.Todos.TodoList>) responseObserver);
           break;
         case METHODID_SAVE:

@@ -102,4 +102,97 @@ grpcurl -plaintext localhost:8100 TodoService.getTodos
 brew install ghz
 ghz --insecure --proto app/src/main/proto/todo.proto --call TodoService.getTodos localhost:8100 \
 -o build/reports/ghz.html -O html -n 400000 -c 20 
+
+```
+
+### Bridge gRPC with Envoy
+Download GoogleApis to $GOOGLEAPIS_DIR
+```
+mkdir -p $HOME/dev/platform/envoy
+export GOOGLEAPIS_DIR=$HOME/dev/platform/envoy/googleapis
+git clone https://github.com/googleapis/googleapis.git  $GOOGLEAPIS_DIR
+
+#generate proto description using todo.proto file
+protoc -I${GOOGLEAPIS_DIR} -I. --include_imports --include_source_info \
+  --descriptor_set_out=proto.pb app/src/main/proto/todo.proto
+
+#build todo binary
+gradle clean build -x test #for quick build
+docker-compose build
+docker-compose up -d
+
+docker-compose ps
+```
+
+#### Testing REST endpoints using direct app host port
+```
+curl --http2 -H"Content-Type:application/json" http://todo:8080/todo/default/search -v
+curl --http1.1 -H"Content-Type:application/json" http://todo:8080/todo/default/search -v
+curl --http2 -H"Content-Type:application/json" http://todo:8080/todo/grpc/search -v
+curl --http1.1 -H"Content-Type:application/json" http://todo:8080/todo/grpc/search -v
+```
+
+#### Testing gRPC endpoints using direct app host port
+```
+grpcurl -protoset proto.pb -plaintext -d '{"status":"DONE"}' localhost:8100 todo.TodoService.getTodos
+grpcurl -plaintext -protoset proto.pb -d '{"status":"DONE", "action_by":"user1"}' todo:8100 todo.TodoService.getTodos
+grpcurl -plaintext -import-path app/src/main/proto -import-path $HOME/dev/platform/envoy/googleapis -proto todo.proto todo:8100 todo.TodoService.getTodos
+```
+
+#### Testing gRPC endpoints via envoy proxy using grpcurl
+
+```
+grpcurl -plaintext -protoset proto.pb -d '{"status":"NEW", "action_by":"user1"}' todo:9090 todo.TodoService.getTodos
+grpcurl -plaintext -import-path app/src/main/proto -import-path $HOME/dev/platform/envoy/googleapis -proto todo.proto todo:9090 todo.TodoService.getTodos
+grpcurl -import-path app/src/main/proto -import-path $HOME/dev/platform/envoy/googleapis -proto todo.proto -plaintext localhost:9090 todo.TodoService.getTodos
+grpcurl -plaintext -protoset proto.pb -d '{}' todo:9090 todo.TodoService.status
+
+
+grpcurl -plaintext -import-path $HOME/dev/platform/envoy/googleapis -import-path app/src/main/proto -proto todo.proto \
+-d '{
+              "id": "9",
+              "description": "Listen to Spotify",
+              "created": "2020-03-20T13:00:00Z",
+              "actionBy": "user1",
+              "status": "NEW",
+              "updated": "2020-03-20T13:00:00Z"
+            }' \
+todo:9090 todo.TodoService.update
+
+grpcurl -plaintext -import-path $HOME/dev/platform/envoy/googleapis -import-path app/src/main/proto -proto todo.proto \
+-d '{
+              "id": "9",
+              "description": "Listen to Songs",
+              "created": "2020-03-20T13:00:00Z",
+              "actionBy": "user1",
+              "status": "NEW",
+              "updated": "2020-03-20T13:00:00Z"
+            }' \
+todo:8100 todo.TodoService.update
+```
+
+#### Testing gRPC endpoints via envoy proxy using REST
+
+```
+curl --http1.1 \
+-H"User-Agent:grpc-go/1.30.0" -H"Accept:" \
+http://todo:9090/todo.search -v
+
+curl --http1.1 \
+-H"User-Agent:grpc-go/1.30.0" -H"Accept:" \
+"http://todo:9090/todo.search?action_by=user1&status=DONE" -v
+
+curl --http1.1 -H"Content-Type:application/json" \
+-XPOST -H"Accept:" \
+-d '{"id": "9", "description": "Listen to Spotify", "created": "2020-03-20T13:00:00Z", "actionBy": "user1", "status": "NEW", "updated": "2020-03-20T13:00:00Z"}' \
+http://todo:9090/todo.update  -v
+
+curl --http1.1 -H"Content-Type:application/json" \
+-XPOST -H"Accept:" \
+-d '{ "description": "Listen to Spotify", "created": "2020-03-20T13:00:00Z", "actionBy": "user1", "status": "NEW", "updated": "2020-03-20T13:00:00Z"}' \
+http://todo:9090/todo.save  -v
+
+curl --http1.1 -XGET -H"User-Agent:grpc-go/1.30.0" http://todo:9090/todo.status -v
+
+
 ```

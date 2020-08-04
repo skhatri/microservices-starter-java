@@ -1,5 +1,6 @@
 package com.github.starter.app.todo.endpoints;
 
+import com.github.starter.app.todo.model.SearchRequest;
 import com.github.starter.app.todo.model.TodoTask;
 import com.github.starter.app.todo.service.TodoService;
 import com.github.starter.app.todo.service.TodoServiceFactory;
@@ -58,27 +59,28 @@ public class TodoEndpointsTest {
     private static Stream<Arguments> data() {
         TodoTask todoTask = Todos.createOneForToday();
         String id = todoTask.getId();
+        SearchRequest searchRequest = new SearchRequest("", "", "");
         return Stream.of(
-          Arguments.of(
-                  "Find Todos test", "/todo/123",
-                  (Consumer<TodoService>) todoService -> Mockito.when(todoService.findById("123")).thenReturn(Mono.error(InternalServerError::new)), Map.class, HttpMethod.GET
-          ),
-          Arguments.of(
-              "Delete Todos id", "/todos/123",
-              (Consumer<TodoService>) todoService -> Mockito.when(todoService.delete("123")).thenReturn(Mono.error(InternalServerError::new)), Map.class, HttpMethod.DELETE
-          ),
-          Arguments.of(
-              "Update Todos", String.format("/todos/%s", id),
-              (Consumer<TodoService>) todoService -> Mockito.when(todoService.update(id, todoTask)).thenReturn(Mono.error(InternalServerError::new)), Map.class, HttpMethod.POST
-          ),
-          Arguments.of(
+            Arguments.of(
+                "Find Todos test", "/todo/123",
+                (Consumer<TodoService>) todoService -> Mockito.when(todoService.findById("123")).thenReturn(Mono.error(InternalServerError::new)), Map.class, HttpMethod.GET
+            ),
+            Arguments.of(
+                "Delete Todos id", "/todos/123",
+                (Consumer<TodoService>) todoService -> Mockito.when(todoService.delete("123")).thenReturn(Mono.error(InternalServerError::new)), Map.class, HttpMethod.DELETE
+            ),
+            Arguments.of(
+                "Update Todos", String.format("/todos/%s", id),
+                (Consumer<TodoService>) todoService -> Mockito.when(todoService.update(id, todoTask)).thenReturn(Mono.error(InternalServerError::new)), Map.class, HttpMethod.POST
+            ),
+            Arguments.of(
                 "Add Todos", "/todos/",
                 (Consumer<TodoService>) todoService -> Mockito.when(todoService.save(todoTask)).thenReturn(Mono.error(InternalServerError::new)), Map.class, HttpMethod.POST
-          ),
-          Arguments.of(
-            "Search Todos", "/todos/search",
-            (Consumer<TodoService>) todoService -> Mockito.when(todoService.listItems()).thenReturn(Mono.error(InternalServerError::new)), Map.class, HttpMethod.GET
-          )
+            ),
+            Arguments.of(
+                "Search Todos", "/todos/search",
+                (Consumer<TodoService>) todoService -> Mockito.when(todoService.listItems(searchRequest)).thenReturn(Mono.error(InternalServerError::new)), Map.class, HttpMethod.GET
+            )
         );
     }
 

@@ -1,12 +1,13 @@
 package com.github.starter.app.todo.service;
 
+import com.github.starter.app.todo.model.SearchRequest;
 import com.github.starter.app.todo.model.TodoTask;
 import reactor.core.publisher.Mono;
 
 import java.util.List;
 
 public interface TodoService {
-    Mono<List<TodoTask>> listItems();
+    Mono<List<TodoTask>> listItems(SearchRequest searchRequest);
 
     Mono<TodoTask> findById(String id);
 

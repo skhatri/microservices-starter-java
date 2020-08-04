@@ -19,7 +19,10 @@ public class TodoRepositoryUseCases {
 
 
     public void testListTodoTasks() {
-        List<com.github.starter.proto.Todos.Todo> tasks = todoRepository.listItems().block();
+        List<com.github.starter.proto.Todos.Todo> tasks = todoRepository.listItems(
+            com.github.starter.proto.Todos.SearchRequest.newBuilder()
+                .setActionBy("")
+                .build()).block();
         Assertions.assertFalse(tasks.isEmpty(), "todo table should have some data");
     }
 
@@ -51,8 +54,8 @@ public class TodoRepositoryUseCases {
 
         String taskId = savedTask.getId();
         todoRepository.update(
-                TodoTasks.toTodo(new TodoTask(taskId, savedTask.getDescription(), "user1", ZonedDateTime.now(),
-                        "DONE", ZonedDateTime.now()))
+            TodoTasks.toTodo(new TodoTask(taskId, savedTask.getDescription(), "user1", ZonedDateTime.now(),
+                "DONE", ZonedDateTime.now()))
         ).block();
 
         com.github.starter.proto.Todos.Todo updatedTask = todoRepository.findById(taskId).block();

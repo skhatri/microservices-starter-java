@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.security.SecureRandom;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -26,13 +28,27 @@ public class DefaultGrpcServer {
     private final Server server;
 
     @Autowired
-    public DefaultGrpcServer(TodoServiceGrpc.TodoServiceImplBase grpcService, @Value("${grpc.port:8100}") int port) {
+    public DefaultGrpcServer(TodoServiceGrpc.TodoServiceImplBase grpcService,
+                             @Value("${grpc.port:8100}") int port,
+                             @Value("${flags.use.ssl:true}") boolean useSsl) {
         this.grpcService = grpcService;
         this.grpcPort = verifyPort(port);
-        this.server = ServerBuilder.forPort(this.grpcPort)
-                .addService(this.grpcService)
-                .addService(ProtoReflectionService.newInstance())
-                .build();
+        ServerBuilder builder = ServerBuilder.forPort(this.grpcPort);
+        System.out.println("useSsl = " + useSsl);
+        if (useSsl) {
+            builder = builder.useTransportSecurity(bundleCert(), privateKey());
+        }
+        this.server = builder.addService(this.grpcService)
+            .addService(ProtoReflectionService.newInstance())
+            .build();
+    }
+
+    private InputStream bundleCert() {
+        return getClass().getClassLoader().getResourceAsStream("bundle.crt");
+    }
+
+    private InputStream privateKey() {
+        return getClass().getClassLoader().getResourceAsStream("private.key");
     }
 
     private int verifyPort(int port) {
@@ -41,6 +57,7 @@ public class DefaultGrpcServer {
         }
         return port;
     }
+
 
     @PostConstruct
     public void run() {

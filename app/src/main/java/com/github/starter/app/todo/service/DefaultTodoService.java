@@ -1,9 +1,11 @@
 package com.github.starter.app.todo.service;
 
+import com.github.starter.app.todo.model.SearchRequest;
 import com.github.starter.app.todo.model.TodoTask;
 import com.github.starter.app.todo.repository.TodoRepository;
 import com.github.starter.core.exception.BadRequest;
 import com.github.starter.grpc.model.TodoTasks;
+import com.github.starter.proto.Todos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
@@ -24,8 +26,14 @@ public class DefaultTodoService implements TodoService {
     }
 
     @Override
-    public Mono<List<TodoTask>> listItems() {
-        return todoRepository.listItems().map(tasks -> tasks.stream().map(TodoTasks::todoToTodoTask).collect(Collectors.toList()));
+    public Mono<List<TodoTask>> listItems(SearchRequest searchRequest) {
+        return todoRepository.listItems(
+            Todos.SearchRequest.newBuilder()
+                .setCreated(searchRequest.getCreated())
+                .setStatus(searchRequest.getStatus())
+                .setActionBy(searchRequest.getActionBy())
+            .build()
+        ).map(tasks -> tasks.stream().map(TodoTasks::todoToTodoTask).collect(Collectors.toList()));
     }
 
     @Override

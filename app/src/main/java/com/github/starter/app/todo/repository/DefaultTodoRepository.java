@@ -28,8 +28,17 @@ public class DefaultTodoRepository implements TodoRepository {
     }
 
     @Override
-    public Mono<List<Todos.Todo>> listItems() {
-        return databaseClient.execute("select * from todo.tasks limit 20").map(this::asTodo).all().collectList();
+    public Mono<List<Todos.Todo>> listItems(Todos.SearchRequest searchRequest) {
+        DatabaseClient.GenericSelectSpec select = databaseClient.select()
+            .from("todo.tasks").project("*");
+
+        if (searchRequest.getActionBy() != "") {
+            select = select.matching(Criteria.where("action_by").is(searchRequest.getActionBy()));
+        }
+        if (searchRequest.getStatus() != "") {
+            select = select.matching(Criteria.where("status").is(searchRequest.getStatus()));
+        }
+        return select.map(this::asTodo).all().collectList();
     }
 
     private Todos.Todo asTodo(Row row) {
