@@ -8,20 +8,43 @@ import scala.concurrent.duration._
 
 object Todo {
   val server = Option(System.getenv("HOST")).getOrElse("localhost")
-  val port = Option(System.getenv("PORT")).map(_.toInt).getOrElse(8080)
-  val ssl = Option(System.getenv("SSL")).map(_.toBoolean).getOrElse(true)
-  val http2Enabled = Option(System.getenv("HTTP2")).map(_.toBoolean).getOrElse(true)
-  val serviceType = Option(System.getenv("SERVICE_TYPE")).getOrElse("default")
+  val port = Option(System.getenv("PORT")).map(_.toInt).getOrElse(9000)
+  val ssl = Option(System.getenv("SSL")).map(_.toBoolean).getOrElse(false)
+  val http2Enabled = Option(System.getenv("HTTP2")).map(_.toBoolean).getOrElse(false)
+  val serviceType = Option(System.getenv("SERVICE_TYPE")).getOrElse("")
 
   val protocol = if (ssl) "https" else "http"
   val base = s"$protocol://$server:$port"
   val randomIndex = Iterator.continually(Map("index" -> (Math.random() * 2).toInt))
 
   val todoPath = s"/todo/${serviceType}"
+  val searchPath = serviceType match {
+    case "" => "/todo.search"
+    case x => s"/todo/$x/search"
+  }
+
+  def findByIdPath(id:String) = serviceType match {
+    case "" => s"/todo.findById?value=$id"
+    case x => s"/todo/$x/$id"
+  }
+  val addPath = serviceType match {
+    case "" => "/todo.save"
+    case x => s"/todo/$x/"
+  }
+
+  def updatePath(id:String) = serviceType match {
+    case "" => "/todo.update"
+    case x => s"/todo/$x/$id"
+  }
+
+  val warmupUrl = serviceType match {
+    case "" => "/todo.status"
+    case _ => "/status"
+  }
 
   private val httpProtocolBase = http
     .baseUrl(base)
-    .warmUp(s"$base/")
+    .warmUp(s"$base$warmupUrl")
     .doNotTrackHeader("1")
     .acceptHeader("application/json;q=0.9,*/*;q=0.8")
     .contentTypeHeader("application/json")
@@ -37,20 +60,20 @@ object Todo {
 
   val feeder = csv("tasks.csv").random
 
-  val search = exec(http("Search - Home").get("/"))
+  val search = exec(http("Search - Home").get(warmupUrl))
     .pause(1)
     .exec(http("Search - List")
-      .get(s"${todoPath}/search"))
+      .get(searchPath))
     .pause(2)
     .exec(http("Search - Find")
-      .get(s"${todoPath}/1"))
+      .get(findByIdPath("1")))
     .pause(1)
 
-  val add = exec(http("Add - Home").get("/"))
+  val add = exec(http("Add - Home").get(warmupUrl))
     .pause(1)
     .feed(feeder)
     .exec(http("Add Post")
-      .post(s"${todoPath}/").body(StringBody(
+      .post(addPath).body(StringBody(
       """{
         |      "description": "${task}",
         |      "action_by": "user1",
@@ -60,16 +83,16 @@ object Todo {
         |}""".stripMargin)).check(status.is(200)))
     .pause(2)
     .exec(http("Add - Select")
-      .get(s"${todoPath}/1").check(status.is(200)))
+      .get(findByIdPath("1")).check(status.is(200)))
     .pause(1)
 
   val edit = feed(randomIndex).exec(http("Edit - Search")
-    .get(s"${todoPath}/search")
+    .get(searchPath)
     .check(jsonPath("$.data[0].id").saveAs("taskId"))
   ).pause(1)
     .feed(feeder)
     .exec(http("Edit - Post")
-      .post(todoPath + "/$taskId").body(StringBody(
+      .post(updatePath("$taskId")).body(StringBody(
       """{
         |      "id": "${taskId}",
         |      "description": "${task}",

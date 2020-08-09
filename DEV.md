@@ -91,16 +91,18 @@ h2load -n400000 -c50 -m20 https://localhost:8080/todo/default/search
 brew install grpcurl
 #ad-hoc curl with grpcurl
 grpcurl -import-path app/src/main/proto -proto todo.proto list 
-grpcurl -import-path app/src/main/proto -proto todo.proto describe TodoService.getTodos 
+grpcurl -import-path app/src/main/proto -proto todo.proto describe todo.TodoService.getTodos 
 
 #without reflection
-grpcurl -import-path app/src/main/proto -proto todo.proto -plaintext localhost:8100 TodoService.getTodos
+grpcurl -import-path app/src/main/proto -proto todo.proto -plaintext localhost:8100 todo.TodoService.getTodos
 #with reflection
 grpcurl -plaintext localhost:8100 TodoService.getTodos
 
 #load testing with ghz
 brew install ghz
-ghz --insecure --proto app/src/main/proto/todo.proto --call TodoService.getTodos localhost:8100 \
+ghz --insecure --proto app/src/main/proto/todo.proto --call todo.TodoService.getTodos localhost:8100 \
+-o build/reports/ghz.html -O html -n 400000 -c 20 
+ghz --insecure --protoset proto.pb --call todo.TodoService.getTodos localhost:9000 \
 -o build/reports/ghz.html -O html -n 400000 -c 20 
 
 ```
@@ -142,10 +144,10 @@ grpcurl -plaintext -import-path app/src/main/proto -import-path $HOME/dev/platfo
 #### Testing gRPC endpoints via envoy proxy using grpcurl
 
 ```
-grpcurl -plaintext -protoset proto.pb -d '{"status":"NEW", "action_by":"user1"}' todo:9090 todo.TodoService.getTodos
-grpcurl -plaintext -import-path app/src/main/proto -import-path $HOME/dev/platform/envoy/googleapis -proto todo.proto todo:9090 todo.TodoService.getTodos
-grpcurl -import-path app/src/main/proto -import-path $HOME/dev/platform/envoy/googleapis -proto todo.proto -plaintext localhost:9090 todo.TodoService.getTodos
-grpcurl -plaintext -protoset proto.pb -d '{}' todo:9090 todo.TodoService.status
+grpcurl -plaintext -protoset proto.pb -d '{"status":"NEW", "action_by":"user1"}' todo:9000 todo.TodoService.getTodos
+grpcurl -plaintext -import-path app/src/main/proto -import-path $HOME/dev/platform/envoy/googleapis -proto todo.proto todo:9000 todo.TodoService.getTodos
+grpcurl -import-path app/src/main/proto -import-path $HOME/dev/platform/envoy/googleapis -proto todo.proto -plaintext localhost:9000 todo.TodoService.getTodos
+grpcurl -plaintext -protoset proto.pb -d '{}' todo:9000 todo.TodoService.status
 
 
 grpcurl -plaintext -import-path $HOME/dev/platform/envoy/googleapis -import-path app/src/main/proto -proto todo.proto \
@@ -157,7 +159,7 @@ grpcurl -plaintext -import-path $HOME/dev/platform/envoy/googleapis -import-path
               "status": "NEW",
               "updated": "2020-03-20T13:00:00Z"
             }' \
-todo:9090 todo.TodoService.update
+todo:9000 todo.TodoService.update
 
 grpcurl -plaintext -import-path $HOME/dev/platform/envoy/googleapis -import-path app/src/main/proto -proto todo.proto \
 -d '{
@@ -176,23 +178,23 @@ todo:8100 todo.TodoService.update
 ```
 curl --http1.1 \
 -H"User-Agent:grpc-go/1.30.0" -H"Accept:" \
-http://todo:9090/todo.search -v
+http://todo:9000/todo.search -v
 
 curl --http1.1 \
 -H"User-Agent:grpc-go/1.30.0" -H"Accept:" \
-"http://todo:9090/todo.search?action_by=user1&status=DONE" -v
+"http://todo:9000/todo.search?action_by=user1&status=DONE" -v
 
 curl --http1.1 -H"Content-Type:application/json" \
 -XPOST -H"Accept:" \
 -d '{"id": "9", "description": "Listen to Spotify", "created": "2020-03-20T13:00:00Z", "actionBy": "user1", "status": "NEW", "updated": "2020-03-20T13:00:00Z"}' \
-http://todo:9090/todo.update  -v
+http://todo:9000/todo.update  -v
 
 curl --http1.1 -H"Content-Type:application/json" \
 -XPOST -H"Accept:" \
 -d '{ "description": "Listen to Spotify", "created": "2020-03-20T13:00:00Z", "actionBy": "user1", "status": "NEW", "updated": "2020-03-20T13:00:00Z"}' \
-http://todo:9090/todo.save  -v
+http://todo:9000/todo.save  -v
 
-curl --http1.1 -XGET -H"User-Agent:grpc-go/1.30.0" http://todo:9090/todo.status -v
+curl --http1.1 -XGET -H"User-Agent:grpc-go/1.30.0" http://todo:9000/todo.status -v
 
 
 ```

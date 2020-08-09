@@ -22,4 +22,5 @@ task("runTest", JavaExec::class) {
         "-rf", "$projectDir/build/reports/gatling",
         "-s", "com.github.starter.todo.${project.ext["simulation"]}"
     )
+    
 }

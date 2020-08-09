@@ -1,21 +1,25 @@
 version: "3.7"
+volumes:
+  grafana: {}
 services:
 
   front-envoy:
     image: "envoyproxy/envoy-dev:defea7ecbf6f3ebffe8b9d41afa7f62322756f05"
     command: /usr/local/bin/envoy -c /etc/todo-envoy.yaml --service-cluster todo_grpc -l debug
     volumes:
-      - ./front-proxy-grpc-data.yaml:/etc/todo-envoy.yaml
+      - ./scripts/proxy/front-proxy-grpc-data.yaml:/etc/todo-envoy.yaml
       - ./proto.pb:/tmp/envoy/todo.pb
       - ./app/src/main/resources/bundle.crt:/tmp/ca/bundle.crt
       - ./app/src/main/resources/private.key:/tmp/ca/private.key
     networks:
-      - envoymesh
+      envoymesh:
+        aliases:
+          - envoy
     expose:
-      - "9090"
+      - "9000"
       - "8001"
     ports:
-      - "9090:9090"
+      - "9000:9000"
       - "8001:8001"
 
   todo:
@@ -36,5 +40,33 @@ services:
       - "8100:8100"
       - "8080:8080"
 
+  grafana:
+    image: "grafana/grafana:latest"
+    networks:
+      envoymesh:
+        aliases:
+          - grafana
+    volumes:
+      - grafana:/var/lib/grafana
+      - ./scripts/observability/grafana/:/etc/grafana/provisioning/
+    environment:
+      - "GF_INSTALL_PLUGINS=grafana-clock-panel,grafana-simple-json-datasource"
+    expose:
+      - "3000"
+    ports:
+      - "3000:3000"
+
+  prometheus:
+    image: "prom/prometheus:latest"
+    volumes:
+    - ./scripts/observability/prometheus/prometheus.yaml:/etc/prometheus/prometheus.yml
+    networks:
+      envoymesh:
+        aliases:
+          - prometheus
+    expose:
+      - "9090"
+    ports:
+      - "9090:9090"
 networks:
   envoymesh: {}
