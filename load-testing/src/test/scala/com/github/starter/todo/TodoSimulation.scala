@@ -8,10 +8,10 @@ import scala.concurrent.duration._
 
 object Todo {
   val server = Option(System.getenv("HOST")).getOrElse("localhost")
-  val port = Option(System.getenv("PORT")).map(_.toInt).getOrElse(9000)
+  val port = Option(System.getenv("PORT")).map(_.toInt).getOrElse(8080)
   val ssl = Option(System.getenv("SSL")).map(_.toBoolean).getOrElse(false)
   val http2Enabled = Option(System.getenv("HTTP2")).map(_.toBoolean).getOrElse(false)
-  val serviceType = Option(System.getenv("SERVICE_TYPE")).getOrElse("")
+  val serviceType = Option(System.getenv("SERVICE_TYPE")).getOrElse("default")
 
   val protocol = if (ssl) "https" else "http"
   val base = s"$protocol://$server:$port"
@@ -20,7 +20,7 @@ object Todo {
   val todoPath = s"/todo/${serviceType}"
   val searchPath = serviceType match {
     case "" => "/todo.search"
-    case x => s"/todo/$x/search"
+    case x => s"/todo/$x/"
   }
 
   def findByIdPath(id:String) = serviceType match {
@@ -38,8 +38,8 @@ object Todo {
   }
 
   val warmupUrl = serviceType match {
-    case "" => "/todo.status"
-    case _ => "/status"
+    case "" => "/todo.liveness"
+    case _ => "/liveness"
   }
 
   private val httpProtocolBase = http
@@ -77,9 +77,9 @@ object Todo {
       """{
         |      "description": "${task}",
         |      "action_by": "user1",
-        |      "created": "2020-03-20T13:00:00",
+        |      "created": "2020-03-20T13:00:00Z",
         |      "status": "NEW",
-        |      "updated": "2020-03-20T13:00:00"
+        |      "updated": "2020-03-20T13:00:00Z"
         |}""".stripMargin)).check(status.is(200)))
     .pause(2)
     .exec(http("Add - Select")
@@ -97,9 +97,9 @@ object Todo {
         |      "id": "${taskId}",
         |      "description": "${task}",
         |      "action_by": "user1",
-        |      "created": "2020-03-20T13:00:00",
+        |      "created": "2020-03-20T13:00:00Z",
         |      "status": "NEW",
-        |      "updated": "2020-03-20T13:00:00"
+        |      "updated": "2020-03-20T13:00:00Z"
         |}""".stripMargin)).check(status.is(200)))
 
     .pause(2)
@@ -143,6 +143,6 @@ class ListSimulation extends Simulation {
   )
 
 
-  setUp(searchScenarioOpen).protocols(Todo.httpProtocol).maxDuration(10 minutes)
+  setUp(searchScenarioOpen).protocols(Todo.httpProtocol).maxDuration(2 minutes)
 }
 
