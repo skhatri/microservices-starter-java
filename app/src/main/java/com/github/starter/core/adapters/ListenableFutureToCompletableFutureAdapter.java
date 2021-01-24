@@ -4,7 +4,6 @@ import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.MoreExecutors;
-import org.checkerframework.checker.nullness.compatqual.NullableDecl;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
@@ -27,7 +26,7 @@ public class ListenableFutureToCompletableFutureAdapter<T> {
 
         Futures.addCallback(listenableFuture, new FutureCallback<T>() {
             @Override
-            public void onSuccess(@NullableDecl T result) {
+            public void onSuccess(T result) {
                 completionStage.complete(result);
             }
 

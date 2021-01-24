@@ -8,10 +8,19 @@
             <JsonLayout complete="true" compact="false">
             </JsonLayout>
         </Console>
+        <RollingFile name="rolling-file" fileName="logs/app.log" filePattern="logs/app-%d{MM-dd-yyyy}.log.gz"
+                     ignoreExceptions="false">
+            <JsonLayout complete="true" compact="true">
+            </JsonLayout>
+<!--            <PatternLayout>-->
+<!--                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>-->
+<!--            </PatternLayout>-->
+            <SizeBasedTriggeringPolicy size="10MB" />
+        </RollingFile>
     </Appenders>
     <Loggers>
         <Root level="INFO" additivity="false">
-            <AppenderRef ref="console" />
+            <AppenderRef ref="rolling-file" />
         </Root>
     </Loggers>
 </Configuration>

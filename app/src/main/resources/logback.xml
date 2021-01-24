@@ -1,0 +1,28 @@
+<configuration>
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+            <customFields>{"app_name":"microservices-starter-java"}</customFields>
+        </encoder>
+    </appender>
+
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/app.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <maxHistory>2</maxHistory>
+            <maxFileSize>5MB</maxFileSize>
+            <fileNamePattern>logs/app-%d{yyyy-MM}.%i.log</fileNamePattern>
+        </rollingPolicy>
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+
+        </encoder>
+    </appender>
+    <logger name="org.springframework" level="WARN"/>
+    <logger name="org.apache" level="ERROR"/>
+    <logger name="io.netty" level="WARN"/>
+    <logger name="ch.qos.logback" level="WARN"/>
+    <logger name="com.github" level="INFO"/>
+
+    <root level="INFO">
+        <appender-ref ref="FILE"/>
+    </root>
+</configuration>

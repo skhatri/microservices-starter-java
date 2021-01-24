@@ -1,4 +1,4 @@
-# microservices-starte
+# microservices-starter-java
 Microservices Starter Project with Reactive, Reactive DB Driver, Gradle Kotlin DSL, Checkstyle, Coverage, SonarQube, gRPC, EnvoyProxy and Grafana dashboards
 
 [![Build](https://travis-ci.com/skhatri/microservices-starter-java.svg?branch=master)](https://travis-ci.com/github/skhatri/microservices-starter-java)
@@ -47,12 +47,6 @@ Publish results using
 
 ```
 snyk monitor --all-sub-projects
-```
-
-### container
-build image using
-```
-gradle jib 
 ```
 
 ### grpc

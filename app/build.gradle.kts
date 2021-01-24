@@ -1,16 +1,18 @@
 import com.google.protobuf.gradle.*
 import org.gradle.kotlin.dsl.provider.gradleKotlinDslOf
 
+val grpcVersion = "1.31.0"
+val jupiterVersion = "5.6.3"
+val junitPlatformVersion = "1.6.3"
+
 plugins {
-    id("org.springframework.boot") version "2.2.5.RELEASE"
+    id("org.springframework.boot") version "2.3.8.RELEASE"
     id("io.spring.dependency-management") version "1.0.9.RELEASE"
     id("org.sonarqube") version "2.8"
     id("jacoco")
-    id("com.google.cloud.tools.jib") version "2.1.0"
     id("com.google.protobuf") version "0.8.12"
-
+    id("org.owasp.dependencycheck") version "6.0.5"
 }
-val grpcVersion = "1.30.2"
 
 java {
     sourceCompatibility = JavaVersion.VERSION_11
@@ -59,7 +61,8 @@ dependencies {
     listOf(
             "spring-boot-starter-webflux",
             "spring-boot-starter-${project.ext["server.type"]}",
-            "spring-boot-starter"
+            "spring-boot-starter",
+            "spring-boot-starter-actuator"
     ).forEach { name ->
         implementation("org.springframework.boot:${name}") {
             exclude(module = "spring-boot-starter-logging")
@@ -77,14 +80,17 @@ dependencies {
         implementation("org.eclipse.jetty.http2:http2-server:9.4.27.v20200227")
     }
 
-    implementation("org.springframework.boot:spring-boot-starter-log4j2")
+    implementation("org.springframework.boot:spring-boot-starter-logging")
+    implementation("net.logstash.logback:logstash-logback-encoder:6.6")
 
+    implementation("io.micrometer:micrometer-registry-datadog:1.6.3")
+    implementation("io.micrometer:micrometer-registry-prometheus:1.6.3")
     implementation("io.projectreactor.addons:reactor-adapter:3.3.2.RELEASE")
     implementation("org.yaml:snakeyaml:1.26")
-    implementation("io.r2dbc:r2dbc-spi:0.8.1.RELEASE")
-    implementation("io.r2dbc:r2dbc-postgresql:0.8.1.RELEASE")
-    implementation("io.r2dbc:r2dbc-h2:0.8.1.RELEASE")
-    implementation("org.springframework.data:spring-data-r2dbc:1.0.0.RELEASE")
+    implementation("io.r2dbc:r2dbc-spi:0.8.3.RELEASE")
+    implementation("io.r2dbc:r2dbc-postgresql:0.8.3.RELEASE")
+    implementation("io.r2dbc:r2dbc-h2:0.8.3.RELEASE")
+    implementation("org.springframework.data:spring-data-r2dbc:1.2.3")
     implementation("io.github.skhatri:mounted-secrets-client:0.2.5")
 
     implementation("com.google.protobuf:protobuf-java:3.12.2")
@@ -106,18 +112,18 @@ dependencies {
     testImplementation("io.projectreactor:reactor-test:3.3.2.RELEASE")
     testImplementation("org.mockito:mockito-core:3.3.3")
 
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.1")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.6.1")
-    testImplementation("org.junit.jupiter:junit-jupiter-params:5.6.1")
-    testRuntimeOnly("org.junit.vintage:junit-vintage-engine:5.6.1")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:$jupiterVersion")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$jupiterVersion")
+    testImplementation("org.junit.jupiter:junit-jupiter-params:$jupiterVersion")
+    testRuntimeOnly("org.junit.vintage:junit-vintage-engine:$jupiterVersion")
 
-    testImplementation("org.junit.platform:junit-platform-commons:1.6.1")
-    testImplementation("org.junit.platform:junit-platform-runner:1.6.1")
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher:1.6.1")
-    testRuntimeOnly("org.junit.platform:junit-platform-engine:1.6.1")
-    testImplementation("org.testcontainers:testcontainers:1.13.0")
-    testImplementation("org.testcontainers:junit-jupiter:1.13.0")
-    testImplementation("org.testcontainers:postgresql:1.13.0")
+    testImplementation("org.junit.platform:junit-platform-commons:$junitPlatformVersion")
+    testImplementation("org.junit.platform:junit-platform-runner:$junitPlatformVersion")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher:$junitPlatformVersion")
+    testRuntimeOnly("org.junit.platform:junit-platform-engine:$junitPlatformVersion")
+    testImplementation("org.testcontainers:testcontainers:1.15.1")
+    testImplementation("org.testcontainers:junit-jupiter:1.15.1")
+    testImplementation("org.testcontainers:postgresql:1.15.1")
 
 }
 
@@ -194,19 +200,4 @@ task("runApp", JavaExec::class) {
     jvmArgs = listOf(
             "-Xms512m", "-Xmx512m"
     )
-}
-
-jib {
-    to {
-        image = project.ext["image.name"] as String
-    }
-    container {
-        labels = mapOf(
-             "lang" to "java",
-             "vm" to "java11",
-             "group" to "com.github.starter",
-             "artifact" to "microservices-starter-java"
-        )
-    }
-
 }

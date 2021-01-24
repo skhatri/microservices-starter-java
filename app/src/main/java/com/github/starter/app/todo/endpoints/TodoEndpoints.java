@@ -32,7 +32,7 @@ public class TodoEndpoints {
         this.serviceFactory = serviceFactory;
     }
 
-    @GetMapping("/{mode}/search")
+    @GetMapping("/{mode}/")
     public Mono<Container<List<TodoTask>>> list(@PathVariable("mode") String mode,
                                                 @RequestParam(value = "created", required = false, defaultValue = "") String created,
                                                 @RequestParam(value = "action_by", required = false, defaultValue = "")String actionBy,
