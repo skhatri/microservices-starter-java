@@ -1,0 +1,94 @@
+flags:
+  log.parameters: false
+  log.requests: true
+  use:
+    ssl: false
+    http2: false
+    jdbc: true
+    h2: true
+    postgres: false
+    grpc: false
+  default-jdbc-client: "${JDBC_CLIENT_NAME:default-jdbc-client-h2}"
+
+server.ssl:
+  key-store: classpath:server.p12
+  key-store-password: test123
+  key-password: test123
+  keystoreType: PKCS12
+  enabled: ${flags.use.ssl}
+
+server:
+  http2:
+    enabled: ${flags.use.http2}
+
+grpc:
+  port: 8100
+
+server.error.whitelabel.enabled: false
+
+
+management:
+  metrics:
+    use-global-registry: true
+    export:
+      datadog:
+        step: 30s
+        api-key: "${DATADOG_TOKEN:abcdef}"
+        enabled: true
+        host-tag: "microservices-starter-java"
+    enable.jvm: true
+    enable.all: true
+  endpoints:
+    enabled: true
+    web:
+      exposure:
+        include: info,health,prometheus,metrics
+      base-path: /actuator
+      cors:
+        allowed-origins: http://localhost
+        allowed-methods: GET,POST
+
+
+secrets:
+  enabled: true
+  config:
+    key-error-decision: "identity"
+    providers:
+      - name: vault
+        mount: "${SECRETS_LOCATION:/vault/secrets}"
+        key: "${KEY_FILE:/tmp/key}"
+        #if default is not set at entry level, fail, empty, identity
+        error-decision: empty
+        #additional entries in one file
+        entries-location: "${PROPERTIES_LOCATION:/vault/others.properties}"
+        ignore-resource-failure: true
+
+
+datasource.jdbc:
+  enabled: ${flags.use.jdbc}
+  ref:
+    - name: default-jdbc-client-h2
+      driver: h2
+      username: sa
+      password: "secret::vault::h2_password:-"
+      protocol: mem
+      database: "testdb"
+      enabled: ${flags.use.h2}
+      load: "h2"
+
+    - name: h2-1
+      driver: h2
+      username: sa
+      password: "secret::vault::h2_password:-"
+      protocol: mem
+      database: "testdb2"
+      enabled: ${flags.use.h2}
+
+    - name: default-jdbc-client-pg
+      driver: postgresql
+      username: "secret::vault::postgres_username:-todo_admin"
+      password: "secret::vault::postgres_password:-password"
+      host: ${POSTGRES_HOST:postgres}
+      port: ${POSTGRES_PORT:5432}
+      database: todo
+      enabled: ${flags.use.postgres}
