@@ -2,7 +2,7 @@ flags:
   log.parameters: false
   log.requests: true
   use:
-    ssl: false
+    ssl: true
     http2: false
     jdbc: true
     h2: true
@@ -34,8 +34,9 @@ management:
       datadog:
         step: 30s
         api-key: "${DATADOG_TOKEN:abcdef}"
-        enabled: true
+        enabled: false
         host-tag: "microservices-starter-java"
+
     enable.jvm: true
     enable.all: true
   endpoints:

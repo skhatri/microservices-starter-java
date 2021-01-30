@@ -32,9 +32,10 @@ public class DefaultTodoService implements TodoService {
                 .setCreated(searchRequest.getCreated())
                 .setStatus(searchRequest.getStatus())
                 .setActionBy(searchRequest.getActionBy())
-            .build()
+                .build()
         ).map(tasks -> tasks.stream().map(TodoTasks::todoToTodoTask).collect(Collectors.toList()));
     }
+
 
     @Override
     public Mono<TodoTask> findById(String id) {

@@ -4,6 +4,8 @@ import com.github.starter.app.todo.model.SearchRequest;
 import com.github.starter.app.todo.model.TodoTask;
 import com.github.starter.app.todo.service.TodoServiceFactory;
 import com.github.starter.core.container.Container;
+import io.micrometer.core.annotation.Counted;
+import io.micrometer.core.annotation.Timed;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -42,11 +44,13 @@ public class TodoEndpoints {
     }
 
     @GetMapping("/{mode}/{id}")
+    @Counted(recordFailuresOnly = false, description = "find by id")
     public Mono<Container<TodoTask>> get(@PathVariable("mode") String mode, @PathVariable("id") String id) {
         return serviceFactory.findHandler(mode).findById(id).map(Container::new);
     }
 
     @PostMapping(value = "/{mode}/", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @Timed(description = "save time")
     public Mono<Container<TodoTask>> add(@PathVariable("mode") String mode, @RequestBody TodoTask todoTask) {
         return serviceFactory.findHandler(mode).save(todoTask).map(Container::new);
     }

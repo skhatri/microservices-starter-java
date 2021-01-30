@@ -7,7 +7,9 @@ import reactor.core.publisher.Mono;
 import java.util.List;
 
 public interface TodoService {
+
     Mono<List<TodoTask>> listItems(SearchRequest searchRequest);
+
 
     Mono<TodoTask> findById(String id);
 

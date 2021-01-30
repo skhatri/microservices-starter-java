@@ -62,7 +62,8 @@ dependencies {
             "spring-boot-starter-webflux",
             "spring-boot-starter-${project.ext["server.type"]}",
             "spring-boot-starter",
-            "spring-boot-starter-actuator"
+            "spring-boot-starter-actuator",
+            "spring-boot-starter-aop"
     ).forEach { name ->
         implementation("org.springframework.boot:${name}") {
             exclude(module = "spring-boot-starter-logging")
@@ -83,7 +84,6 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-logging")
     implementation("net.logstash.logback:logstash-logback-encoder:6.6")
 
-    implementation("io.micrometer:micrometer-registry-datadog:1.6.3")
     implementation("io.micrometer:micrometer-registry-prometheus:1.6.3")
     implementation("io.projectreactor.addons:reactor-adapter:3.3.2.RELEASE")
     implementation("org.yaml:snakeyaml:1.26")

@@ -23,6 +23,6 @@
     <logger name="com.github" level="INFO"/>
 
     <root level="INFO">
-        <appender-ref ref="FILE"/>
+        <appender-ref ref="CONSOLE"/>
     </root>
 </configuration>

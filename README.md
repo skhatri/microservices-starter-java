@@ -54,4 +54,15 @@ Grpc server for Todo runs on port 8100. Rest Endpoint /todo/ can be made to forw
 The forwarding of REST request to gRPC is done for illustration purpose.
 
 
+### build docker
+A jar for each web engines is packed into the generated docker image. Pass environment variable ENGINE to activate one.
+
+```
+#build
+./scripts/pack/builder.sh
+
+#run
+docker run -e ENGINE=reactor-netty --cpus 1.0 -m 756m -p 8080:8080 -it starter-java:latest
+docker run -e ENGINE=undertow --cpus 1.0 -m 756m -p 8080:8080 -it starter-java:latest 
+```
 

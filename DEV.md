@@ -22,7 +22,7 @@ java -jar app/build/libs/app.jar
 
 ### Accessing App
 ```
-open http://localhost:8080/todo/default/search
+open http://localhost:8080/todo/default/
 ```
 
 #### Enable this flag when enabling SSL and HTTP/2
@@ -71,8 +71,8 @@ docker run -p 8080:8080 -e ENGINE=undertow -d starter-java:latest
 ```
 brew install nghttp2
 #http1.1
-h2load --h1 -c50 -m20 --duration=120 --warm-up-time=5 http://localhost:8080/todo/default/search
-h2load -c50 -m20 --duration=120 --warm-up-time=5 https://localhost:8080/todo/default/search
+h2load --h1 -c50 -m20 --duration=120 --warm-up-time=5 http://localhost:8080/todo/default/
+h2load -c50 -m20 --duration=120 --warm-up-time=5 https://localhost:8080/todo/default/
 ```
 
 Unmonitored Time-based testing can be done using ```scripts/pack/time-based-test.sh```
@@ -80,9 +80,9 @@ Unmonitored Time-based testing can be done using ```scripts/pack/time-based-test
 ### Request Load Testing
 ```
 #http1.1
-h2load --h1 -n400000 -c100 -m1 http://localhost:8080/todo/default/search
+h2load --h1 -n400000 -c100 -m1 http://localhost:8080/todo/default/
 #http2
-h2load -n400000 -c50 -m20 https://localhost:8080/todo/default/search
+h2load -n400000 -c50 -m20 https://localhost:8080/todo/default/
 ```
 
 ### Testing Grpc Endpoints
@@ -128,10 +128,10 @@ docker-compose ps
 
 #### Testing REST endpoints using direct app host port
 ```
-curl --http2 -H"Content-Type:application/json" http://todo:8080/todo/default/search -v
-curl --http1.1 -H"Content-Type:application/json" http://todo:8080/todo/default/search -v
-curl --http2 -H"Content-Type:application/json" http://todo:8080/todo/grpc/search -v
-curl --http1.1 -H"Content-Type:application/json" http://todo:8080/todo/grpc/search -v
+curl --http2 -H"Content-Type:application/json" http://todo:8080/todo/default/ -v
+curl --http1.1 -H"Content-Type:application/json" http://todo:8080/todo/default/ -v
+curl --http2 -H"Content-Type:application/json" http://todo:8080/todo/grpc/ -v
+curl --http1.1 -H"Content-Type:application/json" http://todo:8080/todo/grpc/ -v
 ```
 
 #### Testing gRPC endpoints using direct app host port

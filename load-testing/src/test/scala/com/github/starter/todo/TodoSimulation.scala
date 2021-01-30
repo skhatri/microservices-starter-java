@@ -110,19 +110,22 @@ class TodoSimulation extends Simulation {
 
   val searchScenario = scenario("Todo Search").during(2 minutes) {
     exec(Todo.search)
+      .pause(3 seconds, 5 seconds)
   }
   val addScenario = scenario("Todo Add").during(2 minutes) {
     exec(Todo.add)
+      .pause(3 seconds, 7 seconds)
   }
 
   val editScenario = scenario("Todo Edit").during(1 minutes) {
     exec(Todo.edit)
+      .pause(3 seconds, 7 seconds)
   }
 
   setUp(
-    searchScenario.inject(rampUsers(20) during (10 seconds)),
-    addScenario.inject(atOnceUsers(4)),
-    editScenario.inject(nothingFor(10 seconds), rampUsers(2) during (10 seconds))
+    searchScenario.inject(constantConcurrentUsers(20) during (10 seconds)),
+    addScenario.inject(constantConcurrentUsers(20) during (10 seconds)),
+    editScenario.inject(constantConcurrentUsers(2) during (10 seconds))
   ).protocols(Todo.httpProtocol).maxDuration(2 minutes)
 }
 
