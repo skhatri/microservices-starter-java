@@ -2,6 +2,7 @@ package com.github.starter.core.advice;
 
 import com.github.starter.core.container.MessageItem;
 import com.github.starter.core.exception.ApiException;
+import org.springframework.boot.web.error.ErrorAttributeOptions;
 import org.springframework.boot.web.reactive.error.DefaultErrorAttributes;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
@@ -14,8 +15,8 @@ public final class CustomErrorAttributes extends DefaultErrorAttributes {
     private static final String STATUS_KEY = "status";
 
     @Override
-    public Map<String, Object> getErrorAttributes(ServerRequest request, boolean includeStackTrace) {
-        Map<String, Object> errorMap = super.getErrorAttributes(request, includeStackTrace);
+    public Map<String, Object> getErrorAttributes(ServerRequest request, ErrorAttributeOptions options) {
+        Map<String, Object> errorMap = super.getErrorAttributes(request, options);
         Throwable exception = getError(request);
         MessageItem.Builder builder = new MessageItem.Builder();
         builder.withDetailItem("path", request.exchange().getRequest().getPath().toString());

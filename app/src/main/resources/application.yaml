@@ -85,11 +85,3 @@ datasource.jdbc:
       database: "testdb2"
       enabled: ${flags.use.h2}
 
-    - name: default-jdbc-client-pg
-      driver: postgresql
-      username: "secret::vault::postgres_username:-todo_admin"
-      password: "secret::vault::postgres_password:-password"
-      host: ${POSTGRES_HOST:postgres}
-      port: ${POSTGRES_PORT:5432}
-      database: todo
-      enabled: ${flags.use.postgres}

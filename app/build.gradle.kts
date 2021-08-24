@@ -2,11 +2,11 @@ import com.google.protobuf.gradle.*
 import org.gradle.kotlin.dsl.provider.gradleKotlinDslOf
 
 val grpcVersion = "1.31.0"
-val jupiterVersion = "5.6.3"
-val junitPlatformVersion = "1.6.3"
+val jupiterVersion = "5.7.1"
+val junitPlatformVersion = "1.7.1"
 
 plugins {
-    id("org.springframework.boot") version "2.3.8.RELEASE"
+    id("org.springframework.boot") version "2.5.3"
     id("io.spring.dependency-management") version "1.0.9.RELEASE"
     id("org.sonarqube") version "2.8"
     id("jacoco")
@@ -121,9 +121,9 @@ dependencies {
     testImplementation("org.junit.platform:junit-platform-runner:$junitPlatformVersion")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher:$junitPlatformVersion")
     testRuntimeOnly("org.junit.platform:junit-platform-engine:$junitPlatformVersion")
-    testImplementation("org.testcontainers:testcontainers:1.15.1")
-    testImplementation("org.testcontainers:junit-jupiter:1.15.1")
-    testImplementation("org.testcontainers:postgresql:1.15.1")
+    testImplementation("org.testcontainers:testcontainers:1.16.0")
+    testImplementation("org.testcontainers:junit-jupiter:1.16.0")
+    testImplementation("org.testcontainers:postgresql:1.16.0")
 
 }
 
@@ -139,7 +139,7 @@ sonarqube {
         property("sonar.projectVersion", "${project.version}")
         property("sonar.junit.reportPaths", "${projectDir}/build/test-results/test")
         property("sonar.coverage.jacoco.xmlReportPaths", "${projectDir}/build/reports/jacoco/test/jacocoTestReport.xml")
-        property("sonar.coverage.exclusions", "**/R.java")
+        property("sonar.coverage.exclusions", "**/R.java,**/proto/*.java")
     }
 }
 
