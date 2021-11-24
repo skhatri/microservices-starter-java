@@ -19,61 +19,73 @@ public final class Todos {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
+     * @return The id.
      */
     java.lang.String getId();
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
+     * @return The bytes for id.
      */
     com.google.protobuf.ByteString
         getIdBytes();
 
     /**
-     * <code>optional string description = 2;</code>
+     * <code>string description = 2;</code>
+     * @return The description.
      */
     java.lang.String getDescription();
     /**
-     * <code>optional string description = 2;</code>
+     * <code>string description = 2;</code>
+     * @return The bytes for description.
      */
     com.google.protobuf.ByteString
         getDescriptionBytes();
 
     /**
-     * <code>optional string created = 3;</code>
+     * <code>string created = 3;</code>
+     * @return The created.
      */
     java.lang.String getCreated();
     /**
-     * <code>optional string created = 3;</code>
+     * <code>string created = 3;</code>
+     * @return The bytes for created.
      */
     com.google.protobuf.ByteString
         getCreatedBytes();
 
     /**
-     * <code>optional string action_by = 4;</code>
+     * <code>string action_by = 4;</code>
+     * @return The actionBy.
      */
     java.lang.String getActionBy();
     /**
-     * <code>optional string action_by = 4;</code>
+     * <code>string action_by = 4;</code>
+     * @return The bytes for actionBy.
      */
     com.google.protobuf.ByteString
         getActionByBytes();
 
     /**
-     * <code>optional string status = 5;</code>
+     * <code>string status = 5;</code>
+     * @return The status.
      */
     java.lang.String getStatus();
     /**
-     * <code>optional string status = 5;</code>
+     * <code>string status = 5;</code>
+     * @return The bytes for status.
      */
     com.google.protobuf.ByteString
         getStatusBytes();
 
     /**
-     * <code>optional string updated = 6;</code>
+     * <code>string updated = 6;</code>
+     * @return The updated.
      */
     java.lang.String getUpdated();
     /**
-     * <code>optional string updated = 6;</code>
+     * <code>string updated = 6;</code>
+     * @return The bytes for updated.
      */
     com.google.protobuf.ByteString
         getUpdatedBytes();
@@ -81,10 +93,11 @@ public final class Todos {
   /**
    * Protobuf type {@code todo.Todo}
    */
-  public  static final class Todo extends
+  public static final class Todo extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:todo.Todo)
       TodoOrBuilder {
+  private static final long serialVersionUID = 0L;
     // Use Todo.newBuilder() to construct.
     private Todo(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -99,16 +112,27 @@ public final class Todos {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new Todo();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+      return this.unknownFields;
     }
     private Todo(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
-      int mutable_bitField0_ = 0;
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -117,12 +141,6 @@ public final class Todos {
             case 0:
               done = true;
               break;
-            default: {
-              if (!input.skipField(tag)) {
-                done = true;
-              }
-              break;
-            }
             case 10: {
               java.lang.String s = input.readStringRequireUtf8();
 
@@ -159,6 +177,13 @@ public final class Todos {
               updated_ = s;
               break;
             }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -167,6 +192,7 @@ public final class Todos {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -175,6 +201,7 @@ public final class Todos {
       return com.github.starter.proto.Todos.internal_static_todo_Todo_descriptor;
     }
 
+    @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return com.github.starter.proto.Todos.internal_static_todo_Todo_fieldAccessorTable
@@ -185,8 +212,10 @@ public final class Todos {
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
+     * @return The id.
      */
+    @java.lang.Override
     public java.lang.String getId() {
       java.lang.Object ref = id_;
       if (ref instanceof java.lang.String) {
@@ -200,8 +229,10 @@ public final class Todos {
       }
     }
     /**
-     * <code>optional string id = 1;</code>
+     * <code>string id = 1;</code>
+     * @return The bytes for id.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getIdBytes() {
       java.lang.Object ref = id_;
@@ -219,8 +250,10 @@ public final class Todos {
     public static final int DESCRIPTION_FIELD_NUMBER = 2;
     private volatile java.lang.Object description_;
     /**
-     * <code>optional string description = 2;</code>
+     * <code>string description = 2;</code>
+     * @return The description.
      */
+    @java.lang.Override
     public java.lang.String getDescription() {
       java.lang.Object ref = description_;
       if (ref instanceof java.lang.String) {
@@ -234,8 +267,10 @@ public final class Todos {
       }
     }
     /**
-     * <code>optional string description = 2;</code>
+     * <code>string description = 2;</code>
+     * @return The bytes for description.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getDescriptionBytes() {
       java.lang.Object ref = description_;
@@ -253,8 +288,10 @@ public final class Todos {
     public static final int CREATED_FIELD_NUMBER = 3;
     private volatile java.lang.Object created_;
     /**
-     * <code>optional string created = 3;</code>
+     * <code>string created = 3;</code>
+     * @return The created.
      */
+    @java.lang.Override
     public java.lang.String getCreated() {
       java.lang.Object ref = created_;
       if (ref instanceof java.lang.String) {
@@ -268,8 +305,10 @@ public final class Todos {
       }
     }
     /**
-     * <code>optional string created = 3;</code>
+     * <code>string created = 3;</code>
+     * @return The bytes for created.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getCreatedBytes() {
       java.lang.Object ref = created_;
@@ -287,8 +326,10 @@ public final class Todos {
     public static final int ACTION_BY_FIELD_NUMBER = 4;
     private volatile java.lang.Object actionBy_;
     /**
-     * <code>optional string action_by = 4;</code>
+     * <code>string action_by = 4;</code>
+     * @return The actionBy.
      */
+    @java.lang.Override
     public java.lang.String getActionBy() {
       java.lang.Object ref = actionBy_;
       if (ref instanceof java.lang.String) {
@@ -302,8 +343,10 @@ public final class Todos {
       }
     }
     /**
-     * <code>optional string action_by = 4;</code>
+     * <code>string action_by = 4;</code>
+     * @return The bytes for actionBy.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getActionByBytes() {
       java.lang.Object ref = actionBy_;
@@ -321,8 +364,10 @@ public final class Todos {
     public static final int STATUS_FIELD_NUMBER = 5;
     private volatile java.lang.Object status_;
     /**
-     * <code>optional string status = 5;</code>
+     * <code>string status = 5;</code>
+     * @return The status.
      */
+    @java.lang.Override
     public java.lang.String getStatus() {
       java.lang.Object ref = status_;
       if (ref instanceof java.lang.String) {
@@ -336,8 +381,10 @@ public final class Todos {
       }
     }
     /**
-     * <code>optional string status = 5;</code>
+     * <code>string status = 5;</code>
+     * @return The bytes for status.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getStatusBytes() {
       java.lang.Object ref = status_;
@@ -355,8 +402,10 @@ public final class Todos {
     public static final int UPDATED_FIELD_NUMBER = 6;
     private volatile java.lang.Object updated_;
     /**
-     * <code>optional string updated = 6;</code>
+     * <code>string updated = 6;</code>
+     * @return The updated.
      */
+    @java.lang.Override
     public java.lang.String getUpdated() {
       java.lang.Object ref = updated_;
       if (ref instanceof java.lang.String) {
@@ -370,8 +419,10 @@ public final class Todos {
       }
     }
     /**
-     * <code>optional string updated = 6;</code>
+     * <code>string updated = 6;</code>
+     * @return The bytes for updated.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getUpdatedBytes() {
       java.lang.Object ref = updated_;
@@ -387,6 +438,7 @@ public final class Todos {
     }
 
     private byte memoizedIsInitialized = -1;
+    @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
@@ -396,56 +448,59 @@ public final class Todos {
       return true;
     }
 
+    @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getIdBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(id_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
       }
-      if (!getDescriptionBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(description_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, description_);
       }
-      if (!getCreatedBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(created_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 3, created_);
       }
-      if (!getActionByBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(actionBy_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 4, actionBy_);
       }
-      if (!getStatusBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(status_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 5, status_);
       }
-      if (!getUpdatedBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(updated_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 6, updated_);
       }
+      unknownFields.writeTo(output);
     }
 
+    @java.lang.Override
     public int getSerializedSize() {
       int size = memoizedSize;
       if (size != -1) return size;
 
       size = 0;
-      if (!getIdBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(id_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
       }
-      if (!getDescriptionBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(description_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, description_);
       }
-      if (!getCreatedBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(created_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, created_);
       }
-      if (!getActionByBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(actionBy_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, actionBy_);
       }
-      if (!getStatusBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(status_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, status_);
       }
-      if (!getUpdatedBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(updated_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, updated_);
       }
+      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
@@ -456,20 +511,20 @@ public final class Todos {
       }
       com.github.starter.proto.Todos.Todo other = (com.github.starter.proto.Todos.Todo) obj;
 
-      boolean result = true;
-      result = result && getId()
-          .equals(other.getId());
-      result = result && getDescription()
-          .equals(other.getDescription());
-      result = result && getCreated()
-          .equals(other.getCreated());
-      result = result && getActionBy()
-          .equals(other.getActionBy());
-      result = result && getStatus()
-          .equals(other.getStatus());
-      result = result && getUpdated()
-          .equals(other.getUpdated());
-      return result;
+      if (!getId()
+          .equals(other.getId())) return false;
+      if (!getDescription()
+          .equals(other.getDescription())) return false;
+      if (!getCreated()
+          .equals(other.getCreated())) return false;
+      if (!getActionBy()
+          .equals(other.getActionBy())) return false;
+      if (!getStatus()
+          .equals(other.getStatus())) return false;
+      if (!getUpdated()
+          .equals(other.getUpdated())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -478,7 +533,7 @@ public final class Todos {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId().hashCode();
       hash = (37 * hash) + DESCRIPTION_FIELD_NUMBER;
@@ -496,6 +551,17 @@ public final class Todos {
       return hash;
     }
 
+    public static com.github.starter.proto.Todos.Todo parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.github.starter.proto.Todos.Todo parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static com.github.starter.proto.Todos.Todo parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -555,6 +621,7 @@ public final class Todos {
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
+    @java.lang.Override
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
@@ -562,6 +629,7 @@ public final class Todos {
     public static Builder newBuilder(com.github.starter.proto.Todos.Todo prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+    @java.lang.Override
     public Builder toBuilder() {
       return this == DEFAULT_INSTANCE
           ? new Builder() : new Builder().mergeFrom(this);
@@ -585,6 +653,7 @@ public final class Todos {
         return com.github.starter.proto.Todos.internal_static_todo_Todo_descriptor;
       }
 
+      @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return com.github.starter.proto.Todos.internal_static_todo_Todo_fieldAccessorTable
@@ -607,6 +676,7 @@ public final class Todos {
                 .alwaysUseFieldBuilders) {
         }
       }
+      @java.lang.Override
       public Builder clear() {
         super.clear();
         id_ = "";
@@ -624,15 +694,18 @@ public final class Todos {
         return this;
       }
 
+      @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return com.github.starter.proto.Todos.internal_static_todo_Todo_descriptor;
       }
 
+      @java.lang.Override
       public com.github.starter.proto.Todos.Todo getDefaultInstanceForType() {
         return com.github.starter.proto.Todos.Todo.getDefaultInstance();
       }
 
+      @java.lang.Override
       public com.github.starter.proto.Todos.Todo build() {
         com.github.starter.proto.Todos.Todo result = buildPartial();
         if (!result.isInitialized()) {
@@ -641,6 +714,7 @@ public final class Todos {
         return result;
       }
 
+      @java.lang.Override
       public com.github.starter.proto.Todos.Todo buildPartial() {
         com.github.starter.proto.Todos.Todo result = new com.github.starter.proto.Todos.Todo(this);
         result.id_ = id_;
@@ -653,32 +727,39 @@ public final class Todos {
         return result;
       }
 
+      @java.lang.Override
       public Builder clone() {
-        return (Builder) super.clone();
+        return super.clone();
       }
+      @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.setField(field, value);
+          java.lang.Object value) {
+        return super.setField(field, value);
       }
+      @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
+        return super.clearField(field);
       }
+      @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
+        return super.clearOneof(oneof);
       }
+      @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
       }
+      @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.addRepeatedField(field, value);
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
       }
+      @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.github.starter.proto.Todos.Todo) {
           return mergeFrom((com.github.starter.proto.Todos.Todo)other);
@@ -714,14 +795,17 @@ public final class Todos {
           updated_ = other.updated_;
           onChanged();
         }
+        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
 
+      @java.lang.Override
       public final boolean isInitialized() {
         return true;
       }
 
+      @java.lang.Override
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -742,7 +826,8 @@ public final class Todos {
 
       private java.lang.Object id_ = "";
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
+       * @return The id.
        */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
@@ -757,7 +842,8 @@ public final class Todos {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
+       * @return The bytes for id.
        */
       public com.google.protobuf.ByteString
           getIdBytes() {
@@ -773,7 +859,9 @@ public final class Todos {
         }
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
+       * @param value The id to set.
+       * @return This builder for chaining.
        */
       public Builder setId(
           java.lang.String value) {
@@ -786,7 +874,8 @@ public final class Todos {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearId() {
         
@@ -795,7 +884,9 @@ public final class Todos {
         return this;
       }
       /**
-       * <code>optional string id = 1;</code>
+       * <code>string id = 1;</code>
+       * @param value The bytes for id to set.
+       * @return This builder for chaining.
        */
       public Builder setIdBytes(
           com.google.protobuf.ByteString value) {
@@ -811,7 +902,8 @@ public final class Todos {
 
       private java.lang.Object description_ = "";
       /**
-       * <code>optional string description = 2;</code>
+       * <code>string description = 2;</code>
+       * @return The description.
        */
       public java.lang.String getDescription() {
         java.lang.Object ref = description_;
@@ -826,7 +918,8 @@ public final class Todos {
         }
       }
       /**
-       * <code>optional string description = 2;</code>
+       * <code>string description = 2;</code>
+       * @return The bytes for description.
        */
       public com.google.protobuf.ByteString
           getDescriptionBytes() {
@@ -842,7 +935,9 @@ public final class Todos {
         }
       }
       /**
-       * <code>optional string description = 2;</code>
+       * <code>string description = 2;</code>
+       * @param value The description to set.
+       * @return This builder for chaining.
        */
       public Builder setDescription(
           java.lang.String value) {
@@ -855,7 +950,8 @@ public final class Todos {
         return this;
       }
       /**
-       * <code>optional string description = 2;</code>
+       * <code>string description = 2;</code>
+       * @return This builder for chaining.
        */
       public Builder clearDescription() {
         
@@ -864,7 +960,9 @@ public final class Todos {
         return this;
       }
       /**
-       * <code>optional string description = 2;</code>
+       * <code>string description = 2;</code>
+       * @param value The bytes for description to set.
+       * @return This builder for chaining.
        */
       public Builder setDescriptionBytes(
           com.google.protobuf.ByteString value) {
@@ -880,7 +978,8 @@ public final class Todos {
 
       private java.lang.Object created_ = "";
       /**
-       * <code>optional string created = 3;</code>
+       * <code>string created = 3;</code>
+       * @return The created.
        */
       public java.lang.String getCreated() {
         java.lang.Object ref = created_;
@@ -895,7 +994,8 @@ public final class Todos {
         }
       }
       /**
-       * <code>optional string created = 3;</code>
+       * <code>string created = 3;</code>
+       * @return The bytes for created.
        */
       public com.google.protobuf.ByteString
           getCreatedBytes() {
@@ -911,7 +1011,9 @@ public final class Todos {
         }
       }
       /**
-       * <code>optional string created = 3;</code>
+       * <code>string created = 3;</code>
+       * @param value The created to set.
+       * @return This builder for chaining.
        */
       public Builder setCreated(
           java.lang.String value) {
@@ -924,7 +1026,8 @@ public final class Todos {
         return this;
       }
       /**
-       * <code>optional string created = 3;</code>
+       * <code>string created = 3;</code>
+       * @return This builder for chaining.
        */
       public Builder clearCreated() {
         
@@ -933,7 +1036,9 @@ public final class Todos {
         return this;
       }
       /**
-       * <code>optional string created = 3;</code>
+       * <code>string created = 3;</code>
+       * @param value The bytes for created to set.
+       * @return This builder for chaining.
        */
       public Builder setCreatedBytes(
           com.google.protobuf.ByteString value) {
@@ -949,7 +1054,8 @@ public final class Todos {
 
       private java.lang.Object actionBy_ = "";
       /**
-       * <code>optional string action_by = 4;</code>
+       * <code>string action_by = 4;</code>
+       * @return The actionBy.
        */
       public java.lang.String getActionBy() {
         java.lang.Object ref = actionBy_;
@@ -964,7 +1070,8 @@ public final class Todos {
         }
       }
       /**
-       * <code>optional string action_by = 4;</code>
+       * <code>string action_by = 4;</code>
+       * @return The bytes for actionBy.
        */
       public com.google.protobuf.ByteString
           getActionByBytes() {
@@ -980,7 +1087,9 @@ public final class Todos {
         }
       }
       /**
-       * <code>optional string action_by = 4;</code>
+       * <code>string action_by = 4;</code>
+       * @param value The actionBy to set.
+       * @return This builder for chaining.
        */
       public Builder setActionBy(
           java.lang.String value) {
@@ -993,7 +1102,8 @@ public final class Todos {
         return this;
       }
       /**
-       * <code>optional string action_by = 4;</code>
+       * <code>string action_by = 4;</code>
+       * @return This builder for chaining.
        */
       public Builder clearActionBy() {
         
@@ -1002,7 +1112,9 @@ public final class Todos {
         return this;
       }
       /**
-       * <code>optional string action_by = 4;</code>
+       * <code>string action_by = 4;</code>
+       * @param value The bytes for actionBy to set.
+       * @return This builder for chaining.
        */
       public Builder setActionByBytes(
           com.google.protobuf.ByteString value) {
@@ -1018,7 +1130,8 @@ public final class Todos {
 
       private java.lang.Object status_ = "";
       /**
-       * <code>optional string status = 5;</code>
+       * <code>string status = 5;</code>
+       * @return The status.
        */
       public java.lang.String getStatus() {
         java.lang.Object ref = status_;
@@ -1033,7 +1146,8 @@ public final class Todos {
         }
       }
       /**
-       * <code>optional string status = 5;</code>
+       * <code>string status = 5;</code>
+       * @return The bytes for status.
        */
       public com.google.protobuf.ByteString
           getStatusBytes() {
@@ -1049,7 +1163,9 @@ public final class Todos {
         }
       }
       /**
-       * <code>optional string status = 5;</code>
+       * <code>string status = 5;</code>
+       * @param value The status to set.
+       * @return This builder for chaining.
        */
       public Builder setStatus(
           java.lang.String value) {
@@ -1062,7 +1178,8 @@ public final class Todos {
         return this;
       }
       /**
-       * <code>optional string status = 5;</code>
+       * <code>string status = 5;</code>
+       * @return This builder for chaining.
        */
       public Builder clearStatus() {
         
@@ -1071,7 +1188,9 @@ public final class Todos {
         return this;
       }
       /**
-       * <code>optional string status = 5;</code>
+       * <code>string status = 5;</code>
+       * @param value The bytes for status to set.
+       * @return This builder for chaining.
        */
       public Builder setStatusBytes(
           com.google.protobuf.ByteString value) {
@@ -1087,7 +1206,8 @@ public final class Todos {
 
       private java.lang.Object updated_ = "";
       /**
-       * <code>optional string updated = 6;</code>
+       * <code>string updated = 6;</code>
+       * @return The updated.
        */
       public java.lang.String getUpdated() {
         java.lang.Object ref = updated_;
@@ -1102,7 +1222,8 @@ public final class Todos {
         }
       }
       /**
-       * <code>optional string updated = 6;</code>
+       * <code>string updated = 6;</code>
+       * @return The bytes for updated.
        */
       public com.google.protobuf.ByteString
           getUpdatedBytes() {
@@ -1118,7 +1239,9 @@ public final class Todos {
         }
       }
       /**
-       * <code>optional string updated = 6;</code>
+       * <code>string updated = 6;</code>
+       * @param value The updated to set.
+       * @return This builder for chaining.
        */
       public Builder setUpdated(
           java.lang.String value) {
@@ -1131,7 +1254,8 @@ public final class Todos {
         return this;
       }
       /**
-       * <code>optional string updated = 6;</code>
+       * <code>string updated = 6;</code>
+       * @return This builder for chaining.
        */
       public Builder clearUpdated() {
         
@@ -1140,7 +1264,9 @@ public final class Todos {
         return this;
       }
       /**
-       * <code>optional string updated = 6;</code>
+       * <code>string updated = 6;</code>
+       * @param value The bytes for updated to set.
+       * @return This builder for chaining.
        */
       public Builder setUpdatedBytes(
           com.google.protobuf.ByteString value) {
@@ -1153,14 +1279,16 @@ public final class Todos {
         onChanged();
         return this;
       }
+      @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.setUnknownFields(unknownFields);
       }
 
+      @java.lang.Override
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.mergeUnknownFields(unknownFields);
       }
 
 
@@ -1179,11 +1307,12 @@ public final class Todos {
 
     private static final com.google.protobuf.Parser<Todo>
         PARSER = new com.google.protobuf.AbstractParser<Todo>() {
+      @java.lang.Override
       public Todo parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-          return new Todo(input, extensionRegistry);
+        return new Todo(input, extensionRegistry);
       }
     };
 
@@ -1196,6 +1325,7 @@ public final class Todos {
       return PARSER;
     }
 
+    @java.lang.Override
     public com.github.starter.proto.Todos.Todo getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
@@ -1233,10 +1363,11 @@ public final class Todos {
   /**
    * Protobuf type {@code todo.TodoList}
    */
-  public  static final class TodoList extends
+  public static final class TodoList extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:todo.TodoList)
       TodoListOrBuilder {
+  private static final long serialVersionUID = 0L;
     // Use TodoList.newBuilder() to construct.
     private TodoList(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -1246,16 +1377,28 @@ public final class Todos {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new TodoList();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+      return this.unknownFields;
     }
     private TodoList(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
       int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -1264,19 +1407,20 @@ public final class Todos {
             case 0:
               done = true;
               break;
-            default: {
-              if (!input.skipField(tag)) {
-                done = true;
-              }
-              break;
-            }
             case 10: {
-              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
                 data_ = new java.util.ArrayList<com.github.starter.proto.Todos.Todo>();
                 mutable_bitField0_ |= 0x00000001;
               }
               data_.add(
                   input.readMessage(com.github.starter.proto.Todos.Todo.parser(), extensionRegistry));
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
               break;
             }
           }
@@ -1287,9 +1431,10 @@ public final class Todos {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
           data_ = java.util.Collections.unmodifiableList(data_);
         }
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -1298,6 +1443,7 @@ public final class Todos {
       return com.github.starter.proto.Todos.internal_static_todo_TodoList_descriptor;
     }
 
+    @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return com.github.starter.proto.Todos.internal_static_todo_TodoList_fieldAccessorTable
@@ -1310,12 +1456,14 @@ public final class Todos {
     /**
      * <code>repeated .todo.Todo data = 1;</code>
      */
+    @java.lang.Override
     public java.util.List<com.github.starter.proto.Todos.Todo> getDataList() {
       return data_;
     }
     /**
      * <code>repeated .todo.Todo data = 1;</code>
      */
+    @java.lang.Override
     public java.util.List<? extends com.github.starter.proto.Todos.TodoOrBuilder> 
         getDataOrBuilderList() {
       return data_;
@@ -1323,24 +1471,28 @@ public final class Todos {
     /**
      * <code>repeated .todo.Todo data = 1;</code>
      */
+    @java.lang.Override
     public int getDataCount() {
       return data_.size();
     }
     /**
      * <code>repeated .todo.Todo data = 1;</code>
      */
+    @java.lang.Override
     public com.github.starter.proto.Todos.Todo getData(int index) {
       return data_.get(index);
     }
     /**
      * <code>repeated .todo.Todo data = 1;</code>
      */
+    @java.lang.Override
     public com.github.starter.proto.Todos.TodoOrBuilder getDataOrBuilder(
         int index) {
       return data_.get(index);
     }
 
     private byte memoizedIsInitialized = -1;
+    @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
@@ -1350,13 +1502,16 @@ public final class Todos {
       return true;
     }
 
+    @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       for (int i = 0; i < data_.size(); i++) {
         output.writeMessage(1, data_.get(i));
       }
+      unknownFields.writeTo(output);
     }
 
+    @java.lang.Override
     public int getSerializedSize() {
       int size = memoizedSize;
       if (size != -1) return size;
@@ -1366,11 +1521,11 @@ public final class Todos {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, data_.get(i));
       }
+      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
@@ -1381,10 +1536,10 @@ public final class Todos {
       }
       com.github.starter.proto.Todos.TodoList other = (com.github.starter.proto.Todos.TodoList) obj;
 
-      boolean result = true;
-      result = result && getDataList()
-          .equals(other.getDataList());
-      return result;
+      if (!getDataList()
+          .equals(other.getDataList())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -1393,7 +1548,7 @@ public final class Todos {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       if (getDataCount() > 0) {
         hash = (37 * hash) + DATA_FIELD_NUMBER;
         hash = (53 * hash) + getDataList().hashCode();
@@ -1403,6 +1558,17 @@ public final class Todos {
       return hash;
     }
 
+    public static com.github.starter.proto.Todos.TodoList parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.github.starter.proto.Todos.TodoList parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static com.github.starter.proto.Todos.TodoList parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1462,6 +1628,7 @@ public final class Todos {
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
+    @java.lang.Override
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
@@ -1469,6 +1636,7 @@ public final class Todos {
     public static Builder newBuilder(com.github.starter.proto.Todos.TodoList prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+    @java.lang.Override
     public Builder toBuilder() {
       return this == DEFAULT_INSTANCE
           ? new Builder() : new Builder().mergeFrom(this);
@@ -1492,6 +1660,7 @@ public final class Todos {
         return com.github.starter.proto.Todos.internal_static_todo_TodoList_descriptor;
       }
 
+      @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return com.github.starter.proto.Todos.internal_static_todo_TodoList_fieldAccessorTable
@@ -1515,6 +1684,7 @@ public final class Todos {
           getDataFieldBuilder();
         }
       }
+      @java.lang.Override
       public Builder clear() {
         super.clear();
         if (dataBuilder_ == null) {
@@ -1526,15 +1696,18 @@ public final class Todos {
         return this;
       }
 
+      @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return com.github.starter.proto.Todos.internal_static_todo_TodoList_descriptor;
       }
 
+      @java.lang.Override
       public com.github.starter.proto.Todos.TodoList getDefaultInstanceForType() {
         return com.github.starter.proto.Todos.TodoList.getDefaultInstance();
       }
 
+      @java.lang.Override
       public com.github.starter.proto.Todos.TodoList build() {
         com.github.starter.proto.Todos.TodoList result = buildPartial();
         if (!result.isInitialized()) {
@@ -1543,11 +1716,12 @@ public final class Todos {
         return result;
       }
 
+      @java.lang.Override
       public com.github.starter.proto.Todos.TodoList buildPartial() {
         com.github.starter.proto.Todos.TodoList result = new com.github.starter.proto.Todos.TodoList(this);
         int from_bitField0_ = bitField0_;
         if (dataBuilder_ == null) {
-          if (((bitField0_ & 0x00000001) == 0x00000001)) {
+          if (((bitField0_ & 0x00000001) != 0)) {
             data_ = java.util.Collections.unmodifiableList(data_);
             bitField0_ = (bitField0_ & ~0x00000001);
           }
@@ -1559,32 +1733,39 @@ public final class Todos {
         return result;
       }
 
+      @java.lang.Override
       public Builder clone() {
-        return (Builder) super.clone();
+        return super.clone();
       }
+      @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.setField(field, value);
+          java.lang.Object value) {
+        return super.setField(field, value);
       }
+      @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
+        return super.clearField(field);
       }
+      @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
+        return super.clearOneof(oneof);
       }
+      @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
       }
+      @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.addRepeatedField(field, value);
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
       }
+      @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.github.starter.proto.Todos.TodoList) {
           return mergeFrom((com.github.starter.proto.Todos.TodoList)other);
@@ -1622,14 +1803,17 @@ public final class Todos {
             }
           }
         }
+        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
 
+      @java.lang.Override
       public final boolean isInitialized() {
         return true;
       }
 
+      @java.lang.Override
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -1652,7 +1836,7 @@ public final class Todos {
       private java.util.List<com.github.starter.proto.Todos.Todo> data_ =
         java.util.Collections.emptyList();
       private void ensureDataIsMutable() {
-        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+        if (!((bitField0_ & 0x00000001) != 0)) {
           data_ = new java.util.ArrayList<com.github.starter.proto.Todos.Todo>(data_);
           bitField0_ |= 0x00000001;
          }
@@ -1881,21 +2065,23 @@ public final class Todos {
           dataBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               com.github.starter.proto.Todos.Todo, com.github.starter.proto.Todos.Todo.Builder, com.github.starter.proto.Todos.TodoOrBuilder>(
                   data_,
-                  ((bitField0_ & 0x00000001) == 0x00000001),
+                  ((bitField0_ & 0x00000001) != 0),
                   getParentForChildren(),
                   isClean());
           data_ = null;
         }
         return dataBuilder_;
       }
+      @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.setUnknownFields(unknownFields);
       }
 
+      @java.lang.Override
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.mergeUnknownFields(unknownFields);
       }
 
 
@@ -1914,11 +2100,12 @@ public final class Todos {
 
     private static final com.google.protobuf.Parser<TodoList>
         PARSER = new com.google.protobuf.AbstractParser<TodoList>() {
+      @java.lang.Override
       public TodoList parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-          return new TodoList(input, extensionRegistry);
+        return new TodoList(input, extensionRegistry);
       }
     };
 
@@ -1931,6 +2118,7 @@ public final class Todos {
       return PARSER;
     }
 
+    @java.lang.Override
     public com.github.starter.proto.Todos.TodoList getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
@@ -1942,36 +2130,48 @@ public final class Todos {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional bool completed = 1;</code>
+     * <code>bool completed = 1;</code>
+     * @return The completed.
      */
     boolean getCompleted();
   }
   /**
    * Protobuf type {@code todo.Params}
    */
-  public  static final class Params extends
+  public static final class Params extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:todo.Params)
       ParamsOrBuilder {
+  private static final long serialVersionUID = 0L;
     // Use Params.newBuilder() to construct.
     private Params(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private Params() {
-      completed_ = false;
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new Params();
     }
 
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+      return this.unknownFields;
     }
     private Params(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
-      int mutable_bitField0_ = 0;
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -1980,15 +2180,16 @@ public final class Todos {
             case 0:
               done = true;
               break;
-            default: {
-              if (!input.skipField(tag)) {
-                done = true;
-              }
-              break;
-            }
             case 8: {
 
               completed_ = input.readBool();
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
               break;
             }
           }
@@ -1999,6 +2200,7 @@ public final class Todos {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -2007,6 +2209,7 @@ public final class Todos {
       return com.github.starter.proto.Todos.internal_static_todo_Params_descriptor;
     }
 
+    @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return com.github.starter.proto.Todos.internal_static_todo_Params_fieldAccessorTable
@@ -2017,13 +2220,16 @@ public final class Todos {
     public static final int COMPLETED_FIELD_NUMBER = 1;
     private boolean completed_;
     /**
-     * <code>optional bool completed = 1;</code>
+     * <code>bool completed = 1;</code>
+     * @return The completed.
      */
+    @java.lang.Override
     public boolean getCompleted() {
       return completed_;
     }
 
     private byte memoizedIsInitialized = -1;
+    @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
@@ -2033,13 +2239,16 @@ public final class Todos {
       return true;
     }
 
+    @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (completed_ != false) {
         output.writeBool(1, completed_);
       }
+      unknownFields.writeTo(output);
     }
 
+    @java.lang.Override
     public int getSerializedSize() {
       int size = memoizedSize;
       if (size != -1) return size;
@@ -2049,11 +2258,11 @@ public final class Todos {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(1, completed_);
       }
+      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
@@ -2064,10 +2273,10 @@ public final class Todos {
       }
       com.github.starter.proto.Todos.Params other = (com.github.starter.proto.Todos.Params) obj;
 
-      boolean result = true;
-      result = result && (getCompleted()
-          == other.getCompleted());
-      return result;
+      if (getCompleted()
+          != other.getCompleted()) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -2076,7 +2285,7 @@ public final class Todos {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + COMPLETED_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
           getCompleted());
@@ -2085,6 +2294,17 @@ public final class Todos {
       return hash;
     }
 
+    public static com.github.starter.proto.Todos.Params parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.github.starter.proto.Todos.Params parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static com.github.starter.proto.Todos.Params parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -2144,6 +2364,7 @@ public final class Todos {
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
+    @java.lang.Override
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
@@ -2151,6 +2372,7 @@ public final class Todos {
     public static Builder newBuilder(com.github.starter.proto.Todos.Params prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+    @java.lang.Override
     public Builder toBuilder() {
       return this == DEFAULT_INSTANCE
           ? new Builder() : new Builder().mergeFrom(this);
@@ -2174,6 +2396,7 @@ public final class Todos {
         return com.github.starter.proto.Todos.internal_static_todo_Params_descriptor;
       }
 
+      @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return com.github.starter.proto.Todos.internal_static_todo_Params_fieldAccessorTable
@@ -2196,6 +2419,7 @@ public final class Todos {
                 .alwaysUseFieldBuilders) {
         }
       }
+      @java.lang.Override
       public Builder clear() {
         super.clear();
         completed_ = false;
@@ -2203,15 +2427,18 @@ public final class Todos {
         return this;
       }
 
+      @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return com.github.starter.proto.Todos.internal_static_todo_Params_descriptor;
       }
 
+      @java.lang.Override
       public com.github.starter.proto.Todos.Params getDefaultInstanceForType() {
         return com.github.starter.proto.Todos.Params.getDefaultInstance();
       }
 
+      @java.lang.Override
       public com.github.starter.proto.Todos.Params build() {
         com.github.starter.proto.Todos.Params result = buildPartial();
         if (!result.isInitialized()) {
@@ -2220,6 +2447,7 @@ public final class Todos {
         return result;
       }
 
+      @java.lang.Override
       public com.github.starter.proto.Todos.Params buildPartial() {
         com.github.starter.proto.Todos.Params result = new com.github.starter.proto.Todos.Params(this);
         result.completed_ = completed_;
@@ -2227,32 +2455,39 @@ public final class Todos {
         return result;
       }
 
+      @java.lang.Override
       public Builder clone() {
-        return (Builder) super.clone();
+        return super.clone();
       }
+      @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.setField(field, value);
+          java.lang.Object value) {
+        return super.setField(field, value);
       }
+      @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
+        return super.clearField(field);
       }
+      @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
+        return super.clearOneof(oneof);
       }
+      @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
       }
+      @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.addRepeatedField(field, value);
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
       }
+      @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.github.starter.proto.Todos.Params) {
           return mergeFrom((com.github.starter.proto.Todos.Params)other);
@@ -2267,14 +2502,17 @@ public final class Todos {
         if (other.getCompleted() != false) {
           setCompleted(other.getCompleted());
         }
+        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
 
+      @java.lang.Override
       public final boolean isInitialized() {
         return true;
       }
 
+      @java.lang.Override
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -2295,13 +2533,17 @@ public final class Todos {
 
       private boolean completed_ ;
       /**
-       * <code>optional bool completed = 1;</code>
+       * <code>bool completed = 1;</code>
+       * @return The completed.
        */
+      @java.lang.Override
       public boolean getCompleted() {
         return completed_;
       }
       /**
-       * <code>optional bool completed = 1;</code>
+       * <code>bool completed = 1;</code>
+       * @param value The completed to set.
+       * @return This builder for chaining.
        */
       public Builder setCompleted(boolean value) {
         
@@ -2310,7 +2552,8 @@ public final class Todos {
         return this;
       }
       /**
-       * <code>optional bool completed = 1;</code>
+       * <code>bool completed = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearCompleted() {
         
@@ -2318,14 +2561,16 @@ public final class Todos {
         onChanged();
         return this;
       }
+      @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.setUnknownFields(unknownFields);
       }
 
+      @java.lang.Override
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.mergeUnknownFields(unknownFields);
       }
 
 
@@ -2344,11 +2589,12 @@ public final class Todos {
 
     private static final com.google.protobuf.Parser<Params>
         PARSER = new com.google.protobuf.AbstractParser<Params>() {
+      @java.lang.Override
       public Params parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-          return new Params(input, extensionRegistry);
+        return new Params(input, extensionRegistry);
       }
     };
 
@@ -2361,6 +2607,7 @@ public final class Todos {
       return PARSER;
     }
 
+    @java.lang.Override
     public com.github.starter.proto.Todos.Params getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
@@ -2372,31 +2619,37 @@ public final class Todos {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string action_by = 1;</code>
+     * <code>string action_by = 1;</code>
+     * @return The actionBy.
      */
     java.lang.String getActionBy();
     /**
-     * <code>optional string action_by = 1;</code>
+     * <code>string action_by = 1;</code>
+     * @return The bytes for actionBy.
      */
     com.google.protobuf.ByteString
         getActionByBytes();
 
     /**
-     * <code>optional string status = 2;</code>
+     * <code>string status = 2;</code>
+     * @return The status.
      */
     java.lang.String getStatus();
     /**
-     * <code>optional string status = 2;</code>
+     * <code>string status = 2;</code>
+     * @return The bytes for status.
      */
     com.google.protobuf.ByteString
         getStatusBytes();
 
     /**
-     * <code>optional string created = 3;</code>
+     * <code>string created = 3;</code>
+     * @return The created.
      */
     java.lang.String getCreated();
     /**
-     * <code>optional string created = 3;</code>
+     * <code>string created = 3;</code>
+     * @return The bytes for created.
      */
     com.google.protobuf.ByteString
         getCreatedBytes();
@@ -2404,10 +2657,11 @@ public final class Todos {
   /**
    * Protobuf type {@code todo.SearchRequest}
    */
-  public  static final class SearchRequest extends
+  public static final class SearchRequest extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:todo.SearchRequest)
       SearchRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
     // Use SearchRequest.newBuilder() to construct.
     private SearchRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -2419,16 +2673,27 @@ public final class Todos {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new SearchRequest();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+      return this.unknownFields;
     }
     private SearchRequest(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
-      int mutable_bitField0_ = 0;
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -2437,12 +2702,6 @@ public final class Todos {
             case 0:
               done = true;
               break;
-            default: {
-              if (!input.skipField(tag)) {
-                done = true;
-              }
-              break;
-            }
             case 10: {
               java.lang.String s = input.readStringRequireUtf8();
 
@@ -2461,6 +2720,13 @@ public final class Todos {
               created_ = s;
               break;
             }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -2469,6 +2735,7 @@ public final class Todos {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -2477,6 +2744,7 @@ public final class Todos {
       return com.github.starter.proto.Todos.internal_static_todo_SearchRequest_descriptor;
     }
 
+    @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return com.github.starter.proto.Todos.internal_static_todo_SearchRequest_fieldAccessorTable
@@ -2487,8 +2755,10 @@ public final class Todos {
     public static final int ACTION_BY_FIELD_NUMBER = 1;
     private volatile java.lang.Object actionBy_;
     /**
-     * <code>optional string action_by = 1;</code>
+     * <code>string action_by = 1;</code>
+     * @return The actionBy.
      */
+    @java.lang.Override
     public java.lang.String getActionBy() {
       java.lang.Object ref = actionBy_;
       if (ref instanceof java.lang.String) {
@@ -2502,8 +2772,10 @@ public final class Todos {
       }
     }
     /**
-     * <code>optional string action_by = 1;</code>
+     * <code>string action_by = 1;</code>
+     * @return The bytes for actionBy.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getActionByBytes() {
       java.lang.Object ref = actionBy_;
@@ -2521,8 +2793,10 @@ public final class Todos {
     public static final int STATUS_FIELD_NUMBER = 2;
     private volatile java.lang.Object status_;
     /**
-     * <code>optional string status = 2;</code>
+     * <code>string status = 2;</code>
+     * @return The status.
      */
+    @java.lang.Override
     public java.lang.String getStatus() {
       java.lang.Object ref = status_;
       if (ref instanceof java.lang.String) {
@@ -2536,8 +2810,10 @@ public final class Todos {
       }
     }
     /**
-     * <code>optional string status = 2;</code>
+     * <code>string status = 2;</code>
+     * @return The bytes for status.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getStatusBytes() {
       java.lang.Object ref = status_;
@@ -2555,8 +2831,10 @@ public final class Todos {
     public static final int CREATED_FIELD_NUMBER = 3;
     private volatile java.lang.Object created_;
     /**
-     * <code>optional string created = 3;</code>
+     * <code>string created = 3;</code>
+     * @return The created.
      */
+    @java.lang.Override
     public java.lang.String getCreated() {
       java.lang.Object ref = created_;
       if (ref instanceof java.lang.String) {
@@ -2570,8 +2848,10 @@ public final class Todos {
       }
     }
     /**
-     * <code>optional string created = 3;</code>
+     * <code>string created = 3;</code>
+     * @return The bytes for created.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getCreatedBytes() {
       java.lang.Object ref = created_;
@@ -2587,6 +2867,7 @@ public final class Todos {
     }
 
     private byte memoizedIsInitialized = -1;
+    @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
@@ -2596,38 +2877,41 @@ public final class Todos {
       return true;
     }
 
+    @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getActionByBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(actionBy_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, actionBy_);
       }
-      if (!getStatusBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(status_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, status_);
       }
-      if (!getCreatedBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(created_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 3, created_);
       }
+      unknownFields.writeTo(output);
     }
 
+    @java.lang.Override
     public int getSerializedSize() {
       int size = memoizedSize;
       if (size != -1) return size;
 
       size = 0;
-      if (!getActionByBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(actionBy_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, actionBy_);
       }
-      if (!getStatusBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(status_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, status_);
       }
-      if (!getCreatedBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(created_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, created_);
       }
+      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
@@ -2638,14 +2922,14 @@ public final class Todos {
       }
       com.github.starter.proto.Todos.SearchRequest other = (com.github.starter.proto.Todos.SearchRequest) obj;
 
-      boolean result = true;
-      result = result && getActionBy()
-          .equals(other.getActionBy());
-      result = result && getStatus()
-          .equals(other.getStatus());
-      result = result && getCreated()
-          .equals(other.getCreated());
-      return result;
+      if (!getActionBy()
+          .equals(other.getActionBy())) return false;
+      if (!getStatus()
+          .equals(other.getStatus())) return false;
+      if (!getCreated()
+          .equals(other.getCreated())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -2654,7 +2938,7 @@ public final class Todos {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ACTION_BY_FIELD_NUMBER;
       hash = (53 * hash) + getActionBy().hashCode();
       hash = (37 * hash) + STATUS_FIELD_NUMBER;
@@ -2666,6 +2950,17 @@ public final class Todos {
       return hash;
     }
 
+    public static com.github.starter.proto.Todos.SearchRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.github.starter.proto.Todos.SearchRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static com.github.starter.proto.Todos.SearchRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -2725,6 +3020,7 @@ public final class Todos {
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
+    @java.lang.Override
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
@@ -2732,6 +3028,7 @@ public final class Todos {
     public static Builder newBuilder(com.github.starter.proto.Todos.SearchRequest prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+    @java.lang.Override
     public Builder toBuilder() {
       return this == DEFAULT_INSTANCE
           ? new Builder() : new Builder().mergeFrom(this);
@@ -2755,6 +3052,7 @@ public final class Todos {
         return com.github.starter.proto.Todos.internal_static_todo_SearchRequest_descriptor;
       }
 
+      @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return com.github.starter.proto.Todos.internal_static_todo_SearchRequest_fieldAccessorTable
@@ -2777,6 +3075,7 @@ public final class Todos {
                 .alwaysUseFieldBuilders) {
         }
       }
+      @java.lang.Override
       public Builder clear() {
         super.clear();
         actionBy_ = "";
@@ -2788,15 +3087,18 @@ public final class Todos {
         return this;
       }
 
+      @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return com.github.starter.proto.Todos.internal_static_todo_SearchRequest_descriptor;
       }
 
+      @java.lang.Override
       public com.github.starter.proto.Todos.SearchRequest getDefaultInstanceForType() {
         return com.github.starter.proto.Todos.SearchRequest.getDefaultInstance();
       }
 
+      @java.lang.Override
       public com.github.starter.proto.Todos.SearchRequest build() {
         com.github.starter.proto.Todos.SearchRequest result = buildPartial();
         if (!result.isInitialized()) {
@@ -2805,6 +3107,7 @@ public final class Todos {
         return result;
       }
 
+      @java.lang.Override
       public com.github.starter.proto.Todos.SearchRequest buildPartial() {
         com.github.starter.proto.Todos.SearchRequest result = new com.github.starter.proto.Todos.SearchRequest(this);
         result.actionBy_ = actionBy_;
@@ -2814,32 +3117,39 @@ public final class Todos {
         return result;
       }
 
+      @java.lang.Override
       public Builder clone() {
-        return (Builder) super.clone();
+        return super.clone();
       }
+      @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.setField(field, value);
+          java.lang.Object value) {
+        return super.setField(field, value);
       }
+      @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
+        return super.clearField(field);
       }
+      @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
+        return super.clearOneof(oneof);
       }
+      @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
       }
+      @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.addRepeatedField(field, value);
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
       }
+      @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.github.starter.proto.Todos.SearchRequest) {
           return mergeFrom((com.github.starter.proto.Todos.SearchRequest)other);
@@ -2863,14 +3173,17 @@ public final class Todos {
           created_ = other.created_;
           onChanged();
         }
+        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
 
+      @java.lang.Override
       public final boolean isInitialized() {
         return true;
       }
 
+      @java.lang.Override
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -2891,7 +3204,8 @@ public final class Todos {
 
       private java.lang.Object actionBy_ = "";
       /**
-       * <code>optional string action_by = 1;</code>
+       * <code>string action_by = 1;</code>
+       * @return The actionBy.
        */
       public java.lang.String getActionBy() {
         java.lang.Object ref = actionBy_;
@@ -2906,7 +3220,8 @@ public final class Todos {
         }
       }
       /**
-       * <code>optional string action_by = 1;</code>
+       * <code>string action_by = 1;</code>
+       * @return The bytes for actionBy.
        */
       public com.google.protobuf.ByteString
           getActionByBytes() {
@@ -2922,7 +3237,9 @@ public final class Todos {
         }
       }
       /**
-       * <code>optional string action_by = 1;</code>
+       * <code>string action_by = 1;</code>
+       * @param value The actionBy to set.
+       * @return This builder for chaining.
        */
       public Builder setActionBy(
           java.lang.String value) {
@@ -2935,7 +3252,8 @@ public final class Todos {
         return this;
       }
       /**
-       * <code>optional string action_by = 1;</code>
+       * <code>string action_by = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearActionBy() {
         
@@ -2944,7 +3262,9 @@ public final class Todos {
         return this;
       }
       /**
-       * <code>optional string action_by = 1;</code>
+       * <code>string action_by = 1;</code>
+       * @param value The bytes for actionBy to set.
+       * @return This builder for chaining.
        */
       public Builder setActionByBytes(
           com.google.protobuf.ByteString value) {
@@ -2960,7 +3280,8 @@ public final class Todos {
 
       private java.lang.Object status_ = "";
       /**
-       * <code>optional string status = 2;</code>
+       * <code>string status = 2;</code>
+       * @return The status.
        */
       public java.lang.String getStatus() {
         java.lang.Object ref = status_;
@@ -2975,7 +3296,8 @@ public final class Todos {
         }
       }
       /**
-       * <code>optional string status = 2;</code>
+       * <code>string status = 2;</code>
+       * @return The bytes for status.
        */
       public com.google.protobuf.ByteString
           getStatusBytes() {
@@ -2991,7 +3313,9 @@ public final class Todos {
         }
       }
       /**
-       * <code>optional string status = 2;</code>
+       * <code>string status = 2;</code>
+       * @param value The status to set.
+       * @return This builder for chaining.
        */
       public Builder setStatus(
           java.lang.String value) {
@@ -3004,7 +3328,8 @@ public final class Todos {
         return this;
       }
       /**
-       * <code>optional string status = 2;</code>
+       * <code>string status = 2;</code>
+       * @return This builder for chaining.
        */
       public Builder clearStatus() {
         
@@ -3013,7 +3338,9 @@ public final class Todos {
         return this;
       }
       /**
-       * <code>optional string status = 2;</code>
+       * <code>string status = 2;</code>
+       * @param value The bytes for status to set.
+       * @return This builder for chaining.
        */
       public Builder setStatusBytes(
           com.google.protobuf.ByteString value) {
@@ -3029,7 +3356,8 @@ public final class Todos {
 
       private java.lang.Object created_ = "";
       /**
-       * <code>optional string created = 3;</code>
+       * <code>string created = 3;</code>
+       * @return The created.
        */
       public java.lang.String getCreated() {
         java.lang.Object ref = created_;
@@ -3044,7 +3372,8 @@ public final class Todos {
         }
       }
       /**
-       * <code>optional string created = 3;</code>
+       * <code>string created = 3;</code>
+       * @return The bytes for created.
        */
       public com.google.protobuf.ByteString
           getCreatedBytes() {
@@ -3060,7 +3389,9 @@ public final class Todos {
         }
       }
       /**
-       * <code>optional string created = 3;</code>
+       * <code>string created = 3;</code>
+       * @param value The created to set.
+       * @return This builder for chaining.
        */
       public Builder setCreated(
           java.lang.String value) {
@@ -3073,7 +3404,8 @@ public final class Todos {
         return this;
       }
       /**
-       * <code>optional string created = 3;</code>
+       * <code>string created = 3;</code>
+       * @return This builder for chaining.
        */
       public Builder clearCreated() {
         
@@ -3082,7 +3414,9 @@ public final class Todos {
         return this;
       }
       /**
-       * <code>optional string created = 3;</code>
+       * <code>string created = 3;</code>
+       * @param value The bytes for created to set.
+       * @return This builder for chaining.
        */
       public Builder setCreatedBytes(
           com.google.protobuf.ByteString value) {
@@ -3095,14 +3429,16 @@ public final class Todos {
         onChanged();
         return this;
       }
+      @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.setUnknownFields(unknownFields);
       }
 
+      @java.lang.Override
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.mergeUnknownFields(unknownFields);
       }
 
 
@@ -3121,11 +3457,12 @@ public final class Todos {
 
     private static final com.google.protobuf.Parser<SearchRequest>
         PARSER = new com.google.protobuf.AbstractParser<SearchRequest>() {
+      @java.lang.Override
       public SearchRequest parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-          return new SearchRequest(input, extensionRegistry);
+        return new SearchRequest(input, extensionRegistry);
       }
     };
 
@@ -3138,6 +3475,7 @@ public final class Todos {
       return PARSER;
     }
 
+    @java.lang.Override
     public com.github.starter.proto.Todos.SearchRequest getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
@@ -3149,11 +3487,13 @@ public final class Todos {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string value = 1;</code>
+     * <code>string value = 1;</code>
+     * @return The value.
      */
     java.lang.String getValue();
     /**
-     * <code>optional string value = 1;</code>
+     * <code>string value = 1;</code>
+     * @return The bytes for value.
      */
     com.google.protobuf.ByteString
         getValueBytes();
@@ -3161,10 +3501,11 @@ public final class Todos {
   /**
    * Protobuf type {@code todo.Status}
    */
-  public  static final class Status extends
+  public static final class Status extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:todo.Status)
       StatusOrBuilder {
+  private static final long serialVersionUID = 0L;
     // Use Status.newBuilder() to construct.
     private Status(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -3174,16 +3515,27 @@ public final class Todos {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new Status();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+      return this.unknownFields;
     }
     private Status(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
-      int mutable_bitField0_ = 0;
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -3192,16 +3544,17 @@ public final class Todos {
             case 0:
               done = true;
               break;
-            default: {
-              if (!input.skipField(tag)) {
-                done = true;
-              }
-              break;
-            }
             case 10: {
               java.lang.String s = input.readStringRequireUtf8();
 
               value_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
               break;
             }
           }
@@ -3212,6 +3565,7 @@ public final class Todos {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
+        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -3220,6 +3574,7 @@ public final class Todos {
       return com.github.starter.proto.Todos.internal_static_todo_Status_descriptor;
     }
 
+    @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return com.github.starter.proto.Todos.internal_static_todo_Status_fieldAccessorTable
@@ -3230,8 +3585,10 @@ public final class Todos {
     public static final int VALUE_FIELD_NUMBER = 1;
     private volatile java.lang.Object value_;
     /**
-     * <code>optional string value = 1;</code>
+     * <code>string value = 1;</code>
+     * @return The value.
      */
+    @java.lang.Override
     public java.lang.String getValue() {
       java.lang.Object ref = value_;
       if (ref instanceof java.lang.String) {
@@ -3245,8 +3602,10 @@ public final class Todos {
       }
     }
     /**
-     * <code>optional string value = 1;</code>
+     * <code>string value = 1;</code>
+     * @return The bytes for value.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getValueBytes() {
       java.lang.Object ref = value_;
@@ -3262,6 +3621,7 @@ public final class Todos {
     }
 
     private byte memoizedIsInitialized = -1;
+    @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
@@ -3271,26 +3631,29 @@ public final class Todos {
       return true;
     }
 
+    @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getValueBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(value_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, value_);
       }
+      unknownFields.writeTo(output);
     }
 
+    @java.lang.Override
     public int getSerializedSize() {
       int size = memoizedSize;
       if (size != -1) return size;
 
       size = 0;
-      if (!getValueBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(value_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, value_);
       }
+      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
@@ -3301,10 +3664,10 @@ public final class Todos {
       }
       com.github.starter.proto.Todos.Status other = (com.github.starter.proto.Todos.Status) obj;
 
-      boolean result = true;
-      result = result && getValue()
-          .equals(other.getValue());
-      return result;
+      if (!getValue()
+          .equals(other.getValue())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -3313,7 +3676,7 @@ public final class Todos {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + VALUE_FIELD_NUMBER;
       hash = (53 * hash) + getValue().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
@@ -3321,6 +3684,17 @@ public final class Todos {
       return hash;
     }
 
+    public static com.github.starter.proto.Todos.Status parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.github.starter.proto.Todos.Status parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static com.github.starter.proto.Todos.Status parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -3380,6 +3754,7 @@ public final class Todos {
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
+    @java.lang.Override
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
@@ -3387,6 +3762,7 @@ public final class Todos {
     public static Builder newBuilder(com.github.starter.proto.Todos.Status prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+    @java.lang.Override
     public Builder toBuilder() {
       return this == DEFAULT_INSTANCE
           ? new Builder() : new Builder().mergeFrom(this);
@@ -3410,6 +3786,7 @@ public final class Todos {
         return com.github.starter.proto.Todos.internal_static_todo_Status_descriptor;
       }
 
+      @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return com.github.starter.proto.Todos.internal_static_todo_Status_fieldAccessorTable
@@ -3432,6 +3809,7 @@ public final class Todos {
                 .alwaysUseFieldBuilders) {
         }
       }
+      @java.lang.Override
       public Builder clear() {
         super.clear();
         value_ = "";
@@ -3439,15 +3817,18 @@ public final class Todos {
         return this;
       }
 
+      @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return com.github.starter.proto.Todos.internal_static_todo_Status_descriptor;
       }
 
+      @java.lang.Override
       public com.github.starter.proto.Todos.Status getDefaultInstanceForType() {
         return com.github.starter.proto.Todos.Status.getDefaultInstance();
       }
 
+      @java.lang.Override
       public com.github.starter.proto.Todos.Status build() {
         com.github.starter.proto.Todos.Status result = buildPartial();
         if (!result.isInitialized()) {
@@ -3456,6 +3837,7 @@ public final class Todos {
         return result;
       }
 
+      @java.lang.Override
       public com.github.starter.proto.Todos.Status buildPartial() {
         com.github.starter.proto.Todos.Status result = new com.github.starter.proto.Todos.Status(this);
         result.value_ = value_;
@@ -3463,32 +3845,39 @@ public final class Todos {
         return result;
       }
 
+      @java.lang.Override
       public Builder clone() {
-        return (Builder) super.clone();
+        return super.clone();
       }
+      @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.setField(field, value);
+          java.lang.Object value) {
+        return super.setField(field, value);
       }
+      @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
+        return super.clearField(field);
       }
+      @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
+        return super.clearOneof(oneof);
       }
+      @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
       }
+      @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.addRepeatedField(field, value);
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
       }
+      @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.github.starter.proto.Todos.Status) {
           return mergeFrom((com.github.starter.proto.Todos.Status)other);
@@ -3504,14 +3893,17 @@ public final class Todos {
           value_ = other.value_;
           onChanged();
         }
+        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
 
+      @java.lang.Override
       public final boolean isInitialized() {
         return true;
       }
 
+      @java.lang.Override
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -3532,7 +3924,8 @@ public final class Todos {
 
       private java.lang.Object value_ = "";
       /**
-       * <code>optional string value = 1;</code>
+       * <code>string value = 1;</code>
+       * @return The value.
        */
       public java.lang.String getValue() {
         java.lang.Object ref = value_;
@@ -3547,7 +3940,8 @@ public final class Todos {
         }
       }
       /**
-       * <code>optional string value = 1;</code>
+       * <code>string value = 1;</code>
+       * @return The bytes for value.
        */
       public com.google.protobuf.ByteString
           getValueBytes() {
@@ -3563,7 +3957,9 @@ public final class Todos {
         }
       }
       /**
-       * <code>optional string value = 1;</code>
+       * <code>string value = 1;</code>
+       * @param value The value to set.
+       * @return This builder for chaining.
        */
       public Builder setValue(
           java.lang.String value) {
@@ -3576,7 +3972,8 @@ public final class Todos {
         return this;
       }
       /**
-       * <code>optional string value = 1;</code>
+       * <code>string value = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearValue() {
         
@@ -3585,7 +3982,9 @@ public final class Todos {
         return this;
       }
       /**
-       * <code>optional string value = 1;</code>
+       * <code>string value = 1;</code>
+       * @param value The bytes for value to set.
+       * @return This builder for chaining.
        */
       public Builder setValueBytes(
           com.google.protobuf.ByteString value) {
@@ -3598,14 +3997,16 @@ public final class Todos {
         onChanged();
         return this;
       }
+      @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.setUnknownFields(unknownFields);
       }
 
+      @java.lang.Override
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
+        return super.mergeUnknownFields(unknownFields);
       }
 
 
@@ -3624,11 +4025,12 @@ public final class Todos {
 
     private static final com.google.protobuf.Parser<Status>
         PARSER = new com.google.protobuf.AbstractParser<Status>() {
+      @java.lang.Override
       public Status parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-          return new Status(input, extensionRegistry);
+        return new Status(input, extensionRegistry);
       }
     };
 
@@ -3641,6 +4043,7 @@ public final class Todos {
       return PARSER;
     }
 
+    @java.lang.Override
     public com.github.starter.proto.Todos.Status getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
@@ -3690,7 +4093,7 @@ public final class Todos {
       "\n\tcompleted\030\001 \001(\010\"C\n\rSearchRequest\022\021\n\tac" +
       "tion_by\030\001 \001(\t\022\016\n\006status\030\002 \001(\t\022\017\n\007created" +
       "\030\003 \001(\t\"\027\n\006Status\022\r\n\005value\030\001 \001(\t2\244\003\n\013Todo" +
-      "Service\022E\n\010getTodos\022\023.todo.SearchRequest",
+      "Service\022E\n\010getTodos\022\023.todo.SearchRequest" +
       "\032\016.todo.TodoList\"\024\202\323\344\223\002\016\022\014/todo.search\0222" +
       "\n\004save\022\n.todo.Todo\032\n.todo.Todo\"\022\202\323\344\223\002\014\"\n" +
       "/todo.save\0226\n\006update\022\n.todo.Todo\032\n.todo." +
@@ -3700,23 +4103,15 @@ public final class Todos {
       "gle.protobuf.StringValue\032\032.google.protob" +
       "uf.BoolValue\"\024\202\323\344\223\002\016*\014/todo.delete\022:\n\006st" +
       "atus\022\014.todo.Params\032\014.todo.Status\"\024\202\323\344\223\002\016" +
-      "\022\014/todo.statusB+\n\030com.github.starter.pro",
+      "\022\014/todo.statusB+\n\030com.github.starter.pro" +
       "toB\005TodosP\000Z\006.;todob\006proto3"
     };
-    com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
-        new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
-          public com.google.protobuf.ExtensionRegistry assignDescriptors(
-              com.google.protobuf.Descriptors.FileDescriptor root) {
-            descriptor = root;
-            return null;
-          }
-        };
-    com.google.protobuf.Descriptors.FileDescriptor
+    descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           com.google.protobuf.WrappersProto.getDescriptor(),
           com.google.api.AnnotationsProto.getDescriptor(),
-        }, assigner);
+        });
     internal_static_todo_Todo_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_todo_Todo_fieldAccessorTable = new

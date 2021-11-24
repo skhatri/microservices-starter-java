@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Assertions;
 import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 import java.util.List;
+import java.util.UUID;
 
 public class TodoRepositoryUseCases {
 
@@ -20,15 +21,17 @@ public class TodoRepositoryUseCases {
 
     public void testListTodoTasks() {
         List<com.github.starter.proto.Todos.Todo> tasks = todoRepository.listItems(
-            com.github.starter.proto.Todos.SearchRequest.newBuilder()
-                .setActionBy("")
-                .build()).block();
+                com.github.starter.proto.Todos.SearchRequest.newBuilder()
+                    .setActionBy("")
+                    .build())
+            .retry(1)
+            .block();
         Assertions.assertFalse(tasks.isEmpty(), "todo table should have some data");
     }
 
     public void verifyAddTodoTask() {
         TodoTask task = Todos.createOne(LocalDateTime.now());
-        com.github.starter.proto.Todos.Todo savedTask = todoRepository.add(TodoTasks.toTodo(task)).block();
+        com.github.starter.proto.Todos.Todo savedTask = todoRepository.add(TodoTasks.toTodo(task)).retry(1).block();
         Assertions.assertEquals(task.getDescription(), savedTask.getDescription());
 
         String taskId = savedTask.getId();
@@ -37,8 +40,10 @@ public class TodoRepositoryUseCases {
     }
 
     public void verifyDeleteTodoTask() {
-        TodoTask task = Todos.createOne(LocalDateTime.now());
-        com.github.starter.proto.Todos.Todo savedTask = todoRepository.add(TodoTasks.toTodo(task)).block();
+        String originalTaskId = UUID.randomUUID().toString();
+        TodoTask task = Todos.createOne(originalTaskId, ZonedDateTime.now());
+        com.github.starter.proto.Todos.Todo savedTask = todoRepository.add(TodoTasks.toTodo(task))
+            .retry(1).block();
         Assertions.assertEquals(task.getDescription(), savedTask.getDescription());
 
         String taskId = savedTask.getId();
@@ -49,7 +54,7 @@ public class TodoRepositoryUseCases {
 
     public void verifyUpdateTodoTask() {
         TodoTask task = Todos.createOne(LocalDateTime.now());
-        com.github.starter.proto.Todos.Todo savedTask = todoRepository.add(TodoTasks.toTodo(task)).block();
+        com.github.starter.proto.Todos.Todo savedTask = todoRepository.add(TodoTasks.toTodo(task)).retry(1).block();
         Assertions.assertEquals(task.getDescription(), savedTask.getDescription());
 
         String taskId = savedTask.getId();

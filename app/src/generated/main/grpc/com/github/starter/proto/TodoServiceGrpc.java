@@ -1,25 +1,13 @@
 package com.github.starter.proto;
 
 import static io.grpc.MethodDescriptor.generateFullMethodName;
-import static io.grpc.stub.ClientCalls.asyncBidiStreamingCall;
-import static io.grpc.stub.ClientCalls.asyncClientStreamingCall;
-import static io.grpc.stub.ClientCalls.asyncServerStreamingCall;
-import static io.grpc.stub.ClientCalls.asyncUnaryCall;
-import static io.grpc.stub.ClientCalls.blockingServerStreamingCall;
-import static io.grpc.stub.ClientCalls.blockingUnaryCall;
-import static io.grpc.stub.ClientCalls.futureUnaryCall;
-import static io.grpc.stub.ServerCalls.asyncBidiStreamingCall;
-import static io.grpc.stub.ServerCalls.asyncClientStreamingCall;
-import static io.grpc.stub.ServerCalls.asyncServerStreamingCall;
-import static io.grpc.stub.ServerCalls.asyncUnaryCall;
-import static io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall;
-import static io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall;
 
 /**
  */
 @javax.annotation.Generated(
-    value = "by gRPC proto compiler (version 1.29.0)",
+    value = "by gRPC proto compiler (version 1.42.1)",
     comments = "Source: todo.proto")
+@io.grpc.stub.annotations.GrpcGenerated
 public final class TodoServiceGrpc {
 
   private TodoServiceGrpc() {}
@@ -265,84 +253,84 @@ public final class TodoServiceGrpc {
      */
     public void getTodos(com.github.starter.proto.Todos.SearchRequest request,
         io.grpc.stub.StreamObserver<com.github.starter.proto.Todos.TodoList> responseObserver) {
-      asyncUnimplementedUnaryCall(getGetTodosMethod(), responseObserver);
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetTodosMethod(), responseObserver);
     }
 
     /**
      */
     public void save(com.github.starter.proto.Todos.Todo request,
         io.grpc.stub.StreamObserver<com.github.starter.proto.Todos.Todo> responseObserver) {
-      asyncUnimplementedUnaryCall(getSaveMethod(), responseObserver);
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getSaveMethod(), responseObserver);
     }
 
     /**
      */
     public void update(com.github.starter.proto.Todos.Todo request,
         io.grpc.stub.StreamObserver<com.github.starter.proto.Todos.Todo> responseObserver) {
-      asyncUnimplementedUnaryCall(getUpdateMethod(), responseObserver);
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getUpdateMethod(), responseObserver);
     }
 
     /**
      */
     public void findById(com.google.protobuf.StringValue request,
         io.grpc.stub.StreamObserver<com.github.starter.proto.Todos.Todo> responseObserver) {
-      asyncUnimplementedUnaryCall(getFindByIdMethod(), responseObserver);
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getFindByIdMethod(), responseObserver);
     }
 
     /**
      */
     public void delete(com.google.protobuf.StringValue request,
         io.grpc.stub.StreamObserver<com.google.protobuf.BoolValue> responseObserver) {
-      asyncUnimplementedUnaryCall(getDeleteMethod(), responseObserver);
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getDeleteMethod(), responseObserver);
     }
 
     /**
      */
     public void status(com.github.starter.proto.Todos.Params request,
         io.grpc.stub.StreamObserver<com.github.starter.proto.Todos.Status> responseObserver) {
-      asyncUnimplementedUnaryCall(getStatusMethod(), responseObserver);
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getStatusMethod(), responseObserver);
     }
 
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
             getGetTodosMethod(),
-            asyncUnaryCall(
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
                 com.github.starter.proto.Todos.SearchRequest,
                 com.github.starter.proto.Todos.TodoList>(
                   this, METHODID_GET_TODOS)))
           .addMethod(
             getSaveMethod(),
-            asyncUnaryCall(
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
                 com.github.starter.proto.Todos.Todo,
                 com.github.starter.proto.Todos.Todo>(
                   this, METHODID_SAVE)))
           .addMethod(
             getUpdateMethod(),
-            asyncUnaryCall(
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
                 com.github.starter.proto.Todos.Todo,
                 com.github.starter.proto.Todos.Todo>(
                   this, METHODID_UPDATE)))
           .addMethod(
             getFindByIdMethod(),
-            asyncUnaryCall(
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
                 com.google.protobuf.StringValue,
                 com.github.starter.proto.Todos.Todo>(
                   this, METHODID_FIND_BY_ID)))
           .addMethod(
             getDeleteMethod(),
-            asyncUnaryCall(
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
                 com.google.protobuf.StringValue,
                 com.google.protobuf.BoolValue>(
                   this, METHODID_DELETE)))
           .addMethod(
             getStatusMethod(),
-            asyncUnaryCall(
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
                 com.github.starter.proto.Todos.Params,
                 com.github.starter.proto.Todos.Status>(
@@ -369,7 +357,7 @@ public final class TodoServiceGrpc {
      */
     public void getTodos(com.github.starter.proto.Todos.SearchRequest request,
         io.grpc.stub.StreamObserver<com.github.starter.proto.Todos.TodoList> responseObserver) {
-      asyncUnaryCall(
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getGetTodosMethod(), getCallOptions()), request, responseObserver);
     }
 
@@ -377,7 +365,7 @@ public final class TodoServiceGrpc {
      */
     public void save(com.github.starter.proto.Todos.Todo request,
         io.grpc.stub.StreamObserver<com.github.starter.proto.Todos.Todo> responseObserver) {
-      asyncUnaryCall(
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getSaveMethod(), getCallOptions()), request, responseObserver);
     }
 
@@ -385,7 +373,7 @@ public final class TodoServiceGrpc {
      */
     public void update(com.github.starter.proto.Todos.Todo request,
         io.grpc.stub.StreamObserver<com.github.starter.proto.Todos.Todo> responseObserver) {
-      asyncUnaryCall(
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getUpdateMethod(), getCallOptions()), request, responseObserver);
     }
 
@@ -393,7 +381,7 @@ public final class TodoServiceGrpc {
      */
     public void findById(com.google.protobuf.StringValue request,
         io.grpc.stub.StreamObserver<com.github.starter.proto.Todos.Todo> responseObserver) {
-      asyncUnaryCall(
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getFindByIdMethod(), getCallOptions()), request, responseObserver);
     }
 
@@ -401,7 +389,7 @@ public final class TodoServiceGrpc {
      */
     public void delete(com.google.protobuf.StringValue request,
         io.grpc.stub.StreamObserver<com.google.protobuf.BoolValue> responseObserver) {
-      asyncUnaryCall(
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getDeleteMethod(), getCallOptions()), request, responseObserver);
     }
 
@@ -409,7 +397,7 @@ public final class TodoServiceGrpc {
      */
     public void status(com.github.starter.proto.Todos.Params request,
         io.grpc.stub.StreamObserver<com.github.starter.proto.Todos.Status> responseObserver) {
-      asyncUnaryCall(
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getStatusMethod(), getCallOptions()), request, responseObserver);
     }
   }
@@ -431,42 +419,42 @@ public final class TodoServiceGrpc {
     /**
      */
     public com.github.starter.proto.Todos.TodoList getTodos(com.github.starter.proto.Todos.SearchRequest request) {
-      return blockingUnaryCall(
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getGetTodosMethod(), getCallOptions(), request);
     }
 
     /**
      */
     public com.github.starter.proto.Todos.Todo save(com.github.starter.proto.Todos.Todo request) {
-      return blockingUnaryCall(
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getSaveMethod(), getCallOptions(), request);
     }
 
     /**
      */
     public com.github.starter.proto.Todos.Todo update(com.github.starter.proto.Todos.Todo request) {
-      return blockingUnaryCall(
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getUpdateMethod(), getCallOptions(), request);
     }
 
     /**
      */
     public com.github.starter.proto.Todos.Todo findById(com.google.protobuf.StringValue request) {
-      return blockingUnaryCall(
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getFindByIdMethod(), getCallOptions(), request);
     }
 
     /**
      */
     public com.google.protobuf.BoolValue delete(com.google.protobuf.StringValue request) {
-      return blockingUnaryCall(
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getDeleteMethod(), getCallOptions(), request);
     }
 
     /**
      */
     public com.github.starter.proto.Todos.Status status(com.github.starter.proto.Todos.Params request) {
-      return blockingUnaryCall(
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getStatusMethod(), getCallOptions(), request);
     }
   }
@@ -489,7 +477,7 @@ public final class TodoServiceGrpc {
      */
     public com.google.common.util.concurrent.ListenableFuture<com.github.starter.proto.Todos.TodoList> getTodos(
         com.github.starter.proto.Todos.SearchRequest request) {
-      return futureUnaryCall(
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getGetTodosMethod(), getCallOptions()), request);
     }
 
@@ -497,7 +485,7 @@ public final class TodoServiceGrpc {
      */
     public com.google.common.util.concurrent.ListenableFuture<com.github.starter.proto.Todos.Todo> save(
         com.github.starter.proto.Todos.Todo request) {
-      return futureUnaryCall(
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getSaveMethod(), getCallOptions()), request);
     }
 
@@ -505,7 +493,7 @@ public final class TodoServiceGrpc {
      */
     public com.google.common.util.concurrent.ListenableFuture<com.github.starter.proto.Todos.Todo> update(
         com.github.starter.proto.Todos.Todo request) {
-      return futureUnaryCall(
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getUpdateMethod(), getCallOptions()), request);
     }
 
@@ -513,7 +501,7 @@ public final class TodoServiceGrpc {
      */
     public com.google.common.util.concurrent.ListenableFuture<com.github.starter.proto.Todos.Todo> findById(
         com.google.protobuf.StringValue request) {
-      return futureUnaryCall(
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getFindByIdMethod(), getCallOptions()), request);
     }
 
@@ -521,7 +509,7 @@ public final class TodoServiceGrpc {
      */
     public com.google.common.util.concurrent.ListenableFuture<com.google.protobuf.BoolValue> delete(
         com.google.protobuf.StringValue request) {
-      return futureUnaryCall(
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getDeleteMethod(), getCallOptions()), request);
     }
 
@@ -529,7 +517,7 @@ public final class TodoServiceGrpc {
      */
     public com.google.common.util.concurrent.ListenableFuture<com.github.starter.proto.Todos.Status> status(
         com.github.starter.proto.Todos.Params request) {
-      return futureUnaryCall(
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getStatusMethod(), getCallOptions()), request);
     }
   }

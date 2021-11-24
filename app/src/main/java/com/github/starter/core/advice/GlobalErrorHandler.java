@@ -3,7 +3,7 @@ package com.github.starter.core.advice;
 import com.github.starter.core.container.Container;
 import com.github.starter.core.container.MessageItem;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.web.ResourceProperties;
+import org.springframework.boot.autoconfigure.web.WebProperties;
 import org.springframework.boot.autoconfigure.web.reactive.error.AbstractErrorWebExceptionHandler;
 import org.springframework.boot.web.reactive.error.ErrorAttributes;
 import org.springframework.context.ApplicationContext;
@@ -30,7 +30,7 @@ public final class GlobalErrorHandler extends AbstractErrorWebExceptionHandler {
     public GlobalErrorHandler(CustomErrorAttributes errorAttributes,
                               ApplicationContext applicationContext,
                               ServerCodecConfigurer codecConfigurer) {
-        super(errorAttributes, new ResourceProperties(), applicationContext);
+        super(errorAttributes, new WebProperties.Resources(), applicationContext);
         super.setMessageWriters(codecConfigurer.getWriters());
         super.setMessageReaders(codecConfigurer.getReaders());
     }

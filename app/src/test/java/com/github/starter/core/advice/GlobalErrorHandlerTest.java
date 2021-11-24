@@ -48,8 +48,8 @@ public class GlobalErrorHandlerTest {
         latch.await();
 
         StepVerifier.create(serverResponse)
-                .thenConsumeWhile(sr -> sr.statusCode().isError())
-                .verifyComplete();
+            .thenConsumeWhile(sr -> sr.statusCode().isError())
+            .verifyComplete();
     }
 
     private ServerRequest createErrorServerRequest(Throwable throwable) {
@@ -61,17 +61,17 @@ public class GlobalErrorHandlerTest {
         Mockito.when(httpRequest.getPath()).thenReturn(requestPath);
         Mockito.when(serverWebExchange.getRequest()).thenReturn(httpRequest);
         return MockServerRequest.builder()
-                .exchange(serverWebExchange)
-                .attribute(DefaultErrorAttributes.class.getName() + ".ERROR", throwable)
-                .build();
+            .exchange(serverWebExchange)
+            .attribute(DefaultErrorAttributes.class.getName() + ".ERROR", throwable)
+            .build();
     }
 
 
     private static Stream<Arguments> data() {
         return Stream.of(
-                Arguments.of(new BadRequest(), 400),
-                Arguments.of(new InternalServerError(), 500),
-                Arguments.of(new RuntimeException(), 500)
+            Arguments.of(new BadRequest(), 400),
+            Arguments.of(new InternalServerError(), 500),
+            Arguments.of(new RuntimeException(), 500)
         );
     }
 }

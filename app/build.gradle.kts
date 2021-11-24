@@ -1,16 +1,24 @@
 import com.google.protobuf.gradle.*
 import org.gradle.kotlin.dsl.provider.gradleKotlinDslOf
 
-val grpcVersion = "1.31.0"
-val jupiterVersion = "5.7.1"
-val junitPlatformVersion = "1.7.1"
+val grpcVersion = "1.42.1"
+val jupiterVersion = "5.8.1"
+val junitPlatformVersion = "1.8.1"
+val grpcGoogleVersion = "3.19.1"
+val reactorVersion = "3.3.8.RELEASE"
+val r2dbcVersion = "0.8.6.RELEASE"
+val r2dbcH2Version = "0.8.4.RELEASE"
+val testContainerVersion = "1.16.2"
+val mockitoVersion = "4.1.0"
+val jettyVersion = "11.0.7"
+val nettyVersion = "2.0.46.Final"
 
 plugins {
-    id("org.springframework.boot") version "2.5.3"
+    id("org.springframework.boot") version "2.6.0"
     id("io.spring.dependency-management") version "1.0.9.RELEASE"
     id("org.sonarqube") version "2.8"
     id("jacoco")
-    id("com.google.protobuf") version "0.8.12"
+    id("com.google.protobuf") version "0.8.18"
     id("org.owasp.dependencycheck") version "6.0.5"
 }
 
@@ -40,11 +48,11 @@ sourceSets{
 protobuf {
   generatedFilesBaseDir="$projectDir/src/generated"
   protoc {
-    artifact="com.google.protobuf:protoc:3.0.0"
+    artifact="com.google.protobuf:protoc:$grpcGoogleVersion"
   }
   plugins {
     id("grpc") {
-      artifact ="io.grpc:protoc-gen-grpc-java:1.29.0"
+      artifact ="io.grpc:protoc-gen-grpc-java:$grpcVersion"
     }
   }
   
@@ -71,30 +79,30 @@ dependencies {
     }
 
     if (project.ext["server.type"] == "reactor-netty") {
-        implementation("io.netty:netty-tcnative-boringssl-static:2.0.29.Final")
+        implementation("io.netty:netty-tcnative-boringssl-static:$nettyVersion")
     }
 
     if (project.ext["server.type"] == "jetty") {
         listOf("jetty-alpn-server", "jetty-alpn-conscrypt-server").forEach { name ->
-            implementation("org.eclipse.jetty:$name:9.4.27.v20200227")
+            implementation("org.eclipse.jetty:$name:$jettyVersion")
         }
-        implementation("org.eclipse.jetty.http2:http2-server:9.4.27.v20200227")
+        implementation("org.eclipse.jetty.http2:http2-server:$jettyVersion")
     }
 
     implementation("org.springframework.boot:spring-boot-starter-logging")
     implementation("net.logstash.logback:logstash-logback-encoder:6.6")
 
     implementation("io.micrometer:micrometer-registry-prometheus:1.6.3")
-    implementation("io.projectreactor.addons:reactor-adapter:3.3.2.RELEASE")
-    implementation("org.yaml:snakeyaml:1.26")
-    implementation("io.r2dbc:r2dbc-spi:0.8.3.RELEASE")
-    implementation("io.r2dbc:r2dbc-postgresql:0.8.3.RELEASE")
-    implementation("io.r2dbc:r2dbc-h2:0.8.3.RELEASE")
-    implementation("org.springframework.data:spring-data-r2dbc:1.2.3")
+    implementation("io.projectreactor.addons:reactor-adapter:$reactorVersion")
+    implementation("org.yaml:snakeyaml:1.29")
+    implementation("io.r2dbc:r2dbc-spi:$r2dbcVersion")
+    implementation("io.r2dbc:r2dbc-postgresql:$r2dbcVersion")
+    implementation("io.r2dbc:r2dbc-h2:$r2dbcH2Version")
+    implementation("org.springframework.data:spring-data-r2dbc:1.4.0")
     implementation("io.github.skhatri:mounted-secrets-client:0.2.5")
 
-    implementation("com.google.protobuf:protobuf-java:3.12.2")
-    implementation("com.google.protobuf:protobuf-java-util:3.12.2")
+    implementation("com.google.protobuf:protobuf-java:$grpcGoogleVersion")
+    implementation("com.google.protobuf:protobuf-java-util:$grpcGoogleVersion")
     implementation("io.grpc:grpc-protobuf:${grpcVersion}")
     implementation("io.grpc:grpc-stub:${grpcVersion}")
     implementation("io.grpc:grpc-services:${grpcVersion}")
@@ -109,8 +117,8 @@ dependencies {
         exclude(module = "mockito-core")
         exclude(module = "spring-boot-starter-logging")
     }
-    testImplementation("io.projectreactor:reactor-test:3.3.2.RELEASE")
-    testImplementation("org.mockito:mockito-core:3.3.3")
+    testImplementation("io.projectreactor:reactor-test:$reactorVersion")
+    testImplementation("org.mockito:mockito-core:$mockitoVersion")
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:$jupiterVersion")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$jupiterVersion")
@@ -121,9 +129,9 @@ dependencies {
     testImplementation("org.junit.platform:junit-platform-runner:$junitPlatformVersion")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher:$junitPlatformVersion")
     testRuntimeOnly("org.junit.platform:junit-platform-engine:$junitPlatformVersion")
-    testImplementation("org.testcontainers:testcontainers:1.16.0")
-    testImplementation("org.testcontainers:junit-jupiter:1.16.0")
-    testImplementation("org.testcontainers:postgresql:1.16.0")
+    testImplementation("org.testcontainers:testcontainers:$testContainerVersion")
+    testImplementation("org.testcontainers:junit-jupiter:$testContainerVersion")
+    testImplementation("org.testcontainers:postgresql:$testContainerVersion")
 
 }
 
