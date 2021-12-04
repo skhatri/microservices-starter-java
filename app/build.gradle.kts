@@ -1,5 +1,4 @@
 import com.google.protobuf.gradle.*
-import org.gradle.kotlin.dsl.provider.gradleKotlinDslOf
 
 val grpcVersion = "1.42.1"
 val jupiterVersion = "5.8.1"
@@ -14,7 +13,7 @@ val jettyVersion = "11.0.7"
 val nettyVersion = "2.0.46.Final"
 
 plugins {
-    id("org.springframework.boot") version "2.6.0"
+    id("org.springframework.boot") version "2.6.1"
     id("io.spring.dependency-management") version "1.0.9.RELEASE"
     id("org.sonarqube") version "2.8"
     id("jacoco")
