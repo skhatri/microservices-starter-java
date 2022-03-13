@@ -1,0 +1,10 @@
+site_name: 'Microservices Starter Java'
+site_description: 'Starter Java'
+
+plugins:
+  - techdocs-core
+
+nav:
+  - Readme: 'README.md'
+  - Developer: 'DEV.md'
+
