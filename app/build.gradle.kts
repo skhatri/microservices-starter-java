@@ -2,20 +2,20 @@ import com.google.protobuf.gradle.*
 import org.gradle.kotlin.dsl.provider.gradleKotlinDslOf
 
 val grpcVersion = "1.42.1"
-val jupiterVersion = "5.8.1"
-val junitPlatformVersion = "1.8.1"
-val grpcGoogleVersion = "3.19.1"
+val jupiterVersion = "5.8.2"
+val junitPlatformVersion = "1.8.2"
+val grpcGoogleVersion = "3.19.4"
 val reactorVersion = "3.3.8.RELEASE"
 val r2dbcVersion = "0.8.6.RELEASE"
 val r2dbcH2Version = "0.8.4.RELEASE"
 val testContainerVersion = "1.16.2"
 val mockitoVersion = "4.1.0"
 val jettyVersion = "11.0.7"
-val nettyVersion = "2.0.46.Final"
+val nettyVersion = "2.0.51.Final"
 
 plugins {
-    id("org.springframework.boot") version "2.6.0"
-    id("io.spring.dependency-management") version "1.0.9.RELEASE"
+    id("org.springframework.boot") version "2.6.6"
+    id("io.spring.dependency-management") version "1.0.11.RELEASE"
     id("org.sonarqube") version "2.8"
     id("jacoco")
     id("com.google.protobuf") version "0.8.18"
@@ -90,15 +90,15 @@ dependencies {
     }
 
     implementation("org.springframework.boot:spring-boot-starter-logging")
-    implementation("net.logstash.logback:logstash-logback-encoder:6.6")
+    implementation("net.logstash.logback:logstash-logback-encoder:7.0.1")
 
-    implementation("io.micrometer:micrometer-registry-prometheus:1.6.3")
+    implementation("io.micrometer:micrometer-registry-prometheus:1.8.4")
     implementation("io.projectreactor.addons:reactor-adapter:$reactorVersion")
-    implementation("org.yaml:snakeyaml:1.29")
+    implementation("org.yaml:snakeyaml:1.30")
     implementation("io.r2dbc:r2dbc-spi:$r2dbcVersion")
     implementation("io.r2dbc:r2dbc-postgresql:$r2dbcVersion")
     implementation("io.r2dbc:r2dbc-h2:$r2dbcH2Version")
-    implementation("org.springframework.data:spring-data-r2dbc:1.4.0")
+    implementation("org.springframework.data:spring-data-r2dbc:1.4.3")
     implementation("io.github.skhatri:mounted-secrets-client:0.2.5")
 
     implementation("com.google.protobuf:protobuf-java:$grpcGoogleVersion")
@@ -209,3 +209,4 @@ task("runApp", JavaExec::class) {
             "-Xms512m", "-Xmx512m"
     )
 }
+
